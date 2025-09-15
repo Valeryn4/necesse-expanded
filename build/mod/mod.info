@@ -1,0 +1,9 @@
+{
+	id = eryr.necesse.expanded,
+	name = Necesse Expanded,
+	version = 1.0,
+	gameVersion = 0.33.1,
+	author = Eryr,
+	description = Overhauls the vanilla Necesse experience with new content\, features\, and gameplay changes.,
+	clientside = false
+}

@@ -1,0 +1,170 @@
+[object]
+keg=Keg
+
+[itemtooltip]
+blood_crystal_tooltip=Restores 10% of your maximum health after killing an enemy.
+shadow_orb_tooltip=Grants a 20% bonus to damage for five seconds after killing an enemy.
+shadow_orb_bonus=Temporary 20% bonus to damage.
+sandworm_tooth_tooltip=Melee attacks inflict a deadly poison and slow enemies by 40%.
+lucky_ring_tip=Upon killing any non-boss enemy, they'll drop 10% of their maximum health in coins.
+necromancer_ring_tip=Upon killing any non-boss enemy, they'll be resurrected as a temporary minion for 10 seconds.
+
+mana_elixir_tip=Increases your maximum mana by 10, up to a maximum of 200.
+greater_health_elixir_tip=Increases your maximum health by 10, up to a maximum of 400.
+greater_mana_elixir_tip=Increases your maximum mana by 10, up to a maximum of 300.
+
+[item]
+blood_crystal=Blood Crystal
+shadow_orb=Shadow Orb
+sandworm_tooth=Sandworm's Tooth
+lucky_ring=Lucky Ring
+necromancer_ring=Necromancer's Ring
+shadow_orb_bonus=Shadow Orb damage bonus
+
+greater_health_elixir=Greater Health Elixir
+greater_mana_elixir=Greater Mana Elixir
+mana_elixir=Mana Elixir
+
+demonfish=Demonfish
+heartfish=Heartfish
+pearlfish=Pearlfish
+swamp_eel=Swamp Eel
+saltwater_shark=Saltwater Shark
+
+fruit_jam=Fruit Jam
+jam_donut=Jam Donut
+
+angler_fish_stew=Angler's Fish Stew
+heartfish_stew=Heartfish Stew
+pearlfish_stew=Pearlfish Stew
+
+beer=Beer
+cider=Cider
+mead=Mead
+blueberry_wine=Blueberry Wine
+raspberry_wine=Raspberry Wine
+blackberry_wine=Blackberry Wine
+whiskey=Whiskey
+elder_coffee=Elder's Coffee
+miner_brew=Miner's Brew
+pearlescent_wine=Pearlescent Wine
+
+[mob]
+crystal_caveling=Crystal Caveling
+shard_caveling=Shard Caveling
+necromancer_minion=Necromantic Minion
+void_warrior=Void Warrior
+
+zombie_raider=Zombie Raider
+zombie_archer_raider=Zombie Archer Raider
+
+runebound_boss=Runebound Captain
+runebound_berserker=Runebound Berserker
+runebound_healer=Runebound Healer
+runebound_trapper=Runebound Trapper
+runebound_warrior=Runebound Warrior
+
+pirate_brawler=Pirate Brawler
+pirate_sharpshooter=Pirate Sharpshooter
+pirate_grenadier=Pirate Grenadier
+
+skeleton_raider=Skeleton Raider
+skeleton_summoner_raider=Skeleton Summoner Raider
+
+ancient_skeleton_raider=Ancient Skeleton Raider
+ancient_skeleton_summoner_raider=Ancient Skeleton Summoner Raider
+
+vampire_raider=Ancient Vampire Raider
+
+spiderkin_warrior_raider=Spiderkin Warrior Raider
+spiderkin_archer_raider=Spiderkin Archer Raider
+spiderkin_mage_raider=Spiderkin Mage Raider
+spiderkin_summoner_raider=Spiderkin Summoner
+spiderkin_healer_raider=Spiderkin Healer
+
+mage_slime_raider=Slime Mage Raider
+warrior_slime_raider=Slime Warrior Raider
+
+[misc]
+zombie_raiders=Zombies
+runebound_raiders=The Runebound
+pirate_raiders=Pirates
+skeleton_raiders=Skeletons
+ancient_skeleton_raiders=Ancient skeletons
+spiderkin_raiders=Raiders from the Spider Kingdom
+slimecave_raiders=Raiders from the Slime Caves
+graveyard_raiders=Powerful undead raiders
+
+[settlement]
+thoughts=Happiness modifiers:
+
+moodveryunhappy=miserable
+moodunhappy=unhappy
+moodsomewhathappy=content
+moodveryhappy=very happy
+moodextremelyhappy=extremely happy
+moodhappiness=This settler is <happiness>.
+
+nobed=This settler hasn't been assigned a bed!
+bedoutside=This settler's bed is outside!
+
+roommissingfloor=This settler's bedroom does not have a complete floor.
+roommissinglights=This settler's bedroom lacks a light source.
+
+sharingroom=This settler is sharing a bedroom with other settlers.
+
+// Room size
+sizebaby=tiny.
+sizetiny=very small.
+sizesmall=small. 
+sizemediocre=of mediocore size.
+sizedecent=comfortably large.
+sizelarge=very large!
+sizehuge=huge!
+sizemood=This settler's bedroom is <size>
+
+nofoodmood=This settler has not eaten recently.
+dietsame=This settler's diet has not been varied at all.
+dietslightly=This settler's diet has been slightly varied.
+dietsomewhat=This settler's diet has been somewhat varied.
+dietnicely=This settler's diet has been nicely varied.
+dietextremely=This settler's diet has been extremely varied.
+
+// Room quality.
+roomplain=minimal
+roomdull=dull
+roomsimple=simple
+roomnormal=normal
+roomgood=good
+roomimpressive=impressive
+roomwonderful=wonderful
+roomunrivaled=unrivaled
+roommood=This settler's bedroom has a <quality> variety of furniture.
+
+// Diet
+simplemeal=This settler last consumed a simple quality meal.
+finemeal=This settler last consumed a fine quality meal.
+gourmetmeal=This settler last consumed a gourmet quality meal.
+perfectmeal=This settler last ate a perfect quality meal!
+
+foodperfect=Perfect
+
+// Progression bonuses
+progression_bonus=You've completed multiple quest tiers for this settlement.
+
+// Raid effects
+well_defended_bonus=This settlement has been well defended from raiders.
+settlement_survived_raid=This settlement has recently survived a raid.
+
+// Settlement size.
+tinysettlement=This settler lives in a tiny settlement.
+smallsettlement=This settler lives in a small settlement.
+averagesettlement=This settler lives in an average sized settlement.
+largesettlement=This settler lives in a large settlement.
+hugesettlement=This settler lives in a huge settlement.
+
+// Settlement features bonuses.
+travel_bonus=This settlement has access to a fast travel network.
+
+// Food happiness effects.
+
