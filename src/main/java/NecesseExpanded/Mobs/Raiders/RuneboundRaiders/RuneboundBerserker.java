@@ -10,7 +10,7 @@ public class RuneboundBerserker extends RuneboundRaiderTemplate
     {
         super();
         setSpeed(30F);
-        this.setMaxHealth(150);
+        this.setMaxHealth(350);
         this.buffManager.addBuff(new ActiveBuff("greaterattackspeedpotion", this, 720, null), true, true);
 
         this.setWeapon(new InventoryItem("battleaxe_special"));

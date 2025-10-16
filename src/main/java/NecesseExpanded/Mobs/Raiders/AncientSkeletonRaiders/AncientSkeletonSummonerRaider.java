@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.List;
 
+import NecesseExpanded.Mobs.Raiders.SkeletonRaiders.SkeletonRaider;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.network.client.Client;
 import necesse.engine.registries.MobRegistry;
@@ -25,6 +26,12 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.item.ItemHolding;
 import necesse.inventory.item.armorItem.cosmetics.misc.ShirtArmorItem;
 import necesse.inventory.item.armorItem.cosmetics.misc.ShoesArmorItem;
+import necesse.inventory.lootTable.LootItemInterface;
+import necesse.inventory.lootTable.LootTable;
+import necesse.inventory.lootTable.lootItem.ChanceLootItem;
+import necesse.inventory.lootTable.lootItem.ChanceLootItemList;
+import necesse.inventory.lootTable.lootItem.LootItem;
+import necesse.inventory.lootTable.presets.DeepCaveChestLootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.LevelMap;
 import necesse.level.maps.light.GameLight;
@@ -32,10 +39,14 @@ import necesse.level.maps.light.GameLight;
 public class AncientSkeletonSummonerRaider extends ItemAttackerRaiderMob
 {
     HumanLook Look = new HumanLook();
+    int SummonTimer = 0;
 
     public AncientSkeletonSummonerRaider()
     {
         super(false);
+        this.setSpeed(30F);
+        this.setArmor(20);
+        this.setMaxHealth(525);
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -12, 28, 24);
         this.selectBox = new Rectangle(-14, -41, 28, 48);
@@ -47,6 +58,33 @@ public class AncientSkeletonSummonerRaider extends ItemAttackerRaiderMob
         this.helmet = new InventoryItem("ancientfossilmask");
         this.chest = new InventoryItem("ancientfossilchestplate");
         this.boots = new InventoryItem("ancientfossilboots");
+
+        AncientSkeletonSummonerRaider.lootTable = new LootTable
+        (
+          new LootItemInterface[]
+          {
+            (LootItemInterface)LootItem.between("coin", getMaxHealth() / 30, getMaxHealth() / 20),
+            (LootItemInterface) new ChanceLootItem(0.5F, "bone", GameRandom.globalRandom.getIntBetween(1, 3)),
+            (LootItemInterface)new ChanceLootItemList
+            (
+                0.05F,
+                DeepCaveChestLootTable.desertMainItems
+            ),
+            (LootItemInterface) new ChanceLootItem(0.05f, weapon.item.getStringID())
+          }
+        );
+    }
+
+    public void serverTick() 
+    {
+        super.serverTick();
+        if (SummonTimer >= 400 && this.isInCombat())
+        {
+            SkeletonRaider Summon = new SkeletonRaider();
+            this.getLevel().entityManager.addMob(Summon, this.getX(), this.getY());
+            SummonTimer = 0;
+        }
+        SummonTimer++;
     }
 
     public void updateArmor() {}

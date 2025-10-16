@@ -1,43 +1,128 @@
-[object]
-keg=Keg
+[settingsui]
+ne_settings_separator_1=Necesse Expanded: Custom Raid Settings
+raids_enabled=Enable custom raids?
+raids_tip=If enabled, replaces the vanilla raid system with Necesse Expanded's custom raid system, offering eight new complex raids with multiple types of enemies.
+
+include_vanilla_raids=Can vanilla raids spawn?
+vanilla_raids_tip=If enabled, vanilla raids have a configurable chance to spawn rather than custom raids. Please note that the raid multiplier does NOT affect vanilla raids, the number of raiders for those is calculated differently.
+
+vanilla_raid_chance=Percent chance of vanilla raids (%):
+vanilla_raid_chance_tip=If custom raids + vanilla raids are enabled, this value determines the chance of vanilla raids spawning.
+
+raider_bombs_destructive=Can custom raiders' thrown bombs destroy objects?
+bombs_tip=If enabled, certain custom raiders can use vanilla explosives, and will be able to destroy walls and other objects during raids. If disabled, they'll use custom explosives that do not damage anything.
+
+raid_size_multiplier=Raid size multiplier:
+raid_size_tip=Raid size calculation: Settlement population * raid size multiplier * raid success factor. The raid success factor is based on how the settlement has previously fared against raiders, ranging from 0.5 (very poorly) to 1.25 (perfect).
+
+ne_settings_separator_2=Necesse Expanded: Gameplay Tweaks
+
+happiness_changes_enabled=Enable modified settler happiness calculations?
+happiness_changes_tip=If enabled, rebalances settler happiness calculations and implements new happiness modifiers. Settlers have reduced expectations regarding room size and diet variety, and gain happiness from larger settlement population.
+
+chest_size_value=Chest storage slots:
+chest_size_tip=Default vanilla value is 40. 40 to 80 slots recommended. Remove items from added slots before decreasing value. If an added slot is removed with an item inside, the item is permanently lost. Restart the game/server to apply.
+
+[ui]
+keg_active=Fermenting...
+keg_inactive=Available for fermenting!
 
 [itemtooltip]
-blood_crystal_tooltip=Restores 10% of your maximum health after killing an enemy.
-shadow_orb_tooltip=Grants a 20% bonus to damage for five seconds after killing an enemy.
-shadow_orb_bonus=Temporary 20% bonus to damage.
-sandworm_tooth_tooltip=Melee attacks inflict a deadly poison and slow enemies by 40%.
-lucky_ring_tip=Upon killing any non-boss enemy, they'll drop 10% of their maximum health in coins.
-necromancer_ring_tip=Upon killing any non-boss enemy, they'll be resurrected as a temporary minion for 10 seconds.
+// Trinkets
+blood_crystal_tooltip=Restores 5% of your maximum health after killing an enemy.
+shadow_crystal_tooltip=Grants a 20% bonus to attack damage for ten seconds after killing an enemy.
+shadow_crystal_bonus=Temporary 20% bonus to damage.
+sandworm_tooth_tooltip=Melee attacks have a 25% chance to inflict a deadly poison upon targets.
+lucky_ring_tip=Killing any non-boss enemy drops 10% of their maximum health in coins.
+necromancer_ring_tip=Killing any non-boss enemy grants a temporary summon for 8 seconds.
 
+// Consumables
 mana_elixir_tip=Increases your maximum mana by 10, up to a maximum of 200.
 greater_health_elixir_tip=Increases your maximum health by 10, up to a maximum of 400.
 greater_mana_elixir_tip=Increases your maximum mana by 10, up to a maximum of 300.
+pearl_oyster=Contains a valuable pearl!
+pearl_oyster_tip=Equip and use this item to open it!
+chest_tip=Equip and use this item to open it!
+treasure_chest=Contains a rare unique item, plus coins.
+stamina_potion1=Increases stamina capacity and regeneration.
+
+// Weapons
+juggernaut_axe_tooltip=For when the power of music isn't quite enough for the job.
+frostbolt_tip=Launches a homing freezing projectile that slows enemies for two seconds.
+inferno_tip=Launches a stream of molten lava, inflicting a burning debuff on enemies.
+winterwrath_tip=Launches three homing icicles to pierce and freeze enemies.
+brimstone_tip_1=Launches a powerful fireball that explodes on impact, igniting any enemies caught within the blast radius.
+brimstone_tip_2=The fireball explosion can damage both players and enemies caught within the blast radius.
+brimstone_tip_3=Cannot be used when suffering from mana exhaustion.
+glacial_spear_tip=On hit, enemies are slowed for three seconds, and suffer frost damage over time.
+murasama_tip_1=Hold [input=mouse2] to charge up a dash to slice through enemies. Hitting an enemy refreshes the cooldown and makes next dash faster up to <stacks> consecutive dashes
+murasama_tip_2=Possessed by a bloodthirsty spirit, this accursed blade grants a stack of Murasama's Revenge on kill, increasing resilience gain and damage dealt.
+
+// Ammunition
+venom_bullet_tip=10% chance on hit to inflict a powerful poison, causing the victim to take 10% more damage for five seconds.
+vampire_bullet_tip=10% chance on hit to absorb the target's life essence, healing you for 1% of your maximum health.
+
+[object]
+keg=Keg
+
+frostshard_cluster=Frost Shard Cluster
+frostshard_cluster_pure=Pure Frost Shard Cluster
+frostshard_cluster_small=Small Frost Shard Cluster
+
+life_quartz_cluster=Life Quartz Cluster
+life_quartz_cluster_pure=Pure Life Quartz Cluster
+life_quartz_cluster_small=Small Life Quartz Cluster
+
+[buff]
+murasama_revenge_buff=Murasama's Revenge
 
 [item]
+// Trinkets
 blood_crystal=Blood Crystal
-shadow_orb=Shadow Orb
+shadow_crystal=Shadow Crystal
 sandworm_tooth=Sandworm's Tooth
 lucky_ring=Lucky Ring
 necromancer_ring=Necromancer's Ring
-shadow_orb_bonus=Shadow Orb damage bonus
+lensmaker_glasses=Lensmaker's Glasses
+ancient_tablet=Ancient Tablet
+warrior_ring=Warrior's Ring
+summoner_grimoire=Summoner's Grimoire
+berserker_ring=Berserker's Ring
 
+// Melee Weapons
+juggernaut_axe=Juggernaut's Axe
+glacial_spear=Glacial Spear
+murasama=Murasama
+
+// Ranged Weapons
+
+// Magic Weapons
+frostbolt=Frost Bolt
+inferno=Inferno
+winterwrath=Winter's Wrath
+brimstone=Brimstone
+
+// Summon Weapons
+
+// Ammunition
+vampire_bullet=Vampire Bullet
+venom_bullet=Venom Bullet
+
+// Tools
+crystal_fishing_rod=Crystal Fishing Rod
+
+// Consumables
 greater_health_elixir=Greater Health Elixir
 greater_mana_elixir=Greater Mana Elixir
 mana_elixir=Mana Elixir
-
-demonfish=Demonfish
-heartfish=Heartfish
-pearlfish=Pearlfish
-swamp_eel=Swamp Eel
-saltwater_shark=Saltwater Shark
-
+oyster=Oyster
+pearl_oyster=Pearl Oyster
 fruit_jam=Fruit Jam
 jam_donut=Jam Donut
-
 angler_fish_stew=Angler's Fish Stew
 heartfish_stew=Heartfish Stew
 pearlfish_stew=Pearlfish Stew
-
+mushroom_stew=Mushroom Stew
 beer=Beer
 cider=Cider
 mead=Mead
@@ -48,40 +133,100 @@ whiskey=Whiskey
 elder_coffee=Elder's Coffee
 miner_brew=Miner's Brew
 pearlescent_wine=Pearlescent Wine
+rum=Pirate's Rum
+surface_treasure_chest=Surface Treasure Chest
+cave_treasure_chest=Cave Treasure Chest
+deep_treasure_chest=Deep Cave Treasure Chest
+incursion_treasure_chest=Incursion Treasure Chest
+stamina_potion=Stamina Potion
+
+// Status effects
+shadow_crystal_bonus=Shadow Crystal damage bonus
+venom_bullet_debuff=Venom Bullet debuff
+
+// Crafting materials
+lunar_essence=Lunar Essence
+solar_essence=Solar essence
+demonfish=Demonfish
+heartfish=Heartfish
+glacierfish=Glacierfish
+pearlfish=Pearlfish
+swamp_eel=Swamp Eel
+slimefish=Slimefish
+saltwater_shark=Saltwater Shark
+pearl=Pearl
+seaweed=Seaweed
+slime=Slime
 
 [mob]
+// Forest
+zombie_miner=Zombie Miner
+
+// Snow
+frozen_dwarf=Frozen Dwarf
+frozen_dwarf_mage=Frozen Dwarf Mage
+ice_golem=Ice Golem
+
+// Dungeon
+
+// Plains
+
+// Swamp
+
+// Desert
+ancient_warrior=Ancient Warrior
+
+// Critters
 crystal_caveling=Crystal Caveling
 shard_caveling=Shard Caveling
+slime_caveling=Slime Caveling
+
+// Summons
 necromancer_minion=Necromantic Minion
-void_warrior=Void Warrior
 
+// Raiders
+stabby_bush_raider=Stabby Bush Warrior
+
+// Zombie raiders
 zombie_raider=Zombie Raider
-zombie_archer_raider=Zombie Archer Raider
+zombie_archer_raider=Zombie Archer Raiders
 
+// Runebound raiders
 runebound_boss=Runebound Captain
 runebound_berserker=Runebound Berserker
-runebound_healer=Runebound Healer
 runebound_trapper=Runebound Trapper
 runebound_warrior=Runebound Warrior
 
+// Pirate raiders
 pirate_brawler=Pirate Brawler
 pirate_sharpshooter=Pirate Sharpshooter
 pirate_grenadier=Pirate Grenadier
+pirate_gunner=Pirate Gunner
 
+// Skeleton raiders
 skeleton_raider=Skeleton Raider
 skeleton_summoner_raider=Skeleton Summoner Raider
+skeleton_miner_raider=Skeleton Miner Raider
 
+// Ninja raiders
+ninja_raider=Ninja Raider
+
+// Ancient skeleton raiders
 ancient_skeleton_raider=Ancient Skeleton Raider
 ancient_skeleton_summoner_raider=Ancient Skeleton Summoner Raider
+ancient_skeleton_miner_raider=Ancient Skeleton Miner Raider
 
+// Graveyard raiders
 vampire_raider=Ancient Vampire Raider
 
+// Spiderkin Raiders
 spiderkin_warrior_raider=Spiderkin Warrior Raider
 spiderkin_archer_raider=Spiderkin Archer Raider
 spiderkin_mage_raider=Spiderkin Mage Raider
 spiderkin_summoner_raider=Spiderkin Summoner
 spiderkin_healer_raider=Spiderkin Healer
 
+// Slime raiders
 mage_slime_raider=Slime Mage Raider
 warrior_slime_raider=Slime Warrior Raider
 
@@ -90,10 +235,16 @@ zombie_raiders=Zombies
 runebound_raiders=The Runebound
 pirate_raiders=Pirates
 skeleton_raiders=Skeletons
+ninja_raiders=Ninjas
 ancient_skeleton_raiders=Ancient skeletons
 spiderkin_raiders=Raiders from the Spider Kingdom
 slimecave_raiders=Raiders from the Slime Caves
 graveyard_raiders=Powerful undead raiders
+
+[journal]
+snow_defeatmages=[mob=frozen_dwarf_mage]Defeat three Frozen Dwarven Mages.
+defeatpiratecaptain=[mob=piratecaptain]Defeat the Pirate Captain!
+findpiratetrinket=[item=foolsgambit]Find a unique trinket or weapon from this biome.
 
 [settlement]
 thoughts=Happiness modifiers:

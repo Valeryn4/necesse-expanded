@@ -1,11 +1,9 @@
 package NecesseExpanded.Mobs.Raiders.SlimeRaiders;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.List;
 
 import necesse.engine.gameLoop.tickManager.TickManager;
-import necesse.engine.network.client.Client;
 import necesse.engine.registries.MobRegistry;
 import necesse.entity.mobs.MaskShaderOptions;
 import necesse.entity.mobs.Mob;
@@ -65,14 +63,5 @@ public class SlimeWarriorRaider extends SlimeRaiderTemplate
     TextureDrawOptionsEnd shadow = MobRegistry.Textures.warriorSlime.shadow.initDraw().sprite(sprite.x, sprite.y, 64)
         .light(light).pos(drawX, drawY);
     tileList.add(tm -> shadow.draw());
-  }
-
-  public void drawOnMap(TickManager tickManager, Client client, int x, int y, double tileScale, Rectangle drawBounds,
-      boolean isMinimap) {
-    super.drawOnMap(tickManager, client, x, y, tileScale, drawBounds, isMinimap);
-    int drawX = x - 32;
-    int drawY = y - 16;
-    int dir = getDir();
-    MobRegistry.Textures.warriorSlime.body.initDraw().sprite(0, 4, 32, 32).size(32, 32).mirror((dir == 0), false).draw(drawX, drawY);
   }
 }

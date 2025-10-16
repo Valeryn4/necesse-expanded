@@ -25,6 +25,12 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.item.ItemHolding;
 import necesse.inventory.item.armorItem.cosmetics.misc.ShirtArmorItem;
 import necesse.inventory.item.armorItem.cosmetics.misc.ShoesArmorItem;
+import necesse.inventory.lootTable.LootItemInterface;
+import necesse.inventory.lootTable.LootTable;
+import necesse.inventory.lootTable.lootItem.ChanceLootItem;
+import necesse.inventory.lootTable.lootItem.ChanceLootItemList;
+import necesse.inventory.lootTable.lootItem.LootItem;
+import necesse.inventory.lootTable.presets.DeepCaveChestLootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.LevelMap;
 import necesse.level.maps.light.GameLight;
@@ -36,6 +42,9 @@ public class AncientSkeletonRaider extends ItemAttackerRaiderMob
     public AncientSkeletonRaider()
     {
         super(false);
+        this.setSpeed(30F);
+        this.setArmor(20);
+        this.setMaxHealth(500);
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -12, 28, 24);
         this.selectBox = new Rectangle(-14, -41, 28, 48);
@@ -43,10 +52,24 @@ public class AncientSkeletonRaider extends ItemAttackerRaiderMob
         this.swimMaskOffset = -2;
         this.swimSinkOffset = -4;
 
-        this.weapon = new InventoryItem("antiquesword");
-        this.helmet = new InventoryItem("ancientfossilhelmet");
+        this.weapon = new InventoryItem(GameRandom.globalRandom.getOneOf("antiquesword", "antiquerifle"));
         this.chest = new InventoryItem("ancientfossilchestplate");
         this.boots = new InventoryItem("ancientfossilboots");
+
+        AncientSkeletonRaider.lootTable = new LootTable
+        (
+          new LootItemInterface[]
+          {
+            (LootItemInterface)LootItem.between("coin", getMaxHealth() / 30, getMaxHealth() / 20),
+            (LootItemInterface) new ChanceLootItem(0.5F, "bone", GameRandom.globalRandom.getIntBetween(1, 3)),
+            (LootItemInterface)new ChanceLootItemList
+            (
+                0.05F,
+                DeepCaveChestLootTable.desertMainItems
+            ),
+            (LootItemInterface) new ChanceLootItem(0.05f, weapon.item.getStringID())
+          }
+        );
     }
 
     public void updateArmor() {}

@@ -3,8 +3,10 @@ package NecesseExpanded.Mobs.Raiders.SpiderkinRaiders;
 import java.awt.Rectangle;
 
 import necesse.engine.network.client.Client;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.hostile.ItemAttackerRaiderMob;
+import necesse.inventory.InventoryItem;
 import necesse.inventory.lootTable.LootItemInterface;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
@@ -24,13 +26,16 @@ public class SpiderkinRaiderTemplate extends ItemAttackerRaiderMob
         this.swimSinkOffset = -4;
         this.setSpeed(40F);
         this.setArmor(30);
+        this.weapon = new InventoryItem("ironaxe");
 
         SpiderkinRaiderTemplate.lootTable = new LootTable
         (
             new LootItemInterface[] 
             { 
-                (LootItemInterface)LootItem.between("coin", getMaxHealth() / 30, getMaxHealth() / 20),
-                (LootItemInterface) new ChanceLootItem(0.25F, "spidervenom", GameRandom.globalRandom.getIntBetween(1, 2))
+                (LootItemInterface) LootItem.between("coin", getMaxHealth() / 30, getMaxHealth() / 20),
+                (LootItemInterface) new ChanceLootItem(0.25F, "spidervenom", GameRandom.globalRandom.getIntBetween(1, 2)),
+                (LootItemInterface) new ChanceLootItem(0.05F, "spideressence", GameRandom.globalRandom.getIntBetween(1, 2)),
+                new ChanceLootItem(0.05f, weapon.toString(), new GNDItemMap().setInt("upgradeLevel", 100))
             }
         );
     }

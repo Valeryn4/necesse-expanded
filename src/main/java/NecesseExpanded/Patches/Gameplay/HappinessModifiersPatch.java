@@ -1,0 +1,162 @@
+package NecesseExpanded.Patches.Gameplay;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import necesse.engine.localization.message.GameMessage;
+import necesse.engine.localization.message.GameMessageBuilder;
+import necesse.engine.localization.message.LocalMessage;
+import necesse.engine.modLoader.annotations.ModMethodPatch;
+import necesse.entity.mobs.friendly.human.HappinessModifier;
+import necesse.entity.mobs.friendly.human.HumanMob;
+import necesse.level.maps.levelData.settlementData.SettlementBed;
+import necesse.level.maps.levelData.settlementData.SettlementLevelData;
+import necesse.level.maps.levelData.settlementData.SettlementRoom;
+import necesse.level.maps.levelData.settlementData.settler.DietThought;
+import necesse.level.maps.levelData.settlementData.settler.FoodQuality;
+import necesse.level.maps.levelData.settlementData.settler.PopulationThought;
+import necesse.level.maps.levelData.settlementData.settler.RoomQuality;
+import necesse.level.maps.levelData.settlementData.settler.RoomSize;
+import necesse.level.maps.levelData.settlementData.settler.Settler;
+import net.bytebuddy.asm.Advice;
+import net.bytebuddy.asm.Advice.OnMethodEnter;
+import net.bytebuddy.asm.Advice.OnMethodExit;
+import net.bytebuddy.asm.Advice.Return;
+import net.bytebuddy.asm.Advice.This;
+
+@ModMethodPatch(target = HumanMob.class, name = "getHappinessModifiers", arguments = {})
+public class HappinessModifiersPatch {
+    @OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
+    static boolean onEnter(@This HumanMob ThisSettler) 
+    {
+        if (NecesseExpanded.Main.SettingsGetter.getBoolean("happiness_changes_enabled"))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    @OnMethodExit
+    static void onExit(@This HumanMob ThisSettler, @Return(readOnly = false) List<HappinessModifier> list) 
+    {
+        if (NecesseExpanded.Main.SettingsGetter.getBoolean("happiness_changes_enabled"))
+        {
+            ArrayList<HappinessModifier> Modifiers = new ArrayList<>();
+            if (ThisSettler.lastFoodEaten != null && ThisSettler.lastFoodEaten.quality != null) 
+            {
+                if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 10) 
+                {
+                    Modifiers.add(new HappinessModifier(8, (GameMessage) new LocalMessage("settlement", "simplemeal")));
+                } 
+                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 20) 
+                {
+                    Modifiers.add(new HappinessModifier(12, (GameMessage) new LocalMessage("settlement", "finemeal")));
+                } 
+                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 35) 
+                {
+                    Modifiers.add(new HappinessModifier(18, (GameMessage) new LocalMessage("settlement", "gourmetmeal")));
+                } 
+                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 40)
+                {
+                    Modifiers.add(new HappinessModifier(24, (GameMessage) new LocalMessage("settlement", "perfectmeal")));
+                }
+            } 
+            else 
+            {
+                Modifiers.add(FoodQuality.noFoodModifier);
+            }
+            int differentFoodsEaten = (int) ThisSettler.recentFoodItemIDsEaten.stream().distinct().count();
+            DietThought DietThought = Settler.getDietThought(differentFoodsEaten);
+            if (DietThought != null)
+                Modifiers.add(DietThought.getModifier());
+            if (ThisSettler.levelSettler != null) 
+            {
+                HappinessModifier.bedOutsideModifier = new HappinessModifier(-10, (GameMessage) new LocalMessage("settlement", "bedoutside"));
+                HappinessModifier.noBedModifier = new HappinessModifier(-20, (GameMessage) new LocalMessage("settlement", "nobed"));
+                SettlementBed Bed = ThisSettler.levelSettler.getBed();
+                if (Bed != null) 
+                {
+                    SettlementRoom Room = Bed.getRoom();
+                    if (Room != null) 
+                    {
+                        int NumberOfOccupiedBeds = Bed.getRoom().getOccupiedBeds();
+                        if (NumberOfOccupiedBeds > 1)
+                        {
+                            Modifiers.add(new HappinessModifier(-5 * NumberOfOccupiedBeds, (GameMessage) (new GameMessageBuilder()).append("settlement", "sharingroom").append(" (" + (NumberOfOccupiedBeds - 1) + ")")));
+                        }
+
+                        int RoomSize = Room.getRoomSize();
+                        if (RoomSize > 0) 
+                        {
+                            RoomSize Size = Settler.getRoomSize(RoomSize);
+                            Modifiers.add(Size.getModifier());
+                        }
+
+                        int RoomQuality = Room.getFurnitureScore();
+                        if (RoomQuality > 0) 
+                        {
+                            RoomQuality Quality = Settler.getRoomQuality(RoomQuality);
+                            Modifiers.add(Quality.getModifier());
+                        }
+                        
+                        if (Room.getRoomProperty("lights") <= 0)
+                        {
+                            Modifiers.add(new HappinessModifier(-3, (GameMessage) (new GameMessageBuilder()).append("settlement", "roommissinglights")));
+                        }
+                        if (Room.getRoomProperty("outsidefloor") > 0)
+                        {
+                            Modifiers.add(new HappinessModifier(-3, (GameMessage) (new GameMessageBuilder()).append("settlement", "roommissingfloor")));
+                        }   
+                    } 
+                    else 
+                    {
+                        Modifiers.add(HappinessModifier.bedOutsideModifier);
+                    }
+                } 
+                else 
+                {
+                    Modifiers.add(HappinessModifier.noBedModifier);
+                }
+            }
+            PopulationThought PopulationThought = Settler
+                    .getPopulationThough(ThisSettler.levelSettler.data.countTotalSettlers());
+            if (PopulationThought != null)
+                Modifiers.add(PopulationThought.getModifier());
+            SettlementLevelData LevelData = (ThisSettler.getLevel()).settlementLayer.getSettlementData();
+            if (LevelData != null) {
+                int NumberOfQuestsCompleted = LevelData.getQuestTiersCompleted();
+                if (NumberOfQuestsCompleted > 1)
+                    Modifiers.add(new HappinessModifier(NumberOfQuestsCompleted - 1,
+                            (GameMessage) (new GameMessageBuilder()).append("settlement", "progression_bonus")
+                                    .append(" (" + NumberOfQuestsCompleted + ")")));
+            }
+            if (LevelData != null)
+                if (LevelData.getHomestonePos() != null)
+                    Modifiers.add(new HappinessModifier(3, (GameMessage) new LocalMessage("settlement", "travel_bonus")));
+            if (LevelData != null)
+                if (LevelData.getNextRaidDifficultyMod() >= 1.25F) {
+                    Modifiers.add(
+                            new HappinessModifier(6, (GameMessage) new LocalMessage("settlement", "well_defended_bonus")));
+                } else if (LevelData.getNextRaidDifficultyMod() <= 0.75F) {
+                    Modifiers.add(new HappinessModifier(0,
+                            (GameMessage) new LocalMessage("settlement", "poorly_defended_penalty")));
+                }
+            if (LevelData != null) {
+                Class<?> ClassObject = LevelData.getClass();
+                try {
+                    Field ClassField = ClassObject.getDeclaredField("nextRaid");
+                    ClassField.setAccessible(true);
+                    long RaidTimer = ((Long) ClassField.get(LevelData)).longValue();
+                    if (RaidTimer >= (SettlementLevelData.MIN_SECONDS_RAID_TIMER / 2)
+                            && LevelData.stats.spawned_raids.getTotalRaids() >= 1)
+                        Modifiers.add(new HappinessModifier(5,
+                                (GameMessage) new LocalMessage("settlement", "settlement_survived_raid")));
+                } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException Ex) {
+                    System.out.println(Ex);
+                }
+            }
+    
+            list = Modifiers;
+        }
+    }
+}

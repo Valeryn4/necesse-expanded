@@ -9,7 +9,7 @@ public class RuneboundTrapper extends RuneboundRaiderTemplate
     public RuneboundTrapper()
     {
         super();
-        this.setMaxHealth(125);
+        this.setMaxHealth(325);
         this.setSpeed(30F);
         this.setWeapon(new InventoryItem("captorsshortbow"));
         this.helmet = new InventoryItem("leatherhood");

@@ -30,7 +30,6 @@ import necesse.level.maps.Level;
 import necesse.level.maps.LevelMap;
 import necesse.level.maps.light.GameLight;
 
-// A weak melee mob.
 public class ZombieRaider extends ZombieRaiderTemplate {
   HumanLook Look = new HumanLook();
   public ZombieRaider() {

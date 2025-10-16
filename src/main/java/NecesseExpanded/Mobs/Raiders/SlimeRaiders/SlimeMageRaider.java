@@ -1,11 +1,10 @@
 package NecesseExpanded.Mobs.Raiders.SlimeRaiders;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.List;
 
 import necesse.engine.gameLoop.tickManager.TickManager;
-import necesse.engine.network.client.Client;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.registries.MobRegistry;
 import necesse.entity.mobs.MaskShaderOptions;
 import necesse.entity.mobs.Mob;
@@ -17,6 +16,9 @@ import necesse.gfx.drawOptions.itemAttack.ItemAttackDrawOptions;
 import necesse.gfx.drawOptions.texture.TextureDrawOptionsEnd;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.inventory.InventoryItem;
+import necesse.inventory.lootTable.LootItemInterface;
+import necesse.inventory.lootTable.LootTable;
+import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
@@ -26,7 +28,15 @@ public class SlimeMageRaider extends SlimeRaiderTemplate
     super();
     this.setMaxHealth(500);
     this.setArmor(10);
-    this.weapon = new InventoryItem("slimestaff_special");
+    this.weapon = new InventoryItem("slime_mage_staff");
+    SlimeMageRaider.lootTable = new LootTable
+        (
+            new LootItemInterface[]
+            {
+                SlimeRaiderTemplate.lootTable,
+                new ChanceLootItem(0.05f, "slimestaff", new GNDItemMap().setInt("upgradeLevel", 100))
+            }
+        );
   }
 
   public void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level,
@@ -64,14 +74,5 @@ public class SlimeMageRaider extends SlimeRaiderTemplate
     TextureDrawOptionsEnd shadow = MobRegistry.Textures.mageSlime.shadow.initDraw().sprite(sprite.x, sprite.y, 64)
         .light(light).pos(drawX, drawY);
     tileList.add(tm -> shadow.draw());
-  }
-
-  public void drawOnMap(TickManager tickManager, Client client, int x, int y, double tileScale, Rectangle drawBounds,
-      boolean isMinimap) {
-    super.drawOnMap(tickManager, client, x, y, tileScale, drawBounds, isMinimap);
-    int drawX = x - 32;
-    int drawY = y - 16;
-    int dir = getDir();
-    MobRegistry.Textures.mageSlime.body.initDraw().sprite(0, 4, 32, 32).size(32, 32).mirror((dir == 0), false).draw(drawX, drawY);
   }
 }

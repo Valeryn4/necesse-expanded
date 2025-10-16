@@ -10,7 +10,7 @@ import necesse.inventory.lootTable.LootTable;
 
 public class ShardCaveling extends CavelingMob {
    public ShardCaveling() {
-      super(800, 55);
+      super(750, 55);
    }
 
    public void init() {
@@ -21,8 +21,8 @@ public class ShardCaveling extends CavelingMob {
       if (this.item == null) {
          this.item = GameRandom.globalRandom.getOneOf
          (
-            new InventoryItem("upgradeshard", GameRandom.globalRandom.getIntBetween(8, 12)),
-            new InventoryItem("alchemyshard", GameRandom.globalRandom.getIntBetween(8, 12))
+            new InventoryItem("upgradeshard", GameRandom.globalRandom.getIntBetween(4, 8)),
+            new InventoryItem("alchemyshard", GameRandom.globalRandom.getIntBetween(4, 8))
          );
       }
    }

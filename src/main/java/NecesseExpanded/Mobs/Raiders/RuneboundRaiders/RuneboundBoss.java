@@ -11,7 +11,6 @@ import necesse.engine.registries.MobRegistry;
 import necesse.entity.mobs.MaskShaderOptions;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
-import necesse.entity.mobs.PathDoorOption;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.staticBuffs.BossNearbyBuff;
 import necesse.entity.mobs.hostile.ItemAttackerRaiderMob;
@@ -25,7 +24,6 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.item.ItemHolding;
 import necesse.inventory.lootTable.LootItemInterface;
 import necesse.inventory.lootTable.LootTable;
-import necesse.inventory.lootTable.LootTablePresets;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
@@ -35,7 +33,7 @@ public class RuneboundBoss extends ItemAttackerRaiderMob {
   
   public RuneboundBoss() {
     super(false);
-    this.setMaxHealth(3000);
+    this.setMaxHealth(3500);
     setSpeed(30.0F);
     setFriction(3.0F);
     setArmor(25);
@@ -47,13 +45,14 @@ public class RuneboundBoss extends ItemAttackerRaiderMob {
     this.swimSinkOffset = 0;
 
     RuneboundBoss.lootTable = new LootTable
-        (
-            new LootItemInterface[] 
-            { 
-                (LootItemInterface)LootItem.between("coin", getMaxHealth() / 30, getMaxHealth() / 20),
-                LootTablePresets.plainsCaveChest,
-            }
-        );
+    (
+        new LootItemInterface[] 
+        { 
+            (LootItemInterface)LootItem.between("coin", getMaxHealth() / 30, getMaxHealth() / 20),
+            (LootItemInterface)LootItem.between("runestone", 6, 12),
+            new LootItem("brutesbattleaxe")
+        }
+    );
 
     this.weapon = new InventoryItem("battleaxe_special");
   }
@@ -122,11 +121,7 @@ public class RuneboundBoss extends ItemAttackerRaiderMob {
     return (GameTooltips) new StringTooltips(getDisplayName() + " " + getHealth() + "/" + getMaxHealth());
   }
 
-  public PathDoorOption getPathDoorOption() {
-        if (getLevel() != null)
-            return (getLevel()).regionManager.CAN_OPEN_DOORS_OPTIONS;
-        return null;
-    }
+  
 
   public void drawOnMap(TickManager tickManager, Client client, int x, int y, double tileScale, Rectangle drawBounds,
       boolean isMinimap) {

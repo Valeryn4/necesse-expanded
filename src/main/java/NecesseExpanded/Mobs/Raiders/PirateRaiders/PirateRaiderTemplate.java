@@ -28,6 +28,7 @@ import necesse.inventory.item.armorItem.cosmetics.misc.ShoesArmorItem;
 import necesse.inventory.lootTable.LootItemInterface;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.LootTablePresets;
+import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.inventory.lootTable.lootItem.ChanceLootItemList;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.Level;
@@ -39,22 +40,27 @@ public class PirateRaiderTemplate extends ItemAttackerRaiderMob {
     
     public PirateRaiderTemplate() {
         super(false);
+        this.setSpeed(30F);
+        this.setArmor(10);
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -12, 28, 24);
         this.selectBox = new Rectangle(-14, -41, 28, 48);
         this.swimMaskMove = 16;
         this.swimMaskOffset = -2;
         this.swimSinkOffset = -4;
+        this.weapon = new InventoryItem("ironaxe");
         PirateRaiderTemplate.lootTable = new LootTable
         (
             new LootItemInterface[] 
             { 
-                (LootItemInterface)LootItem.between("coin", 25, 35),
+                (LootItemInterface)LootItem.between("coin", getMaxHealth() / 30, getMaxHealth() / 20),
                 (LootItemInterface)new ChanceLootItemList
                 (
-                    0.10F,
+                    0.05F,
                     LootTablePresets.pirateDisplayStand
-                )
+                ),
+                (LootItemInterface) new ChanceLootItem(0.5F, "rum"),
+                (LootItemInterface) new ChanceLootItem(0.05f, weapon.item.getStringID())
             }
         );
         this.helmet = new InventoryItem("wig");
@@ -96,7 +102,7 @@ public class PirateRaiderTemplate extends ItemAttackerRaiderMob {
                 .dir(dir).light(light);
         if (inLiquid) {
             humanOptions.armSprite(2);
-            humanOptions.mask(MobRegistry.Textures.runeboundboat_mask[sprite.y % 4], 0, -7);
+            humanOptions.mask(MobRegistry.Textures.boat_mask[sprite.y % 4], 0, -7);
         }
         if (this.helmet != null) {
             humanOptions.helmet(this.helmet);

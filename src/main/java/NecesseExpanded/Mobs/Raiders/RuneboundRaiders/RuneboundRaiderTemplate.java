@@ -15,7 +15,6 @@ import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.hostile.ItemAttackerRaiderMob;
 import necesse.entity.particle.FleshParticle;
 import necesse.entity.particle.Particle.GType;
-import necesse.gfx.GameHair;
 import necesse.gfx.GameSkin;
 import necesse.gfx.HumanGender;
 import necesse.gfx.HumanLook;
@@ -29,9 +28,10 @@ import necesse.inventory.item.armorItem.cosmetics.misc.ShirtArmorItem;
 import necesse.inventory.item.armorItem.cosmetics.misc.ShoesArmorItem;
 import necesse.inventory.lootTable.LootItemInterface;
 import necesse.inventory.lootTable.LootTable;
-import necesse.inventory.lootTable.LootTablePresets;
+import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.inventory.lootTable.lootItem.ChanceLootItemList;
 import necesse.inventory.lootTable.lootItem.LootItem;
+import necesse.inventory.lootTable.presets.CaveChestLootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.LevelMap;
 import necesse.level.maps.light.GameLight;
@@ -48,16 +48,16 @@ public class RuneboundRaiderTemplate extends ItemAttackerRaiderMob {
         this.swimMaskMove = 16;
         this.swimMaskOffset = -2;
         this.swimSinkOffset = -4;
+        this.weapon = new InventoryItem("ironaxe");
         RuneboundRaiderTemplate.lootTable = new LootTable
         (
             new LootItemInterface[] 
             { 
-                (LootItemInterface)LootItem.between("coin", 25, 35),
-                (LootItemInterface)new ChanceLootItemList
-                (
-                    0.25F,
-                    LootTablePresets.plainsCrate
-                )
+                (LootItemInterface)LootItem.between("coin", getMaxHealth() / 30, getMaxHealth() / 20),
+                (LootItemInterface)new ChanceLootItem(0.05F, "boneoffering"),
+                (LootItemInterface)new ChanceLootItem(0.33F, "clothscraps", GameRandom.globalRandom.getIntBetween(2, 4)),
+                (LootItemInterface)new ChanceLootItemList(0.05F, CaveChestLootTable.plainsMainItems),
+                (LootItemInterface) new ChanceLootItem(0.05f, weapon.item.getStringID())
             }
         );
         this.boots = new InventoryItem("runeboundboots");
@@ -85,7 +85,7 @@ public class RuneboundRaiderTemplate extends ItemAttackerRaiderMob {
                 .getOneOf((Object[]) new Integer[] { Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(4) }))
                 .intValue());
         this.Look.setEyeColor(random.getIntBetween(0, 10));
-        this.Look.setHair(GameHair.getRandomHairBasedOnGender(random, gender));
+        this.Look.setHair(random.getIntBetween(0, 8));
         if (gender == HumanGender.MALE)
             this.Look.setFacialFeature(((Integer) random.getOneOf((Object[]) new Integer[] { Integer.valueOf(1),
                     Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(6), Integer.valueOf(7) })).intValue());

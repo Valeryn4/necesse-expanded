@@ -7,7 +7,7 @@ plugins {
 
 project.ext.modID = "eryr.necesse.expanded" // The unique id of your mod. Must be all lowercase and cannot use special characters.
 project.ext.modName = "Necesse Expanded" // The display name of your mod.
-project.ext.modVersion = "1.0" // Your current builds version. Must follow the xx.xx... format.
+project.ext.modVersion = "0.4" // Your current builds version. Must follow the xx.xx... format.
 project.ext.gameVersion = "0.33.1" // The target game version.
 project.ext.modDescription = "Overhauls the vanilla Necesse experience with new content, features, and gameplay changes." // Short description of what your mod is.
 project.ext.author = "Eryr" // Your name
@@ -24,7 +24,7 @@ project.ext.clientside = false
  * Dependencies define the default load order of mods
  * Uncomment and configure these if your mod has dependencies
  */
-//project.ext.modDependencies = ["other.modid1", "other.modid2"]
+project.ext.modDependencies = ["aizsave.modsettingslib"]
 //project.ext.modOptionalDependencies = ["optional.modid1", "optional.modid2"]
 
 // The path to the games install directory
@@ -45,11 +45,16 @@ setTargetCompatibility(JavaVersion.VERSION_1_8)
 
 repositories {
     mavenCentral()
+    flatDir 
+    {
+        dirs 'libs'
+    }
 }
 
 configurations {
     libDepends
 }
+
 
 sourceSets.main.output.resourcesDir = file("build/mod/resources/")
 sourceSets.main.java.outputDir = file("build/mod/")
@@ -66,6 +71,8 @@ dependencies {
     implementation files(gameDirectory + "/Necesse.jar")
     implementation fileTree(gameDirectory + "/lib/")
     implementation fileTree("./mods/") // Add all mods located in local mods folder
+    compileOnly files('libs/ModSettingsLib-0.33.1-1.2.3.jar')
+    implementation files('libs/ModSettingsLib-0.33.1-1.2.3.jar') // For auto-complete
 
     // Add any third party library dependencies here. Remember to use libDepends, so that they will be added to your jar on build
     // These are some examples:

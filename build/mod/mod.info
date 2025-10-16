@@ -1,9 +1,10 @@
 {
 	id = eryr.necesse.expanded,
 	name = Necesse Expanded,
-	version = 1.0,
+	version = 0.4,
 	gameVersion = 0.33.1,
 	author = Eryr,
 	description = Overhauls the vanilla Necesse experience with new content\, features\, and gameplay changes.,
-	clientside = false
+	clientside = false,
+	dependencies = [aizsave.modsettingslib]
 }

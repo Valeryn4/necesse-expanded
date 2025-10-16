@@ -1,6 +1,7 @@
 package NecesseExpanded.Mobs.Critters;
 
 import java.awt.Color;
+
 import necesse.engine.registries.MobRegistry.Textures;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.friendly.critters.caveling.CavelingMob;
@@ -18,7 +19,11 @@ public class CrystalCaveling extends CavelingMob {
       this.popParticleColor = new Color(105, 105, 105);
       this.singleRockSmallStringID = "deepcaverocksmall";
       if (this.item == null) {
-         this.item = new InventoryItem("omnicrystal", GameRandom.globalRandom.getIntBetween(2, 4));
+         this.item = GameRandom.globalRandom.getOneOf
+         (
+            new InventoryItem("omnicrystal"),
+            new InventoryItem("pearlescentdiamond")
+         );
       }
    }
 

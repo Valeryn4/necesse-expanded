@@ -27,6 +27,7 @@ import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.DrawOptions;
 import necesse.gfx.drawOptions.human.HumanDrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
+import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
@@ -47,7 +48,7 @@ public class NecromancerMinion extends FriendlyMob
         this.swimMaskOffset = 0;
         this.swimSinkOffset = 0;
         
-        this.ai = new BehaviourTreeAI((Mob)this, (AINode)new PlayerFollowerCollisionChaserAI(1024, new GameDamage(50F), 25, 250, 640, 64));
+        this.ai = new BehaviourTreeAI((Mob)this, (AINode)new PlayerFollowerCollisionChaserAI(1024, new GameDamage(80F), 25, 250, 640, 64));
     }
 
     public boolean canBeHit(Attacker attacker) {
@@ -66,6 +67,11 @@ public class NecromancerMinion extends FriendlyMob
         Lifetime++;
     }
   }
+
+  protected void addHoverTooltips(ListGameTooltips tooltips, boolean debug) 
+  {
+      tooltips.add(this.getDisplayName());
+  }
   
   public void playHitSound() {
     float pitch = ((Float)GameRandom.globalRandom.getOneOf((Object[])new Float[] { Float.valueOf(0.95F), Float.valueOf(1.0F), Float.valueOf(1.05F) })).floatValue();
@@ -79,7 +85,7 @@ public class NecromancerMinion extends FriendlyMob
   
   public void spawnDeathParticles(float knockbackX, float knockbackY) {
     for (int i = 0; i < 5; i++)
-      (getLevel()).entityManager.addParticle((Particle)new FleshParticle(getLevel(), MobRegistry.Textures.ancientSkeleton.body, i, 8, 32, this.x, this.y, 20.0F, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC); 
+      (getLevel()).entityManager.addParticle((Particle)new FleshParticle(getLevel(), MobRegistry.Textures.babyZombie.body, i, 8, 32, this.x, this.y, 20.0F, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC); 
   }
   
   public void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
@@ -92,7 +98,7 @@ public class NecromancerMinion extends FriendlyMob
     drawY += getBobbing(x, y);
     drawY += getLevel().getTile(x / 32, y / 32).getMobSinkingAmount((Mob)this);
     MaskShaderOptions swimMask = getSwimMaskShaderOptions(inLiquidFloat(x, y));
-    HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(level, MobRegistry.Textures.ancientSkeleton)).sprite(sprite).dir(dir).mask(swimMask).light(light);
+    HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(level, MobRegistry.Textures.babyZombie)).sprite(sprite).dir(dir).mask(swimMask).light(light);
     
     final DrawOptions drawOptions = humanDrawOptions.pos(drawX, drawY);
     list.add(new MobDrawable() 

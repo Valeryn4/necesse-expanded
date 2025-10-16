@@ -33,8 +33,6 @@ public class SpiderkinArcherRaider extends SpiderkinRaiderTemplate {
         this.weapon = new InventoryItem("arachnidwebbow");
     }
 
-    
-
     public void spawnDeathParticles(float knockbackX, float knockbackY) {
         for (int i = 0; i < 4; ++i) {
             this.getLevel().entityManager.addParticle(new FleshParticle(this.getLevel(), Textures.spiderkinArcher.body,
