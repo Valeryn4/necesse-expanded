@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import necesse.engine.modLoader.annotations.ModConstructorPatch;
 import necesse.inventory.item.toolItem.ToolType;
-import necesse.level.gameObject.furniture.InventoryObject;
+import necesse.level.gameObject.container.InventoryObject;
 import net.bytebuddy.asm.Advice.OnMethodExit;
 import net.bytebuddy.asm.Advice.This;
 

@@ -1,18 +1,19 @@
 package NecesseExpanded.Patches.Gameplay;
 
-import necesse.engine.modLoader.annotations.ModConstructorPatch;
-import necesse.engine.network.NetworkClient;
+import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.entity.mobs.PlayerMob;
 import net.bytebuddy.asm.Advice.OnMethodExit;
 import net.bytebuddy.asm.Advice.This;
 
-@ModConstructorPatch(target = PlayerMob.class, arguments = {long.class, NetworkClient.class})
+@ModMethodPatch(target = PlayerMob.class, arguments = {}, name = "clientTick")
 public class PlayerMobPatch 
 {
     @OnMethodExit
     static void onExit(@This PlayerMob Player) 
     {
-        Player.setSpeed(60F);
-        Player.setFriction(4.5f);
+        if (NecesseExpanded.Main.SettingsGetter.getBoolean("player_speed_patch"))
+        {
+            Player.setSpeed((float)(NecesseExpanded.Main.SettingsGetter.getInt("player_speed_value")));
+        }
     }
 }

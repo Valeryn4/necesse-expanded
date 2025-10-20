@@ -33,8 +33,8 @@ import necesse.inventory.lootTable.lootItem.ChanceLootItemList;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.inventory.lootTable.presets.CaveChestLootTable;
 import necesse.level.maps.Level;
-import necesse.level.maps.LevelMap;
 import necesse.level.maps.light.GameLight;
+import necesse.level.maps.mapData.ClientDiscoveredMap;
 
 public class RuneboundRaiderTemplate extends ItemAttackerRaiderMob {
     HumanLook Look = new HumanLook();
@@ -141,16 +141,16 @@ public class RuneboundRaiderTemplate extends ItemAttackerRaiderMob {
                 drawOptions.draw();
             }
         });
-        addShadowDrawables(tileList, x, y, light, camera);
+        addShadowDrawables(tileList, level, x, y, light, camera);
     }
 
     public boolean shouldDrawOnMap() {
       return true;
    }
 
-   public boolean isVisibleOnMap(Client client, LevelMap map) {
-      return true;
-   }
+   public boolean isVisibleOnMap(Client client, ClientDiscoveredMap map) {
+    return true;
+  }
 
    public Rectangle drawOnMapBox(double tileScale, boolean isMinimap) {
       return new Rectangle(-10, -24, 20, 24);

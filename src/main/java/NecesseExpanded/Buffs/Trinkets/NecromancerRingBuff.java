@@ -19,7 +19,7 @@ public class NecromancerRingBuff extends TrinketBuff
 
     public void onHasKilledTarget(ActiveBuff buff, MobWasKilledEvent event) 
     {
-      if (!event.target.isBoss() && event.target instanceof WormMobBody)
+      if (!event.target.isBoss() && !(event.target instanceof WormMobBody))
       {
         event.target.getLevel().entityManager.addMob(new NecromancerMinion(), event.target.x, event.target.y);
       }

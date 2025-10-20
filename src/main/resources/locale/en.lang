@@ -1,7 +1,7 @@
 [settingsui]
 ne_settings_separator_1=Necesse Expanded: Custom Raid Settings
 raids_enabled=Enable custom raids?
-raids_tip=If enabled, replaces the vanilla raid system with Necesse Expanded's custom raid system, offering eight new complex raids with multiple types of enemies.
+raids_tip=If enabled, replaces the vanilla raid system with Necesse Expanded's custom raid system, offering nine new complex raids with multiple types of enemies.
 
 include_vanilla_raids=Can vanilla raids spawn?
 vanilla_raids_tip=If enabled, vanilla raids have a configurable chance to spawn rather than custom raids. Please note that the raid multiplier does NOT affect vanilla raids, the number of raiders for those is calculated differently.
@@ -17,11 +17,23 @@ raid_size_tip=Raid size calculation: Settlement population * raid size multiplie
 
 ne_settings_separator_2=Necesse Expanded: Gameplay Tweaks
 
-happiness_changes_enabled=Enable modified settler happiness calculations?
+happiness_changes_enabled=Enable modified settler happiness system?
 happiness_changes_tip=If enabled, rebalances settler happiness calculations and implements new happiness modifiers. Settlers have reduced expectations regarding room size and diet variety, and gain happiness from larger settlement population.
 
+starter_equipment_enabled=Enable better starting equipment?
+starter_equipment_tip=If enabled, new players start with some basic supplies, iron tools, a recipe book, and leather dashers.
+
+starter_kit_enabled=Enable settlement starter kit?
+starter_kit_tip=If enabled, the elder's house will contain a settlement flag, plus building materials, crafting stations, seeds, and farmland.
+
+player_speed_patch=Increase player movement speed?
+player_speed_tip=If enabled, player character speed can be modified using the entry below.
+
+player_speed_value=Player movement speed:
+player_speed_value_tip=The default vanilla value is 40. 40 to 60 is recommended. Restart the game to apply.
+
 chest_size_value=Chest storage slots:
-chest_size_tip=Default vanilla value is 40. 40 to 80 slots recommended. Remove items from added slots before decreasing value. If an added slot is removed with an item inside, the item is permanently lost. Restart the game/server to apply.
+chest_size_tip=Default vanilla value is 40. 40 to 80 slots recommended. Remove items from added slots before decreasing value. If an added slot is removed with an item inside, the item is permanently lost. Reload the world to apply.
 
 [ui]
 keg_active=Fermenting...
@@ -35,22 +47,24 @@ shadow_crystal_bonus=Temporary 20% bonus to damage.
 sandworm_tooth_tooltip=Melee attacks have a 25% chance to inflict a deadly poison upon targets.
 lucky_ring_tip=Killing any non-boss enemy drops 10% of their maximum health in coins.
 necromancer_ring_tip=Killing any non-boss enemy grants a temporary summon for 8 seconds.
+forgotten_relic_tooltip=On taking damage, your mana is restored by 10% of damage received, at a minimum of 1 point of mana per hit.
+forgotten_relic_lore_tooltip=A small statue of an ancient Fishian deity associated with the sea.
+berserker_ring_tooltip=On taking damage, gain a stack of Endurance, increasing your resilience gain by 10% per stack.
 
 // Consumables
 mana_elixir_tip=Increases your maximum mana by 10, up to a maximum of 200.
-greater_health_elixir_tip=Increases your maximum health by 10, up to a maximum of 400.
 greater_mana_elixir_tip=Increases your maximum mana by 10, up to a maximum of 300.
 pearl_oyster=Contains a valuable pearl!
 pearl_oyster_tip=Equip and use this item to open it!
 chest_tip=Equip and use this item to open it!
 treasure_chest=Contains a rare unique item, plus coins.
-stamina_potion1=Increases stamina capacity and regeneration.
+stamina_potion=Increases stamina capacity and regeneration.
 
 // Weapons
 juggernaut_axe_tooltip=For when the power of music isn't quite enough for the job.
 frostbolt_tip=Launches a homing freezing projectile that slows enemies for two seconds.
 inferno_tip=Launches a stream of molten lava, inflicting a burning debuff on enemies.
-winterwrath_tip=Launches three homing icicles to pierce and freeze enemies.
+winterwrath_tip=Launches three homing icicles to pierce and slow enemies.
 brimstone_tip_1=Launches a powerful fireball that explodes on impact, igniting any enemies caught within the blast radius.
 brimstone_tip_2=The fireball explosion can damage both players and enemies caught within the blast radius.
 brimstone_tip_3=Cannot be used when suffering from mana exhaustion.
@@ -59,7 +73,7 @@ murasama_tip_1=Hold [input=mouse2] to charge up a dash to slice through enemies.
 murasama_tip_2=Possessed by a bloodthirsty spirit, this accursed blade grants a stack of Murasama's Revenge on kill, increasing resilience gain and damage dealt.
 
 // Ammunition
-venom_bullet_tip=10% chance on hit to inflict a powerful poison, causing the victim to take 10% more damage for five seconds.
+venom_bullet_tip=10% chance on hit to inflict a powerful poison, causing the victim to take 20% more damage for five seconds.
 vampire_bullet_tip=10% chance on hit to absorb the target's life essence, healing you for 1% of your maximum health.
 
 [object]
@@ -75,6 +89,7 @@ life_quartz_cluster_small=Small Life Quartz Cluster
 
 [buff]
 murasama_revenge_buff=Murasama's Revenge
+endurance_stack_buff=Endurance
 
 [item]
 // Trinkets
@@ -88,6 +103,8 @@ ancient_tablet=Ancient Tablet
 warrior_ring=Warrior's Ring
 summoner_grimoire=Summoner's Grimoire
 berserker_ring=Berserker's Ring
+forgotten_relic=Forgotten Relic
+leather_scabbard=Leather Scabbard
 
 // Melee Weapons
 juggernaut_axe=Juggernaut's Axe
@@ -112,7 +129,6 @@ venom_bullet=Venom Bullet
 crystal_fishing_rod=Crystal Fishing Rod
 
 // Consumables
-greater_health_elixir=Greater Health Elixir
 greater_mana_elixir=Greater Mana Elixir
 mana_elixir=Mana Elixir
 oyster=Oyster
@@ -143,10 +159,11 @@ stamina_potion=Stamina Potion
 // Status effects
 shadow_crystal_bonus=Shadow Crystal damage bonus
 venom_bullet_debuff=Venom Bullet debuff
+stamina_potion_buff=Stamina potion
 
 // Crafting materials
 lunar_essence=Lunar Essence
-solar_essence=Solar essence
+solar_essence=Solar Essence
 demonfish=Demonfish
 heartfish=Heartfish
 glacierfish=Glacierfish
@@ -244,7 +261,8 @@ graveyard_raiders=Powerful undead raiders
 [journal]
 snow_defeatmages=[mob=frozen_dwarf_mage]Defeat three Frozen Dwarven Mages.
 defeatpiratecaptain=[mob=piratecaptain]Defeat the Pirate Captain!
-findpiratetrinket=[item=foolsgambit]Find a unique trinket or weapon from this biome.
+findpiratetrinket=[item=foolsgambit]Find a unique trinket from a pirate village.
+snow_defeatgolems=[mob=ice_golem]Defeat five Ice Golems.
 
 [settlement]
 thoughts=Happiness modifiers:

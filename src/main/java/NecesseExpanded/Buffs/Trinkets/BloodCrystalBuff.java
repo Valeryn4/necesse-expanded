@@ -5,12 +5,10 @@ import necesse.entity.levelEvent.LevelEvent;
 import necesse.entity.levelEvent.mobAbilityLevelEvent.MobHealthChangeEvent;
 import necesse.entity.mobs.MobWasKilledEvent;
 import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.WormMobBody;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff;
-import necesse.entity.mobs.hostile.SandwormBody;
-import necesse.entity.mobs.hostile.SandwormTail;
-import necesse.entity.mobs.hostile.SlimeWormBody;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.trinketItem.TrinketItem;
@@ -21,10 +19,9 @@ public class BloodCrystalBuff extends TrinketBuff
 
     public void onHasKilledTarget(ActiveBuff buff, MobWasKilledEvent event) 
     {
-        if (event.target.getClass() != SandwormBody.class && event.target.getClass() != SandwormTail.class && event.target.getClass() != SlimeWormBody.class)
+        if (!(event.target instanceof WormMobBody))
         {
-            int TargetHealthChange = buff.owner.getMaxHealth() / 20;
-            buff.owner.getLevel().entityManager.addLevelEvent((LevelEvent) new MobHealthChangeEvent(buff.owner, TargetHealthChange));
+            buff.owner.getLevel().entityManager.events.add((LevelEvent) new MobHealthChangeEvent(buff.owner, buff.owner.getMaxHealth() / 20));
         }
     }
 

@@ -11,7 +11,7 @@ import necesse.inventory.lootTable.LootItemInterface;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.inventory.lootTable.lootItem.LootItem;
-import necesse.level.maps.LevelMap;
+import necesse.level.maps.mapData.ClientDiscoveredMap;
 
 public class SpiderkinRaiderTemplate extends ItemAttackerRaiderMob
 {
@@ -46,9 +46,9 @@ public class SpiderkinRaiderTemplate extends ItemAttackerRaiderMob
         return true;
     }
 
-    public boolean isVisibleOnMap(Client client, LevelMap map) {
-        return true;
-    }
+    public boolean isVisibleOnMap(Client client, ClientDiscoveredMap map) {
+    return true;
+  }
 
     public Rectangle drawOnMapBox(double tileScale, boolean isMinimap) {
         return new Rectangle(-10, -24, 20, 24);

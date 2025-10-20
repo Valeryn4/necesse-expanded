@@ -76,6 +76,6 @@ public class FrozenDwarf extends HostileMob
                 }
             }
         );
-        addShadowDrawables(tileList, x, y, light, camera);
+        addShadowDrawables(tileList, level, x, y, light, camera);
     }
 }

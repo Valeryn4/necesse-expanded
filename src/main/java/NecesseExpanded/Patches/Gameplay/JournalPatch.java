@@ -2,7 +2,6 @@ package NecesseExpanded.Patches.Gameplay;
 
 import NecesseExpanded.Journal.PirateTrinketChallenge;
 import necesse.engine.journal.*;
-import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.engine.registries.JournalChallengeRegistry;
 import net.bytebuddy.asm.Advice;
@@ -56,9 +55,9 @@ public class JournalPatch
         JournalChallengeRegistry.SNOW_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("snowcave", (new MultiJournalChallenge(new Integer[]{DEFEAT_DWARVEN_MAGES, JournalChallengeRegistry.IMPALE_FIVE_ICE_JAVELINS_ID, JournalChallengeRegistry.DESTROY_ROYAL_EGG_ID})).setReward(JournalChallengeRegistry.SNOW_CAVE_REWARD));
         
         JournalChallengeRegistry.WALK_ON_DEEP_ICE_ID = JournalChallengeRegistry.registerChallenge("walkondeepice", new SimpleJournalChallenge());
-        JournalChallengeRegistry.OBTAIN_LANDSCAPING_STATION_ID = JournalChallengeRegistry.registerChallenge("craftlandscaping", (new ItemObtainedJournalChallenge(new String[]{"landscapingstation"})).setCustomName(new LocalMessage("journal", "obtainlandscaping")));
+        int DEFEAT_ICE_GOLEMS = JournalChallengeRegistry.registerChallenge("snow_defeatgolems", new MobsKilledJournalChallenge(5, "ice_golem"));
         JournalChallengeRegistry.SEVERAL_POTION_BUFFS_ID = JournalChallengeRegistry.registerChallenge("severalpotionbuffs", new SeveralPotionBuffsInDeepSnowCavesJournalChallenge());
-        JournalChallengeRegistry.SNOW_DEEP_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("snowdeepcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.WALK_ON_DEEP_ICE_ID, JournalChallengeRegistry.OBTAIN_LANDSCAPING_STATION_ID, JournalChallengeRegistry.SEVERAL_POTION_BUFFS_ID})).setReward(JournalChallengeRegistry.SNOW_DEEP_CAVE_REWARD));
+        JournalChallengeRegistry.SNOW_DEEP_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("snowdeepcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.WALK_ON_DEEP_ICE_ID, DEFEAT_ICE_GOLEMS, JournalChallengeRegistry.SEVERAL_POTION_BUFFS_ID})).setReward(JournalChallengeRegistry.SNOW_DEEP_CAVE_REWARD));
         
         JournalChallengeRegistry.FREE_CAPTURED_MAGE_ID = JournalChallengeRegistry.registerChallenge("freecapturedmage", new FreeMageJournalChallenge());
         JournalChallengeRegistry.UPGRADE_ALCHEMY_TABLE = JournalChallengeRegistry.registerChallenge("upgradealchemytable", new SimpleJournalChallenge());

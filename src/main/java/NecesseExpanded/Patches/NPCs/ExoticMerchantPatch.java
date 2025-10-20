@@ -24,7 +24,6 @@ public class ExoticMerchantPatch
       ClearRegistry.Clear((GameRegistry<?>)Mob.shop.sellingShop);
 
       Mob.shop.addSellingItem("recallscroll", new SellingShopItem()).setRandomPrice(35, 45);
-      Mob.shop.addSellingItem("travelscroll", new SellingShopItem()).setRandomPrice(50, 75);
       Mob.shop.addSellingItem("jumpingball", new SellingShopItem()).setRandomPrice(600, 800);
       Mob.shop.addSellingItem("inefficientfeather", new SellingShopItem()).setRandomPrice(500, 1500);
       Mob.shop.addSellingItem("weticicle", new SellingShopItem()).setRandomPrice(300, 900);

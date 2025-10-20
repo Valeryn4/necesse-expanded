@@ -9,8 +9,8 @@ import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.entity.mobs.friendly.human.HappinessModifier;
 import necesse.entity.mobs.friendly.human.HumanMob;
+import necesse.level.maps.levelData.settlementData.ServerSettlementData;
 import necesse.level.maps.levelData.settlementData.SettlementBed;
-import necesse.level.maps.levelData.settlementData.SettlementLevelData;
 import necesse.level.maps.levelData.settlementData.SettlementRoom;
 import necesse.level.maps.levelData.settlementData.settler.DietThought;
 import necesse.level.maps.levelData.settlementData.settler.FoodQuality;
@@ -29,38 +29,32 @@ public class HappinessModifiersPatch {
     @OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
     static boolean onEnter(@This HumanMob ThisSettler) 
     {
-        if (NecesseExpanded.Main.SettingsGetter.getBoolean("happiness_changes_enabled"))
-        {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     @OnMethodExit
     static void onExit(@This HumanMob ThisSettler, @Return(readOnly = false) List<HappinessModifier> list) 
     {
-        if (NecesseExpanded.Main.SettingsGetter.getBoolean("happiness_changes_enabled"))
+        ArrayList<HappinessModifier> Modifiers = new ArrayList<>();
+        if (ThisSettler.lastFoodEaten != null && ThisSettler.lastFoodEaten.quality != null) 
         {
-            ArrayList<HappinessModifier> Modifiers = new ArrayList<>();
-            if (ThisSettler.lastFoodEaten != null && ThisSettler.lastFoodEaten.quality != null) 
+            if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 10) 
             {
-                if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 10) 
-                {
-                    Modifiers.add(new HappinessModifier(8, (GameMessage) new LocalMessage("settlement", "simplemeal")));
-                } 
-                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 20) 
-                {
-                    Modifiers.add(new HappinessModifier(12, (GameMessage) new LocalMessage("settlement", "finemeal")));
-                } 
-                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 35) 
-                {
-                    Modifiers.add(new HappinessModifier(18, (GameMessage) new LocalMessage("settlement", "gourmetmeal")));
-                } 
-                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 40)
-                {
-                    Modifiers.add(new HappinessModifier(24, (GameMessage) new LocalMessage("settlement", "perfectmeal")));
-                }
+                Modifiers.add(new HappinessModifier(8, (GameMessage) new LocalMessage("settlement", "simplemeal")));
             } 
+            else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 20) 
+            {
+                Modifiers.add(new HappinessModifier(12, (GameMessage) new LocalMessage("settlement", "finemeal")));
+            } 
+            else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 35) 
+            {
+                Modifiers.add(new HappinessModifier(18, (GameMessage) new LocalMessage("settlement", "gourmetmeal")));
+            } 
+            else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 40)
+            {
+                Modifiers.add(new HappinessModifier(24, (GameMessage) new LocalMessage("settlement", "perfectmeal")));
+            }
+        } 
             else 
             {
                 Modifiers.add(FoodQuality.noFoodModifier);
@@ -122,7 +116,7 @@ public class HappinessModifiersPatch {
                     .getPopulationThough(ThisSettler.levelSettler.data.countTotalSettlers());
             if (PopulationThought != null)
                 Modifiers.add(PopulationThought.getModifier());
-            SettlementLevelData LevelData = (ThisSettler.getLevel()).settlementLayer.getSettlementData();
+            ServerSettlementData LevelData = ThisSettler.getSettlementServerData();
             if (LevelData != null) {
                 int NumberOfQuestsCompleted = LevelData.getQuestTiersCompleted();
                 if (NumberOfQuestsCompleted > 1)
@@ -131,7 +125,7 @@ public class HappinessModifiersPatch {
                                     .append(" (" + NumberOfQuestsCompleted + ")")));
             }
             if (LevelData != null)
-                if (LevelData.getHomestonePos() != null)
+                if (LevelData.getHomestoneTile() != null)
                     Modifiers.add(new HappinessModifier(3, (GameMessage) new LocalMessage("settlement", "travel_bonus")));
             if (LevelData != null)
                 if (LevelData.getNextRaidDifficultyMod() >= 1.25F) {
@@ -147,7 +141,7 @@ public class HappinessModifiersPatch {
                     Field ClassField = ClassObject.getDeclaredField("nextRaid");
                     ClassField.setAccessible(true);
                     long RaidTimer = ((Long) ClassField.get(LevelData)).longValue();
-                    if (RaidTimer >= (SettlementLevelData.MIN_SECONDS_RAID_TIMER / 2)
+                    if (RaidTimer >= (ServerSettlementData.MIN_SECONDS_RAID_TIMER / 2)
                             && LevelData.stats.spawned_raids.getTotalRaids() >= 1)
                         Modifiers.add(new HappinessModifier(5,
                                 (GameMessage) new LocalMessage("settlement", "settlement_survived_raid")));
@@ -158,5 +152,4 @@ public class HappinessModifiersPatch {
     
             list = Modifiers;
         }
-    }
 }

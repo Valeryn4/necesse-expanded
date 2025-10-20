@@ -3,7 +3,6 @@ package NecesseExpanded.Mobs.Raiders.RuneboundRaiders;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.inventory.InventoryItem;
 
-// A powerful melee unit.
 public class RuneboundBerserker extends RuneboundRaiderTemplate
 {
     public RuneboundBerserker()

@@ -39,7 +39,7 @@ public class NecromancerMinion extends FriendlyMob
     public NecromancerMinion()
     {
         super(100);
-        this.setSpeed(30.0F);
+        this.setSpeed(40.0F);
         this.setFriction(3.0F);
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-12, -14, 24, 24);
@@ -48,7 +48,7 @@ public class NecromancerMinion extends FriendlyMob
         this.swimMaskOffset = 0;
         this.swimSinkOffset = 0;
         
-        this.ai = new BehaviourTreeAI((Mob)this, (AINode)new PlayerFollowerCollisionChaserAI(1024, new GameDamage(80F), 25, 250, 640, 64));
+        this.ai = new BehaviourTreeAI((Mob)this, (AINode)new PlayerFollowerCollisionChaserAI(1024, new GameDamage(20F), 25, 250, 640, 64));
     }
 
     public boolean canBeHit(Attacker attacker) {
@@ -78,10 +78,10 @@ public class NecromancerMinion extends FriendlyMob
     SoundManager.playSound(GameResources.crack, (SoundEffect)SoundEffect.effect((PrimitiveSoundEmitter)this).volume(1.6F).pitch(pitch));
   }
   
-  protected void playDeathSound() {
-    float pitch = ((Float)GameRandom.globalRandom.getOneOf((Object[])new Float[] { Float.valueOf(0.95F), Float.valueOf(1.0F), Float.valueOf(1.05F) })).floatValue();
-    SoundManager.playSound(GameResources.crackdeath, (SoundEffect)SoundEffect.effect((PrimitiveSoundEmitter)this).volume(0.3F).pitch(pitch));
-  }
+  public void playDeathSound() {
+      float pitch = ((Float)GameRandom.globalRandom.getOneOf((Object[])new Float[] { Float.valueOf(0.95F), Float.valueOf(1.0F), Float.valueOf(1.05F) })).floatValue();
+      SoundManager.playSound(GameResources.crackdeath, (SoundEffect)SoundEffect.effect((PrimitiveSoundEmitter)this).volume(0.3F).pitch(pitch));
+    }
   
   public void spawnDeathParticles(float knockbackX, float knockbackY) {
     for (int i = 0; i < 5; i++)

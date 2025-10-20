@@ -16,13 +16,14 @@ import necesse.gfx.GameResources;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
+import necesse.inventory.lootTable.presets.MagicWeaponsLootTable;
 import necesse.level.maps.Level;
 
 public class FrostBoltMagicToolItem extends MagicProjectileToolItem 
 {
    public FrostBoltMagicToolItem() 
    {
-      super(450);
+      super(450, MagicWeaponsLootTable.magicWeapons);
       this.rarity = Rarity.UNCOMMON;
       this.attackAnimTime.setBaseValue(300);
       this.attackDamage.setBaseValue(22.0F).setUpgradedValue(1.0F, 110.0F);

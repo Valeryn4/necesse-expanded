@@ -29,7 +29,7 @@ public class IncursionTreasureChest extends PlaceableItem
         InventoryItem Coins = new InventoryItem("coin", GameRandom.globalRandom.getIntBetween(200, 300));
         LootList List = new LootList();
         OldVinylsLootTable.oldVinyls.addPossibleLoot(List, new Object[0]);
-        InventoryItem Vinyl = List.getCombinedItemsAndCustomItems().get(GameRandom.globalRandom.getIntBetween(0, List.getCombinedItemsAndCustomItems().size()));
+        InventoryItem Vinyl = List.getCombinedItemsAndCustomItems().get(GameRandom.globalRandom.getIntBetween(0, List.getCombinedItemsAndCustomItems().size() - 1));
         ItemPickupEntity VinylPickup = Vinyl.getPickupEntity(level, attackerMob.x, attackerMob.y);
         ItemPickupEntity CoinPickup = Coins.getPickupEntity(level, attackerMob.x, attackerMob.y);
         level.entityManager.pickups.add(VinylPickup);

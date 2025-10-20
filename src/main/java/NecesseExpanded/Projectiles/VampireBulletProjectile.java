@@ -41,7 +41,7 @@ public class VampireBulletProjectile extends BulletProjectile
                 if (GameRandom.globalRandom.getChance(0.10F))
                 {
                     int TargetHealthChange = ProjectileOwner.getMaxHealth() / 100;
-                    ProjectileOwner.getLevel().entityManager.addLevelEvent((LevelEvent) new MobHealthChangeEvent(ProjectileOwner, TargetHealthChange));
+                    ProjectileOwner.getLevel().entityManager.events.add((LevelEvent) new MobHealthChangeEvent(ProjectileOwner, TargetHealthChange));
                 }
             }
         }

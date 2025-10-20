@@ -60,7 +60,7 @@ public class SpiderkinHealerRaider extends SpiderkinRaiderTemplate
                 )
                 {
                     int TargetHealthChange = (int) (Target.getMaxHealth() / 4);
-                    this.getLevel().entityManager.addLevelEvent((LevelEvent) new MobHealthChangeEvent(Target, TargetHealthChange));
+                    this.getLevel().entityManager.events.add((LevelEvent) new MobHealthChangeEvent(Target, TargetHealthChange));
                 }
             }
             HealTimer = 0;
@@ -120,7 +120,7 @@ public class SpiderkinHealerRaider extends SpiderkinRaiderTemplate
                 drawOptions.draw();
             }
         });
-        addShadowDrawables(tileList, x, y, light, camera);
+        addShadowDrawables(tileList, level, x, y, light, camera);
     }
 
     public void drawOnMap(TickManager tickManager, Client client, int x, int y, double tileScale, Rectangle drawBounds,

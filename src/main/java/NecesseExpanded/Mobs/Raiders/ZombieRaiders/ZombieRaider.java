@@ -27,8 +27,8 @@ import necesse.inventory.item.ItemHolding;
 import necesse.inventory.item.armorItem.cosmetics.misc.ShirtArmorItem;
 import necesse.inventory.item.armorItem.cosmetics.misc.ShoesArmorItem;
 import necesse.level.maps.Level;
-import necesse.level.maps.LevelMap;
 import necesse.level.maps.light.GameLight;
+import necesse.level.maps.mapData.ClientDiscoveredMap;
 
 public class ZombieRaider extends ZombieRaiderTemplate {
   HumanLook Look = new HumanLook();
@@ -97,14 +97,14 @@ public class ZombieRaider extends ZombieRaiderTemplate {
         drawOptions.draw();
       }
     });
-    addShadowDrawables(tileList, x, y, light, camera);
+    addShadowDrawables(tileList, level, x, y, light, camera);
   }
 
   public boolean shouldDrawOnMap() {
     return true;
   }
 
-  public boolean isVisibleOnMap(Client client, LevelMap map) {
+  public boolean isVisibleOnMap(Client client, ClientDiscoveredMap map) {
     return true;
   }
 

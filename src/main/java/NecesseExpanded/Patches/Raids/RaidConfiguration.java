@@ -5,12 +5,11 @@ import NecesseExpanded.Events.Raids.*;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.engine.util.GameRandom;
 import net.bytebuddy.asm.Advice;
-
-import necesse.level.maps.levelData.settlementData.SettlementLevelData;
+import necesse.level.maps.levelData.settlementData.ServerSettlementData;
 import necesse.level.maps.levelData.settlementData.SettlementRaidOptions;
 import necesse.entity.levelEvent.settlementRaidEvent.*;
 
-@ModMethodPatch(target = SettlementLevelData.class, name = "getNextRaid", arguments = {SettlementRaidOptions.class})
+@ModMethodPatch(target = ServerSettlementData.class, name = "getNextRaid", arguments = {SettlementRaidOptions.class})
 public class RaidConfiguration
 {
     @Advice.OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
@@ -24,7 +23,7 @@ public class RaidConfiguration
     }
 
     @Advice.OnMethodExit()
-    static void onExit(@Advice.This SettlementLevelData LevelData, @Advice.Argument(0) SettlementRaidOptions Options, @Advice.Return(readOnly = false) SettlementRaidLevelEvent Event)
+    static void onExit(@Advice.This ServerSettlementData LevelData, @Advice.Argument(0) SettlementRaidOptions Options, @Advice.Return(readOnly = false) SettlementRaidLevelEvent Event)
     {
         // If custom raids and vanilla raids are enabled.
         if (NecesseExpanded.Main.SettingsGetter.getBoolean("raids_enabled") && NecesseExpanded.Main.SettingsGetter.getBoolean("include_vanilla_raids"))
@@ -106,7 +105,7 @@ public class RaidConfiguration
         // If custom raids are disabled, then we just use the vanilla raid system instead.
     }
 
-    public static SettlementRaidLevelEvent GetCustomRaid(SettlementLevelData LevelData, SettlementRaidOptions Options)
+    public static SettlementRaidLevelEvent GetCustomRaid(ServerSettlementData LevelData, SettlementRaidOptions Options)
     {
         // Incursion raid options
         if (LevelData.hasCompletedQuestTier("fallenwizard"))

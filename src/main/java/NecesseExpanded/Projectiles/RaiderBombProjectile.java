@@ -14,6 +14,6 @@ public class RaiderBombProjectile extends IronBombProjectile
    }
 
     public ExplosionEvent getExplosionEvent(float x, float y) {
-      return new BombExplosionEvent(x, y, 80, new GameDamage(80.0F, 120.0F), false, 0, this.getOwner());
+      return new BombExplosionEvent(x, y, 80, new GameDamage(80.0F, 120.0F), false, false, 0, this.getOwner());
    }
 }

@@ -17,11 +17,11 @@ public class FishingLootTablePatch
     @OnMethodExit
     static void onExit(@This Biome Biome, @Advice.Argument(0) FishingSpot Spot, @Advice.Return(readOnly = false) FishingLootTable Loot)
     {
-        if (Spot.tile.level.isIncursionLevel && Spot.tile.level.biome == BiomeRegistry.CRYSTAL_HOLLOW)
+        if (Spot.tile.level.isIncursionLevel && Spot.tile.level.baseBiome == BiomeRegistry.CRYSTAL_HOLLOW)
         {
             Loot = (new FishingLootTable()).addWater(10, "pearlfish").addWater(20, "incursion_treasure_chest").addWater(40, "deep_treasure_chest");
         }
-        else if (Spot.tile.level.isIncursionLevel && Spot.tile.level.biome == BiomeRegistry.SLIME_CAVE)
+        else if (Spot.tile.level.isIncursionLevel && Spot.tile.level.baseBiome == BiomeRegistry.SLIME_CAVE)
         {
             Loot = (new FishingLootTable()).add(10, SlimeTileCheck(), "slimefish").add(20, SlimeTileCheck(), "incursion_treasure_chest").add(40, SlimeTileCheck(), "deep_treasure_chest");
         }
@@ -29,7 +29,7 @@ public class FishingLootTablePatch
         {
             Loot = (new FishingLootTable()).addWater(10, "incursion_treasure_chest").addWater(40, "deep_treasure_chest");
         }
-        else if (Spot.tile.level.getIslandDimension() == -2 && Spot.tile.level.biome == BiomeRegistry.SNOW)
+        else if (Spot.tile.level.getIslandDimension() == -2 && Spot.tile.level.baseBiome == BiomeRegistry.SNOW)
         {
             Loot = (new FishingLootTable()).addWater(40, "deep_treasure_chest").addWater(20, "heartfish").addWater(20, "glacierfish");
         }

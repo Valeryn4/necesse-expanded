@@ -61,7 +61,7 @@ public class BrimstoneProjectile extends Projectile
             }
         }
         BrimstoneExplosionEvent Event = new BrimstoneExplosionEvent(x, y, 150, getDamage(), false, 0, null);
-        this.getLevel().entityManager.addLevelEvent((LevelEvent)Event);
+        this.getLevel().entityManager.events.add((LevelEvent)Event);
     }
   
   public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, OrderableDrawables overlayList, Level level, TickManager tickManager, GameCamera camera, PlayerMob perspective) {

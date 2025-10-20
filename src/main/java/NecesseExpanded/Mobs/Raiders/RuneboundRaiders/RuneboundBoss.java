@@ -28,7 +28,6 @@ import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
-// This faction's raid leader, a very powerful melee unit.
 public class RuneboundBoss extends ItemAttackerRaiderMob {
   
   public RuneboundBoss() {
@@ -106,7 +105,7 @@ public class RuneboundBoss extends ItemAttackerRaiderMob {
         drawOptions.draw();
       }
     });
-    addShadowDrawables(tileList, x, y, light, camera);
+    addShadowDrawables(tileList, level, x, y, light, camera);
   }
 
   public boolean shouldDrawOnMap() {

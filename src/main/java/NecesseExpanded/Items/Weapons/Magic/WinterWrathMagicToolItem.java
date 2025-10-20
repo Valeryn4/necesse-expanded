@@ -16,22 +16,23 @@ import necesse.gfx.GameResources;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
+import necesse.inventory.lootTable.presets.MagicWeaponsLootTable;
 import necesse.level.maps.Level;
 
 public class WinterWrathMagicToolItem extends MagicProjectileToolItem 
 {
    public WinterWrathMagicToolItem() 
    {
-      super(800);
+      super(800, MagicWeaponsLootTable.magicWeapons);
       this.rarity = Rarity.RARE;
       this.attackAnimTime.setBaseValue(300);
-      this.attackDamage.setBaseValue(36.0F).setUpgradedValue(1.0F, 110.0F);
+      this.attackDamage.setBaseValue(30.0F).setUpgradedValue(1.0F, 110.0F);
       this.velocity.setBaseValue(100);
       this.attackXOffset = 8;
       this.attackYOffset = 10;
       this.attackCooldownTime.setBaseValue(600);
       this.attackRange.setBaseValue(1000);
-      this.manaCost.setBaseValue(1.25F).setUpgradedValue(1.0F, 4.0F);
+      this.manaCost.setBaseValue(3.25F).setUpgradedValue(1.0F, 4.0F);
       this.resilienceGain.setBaseValue(1.0F);
       this.itemAttackerProjectileCanHitWidth = 5.0F;
       this.itemAttackerPredictionDistanceOffset = -20.0F;
@@ -52,10 +53,12 @@ public class WinterWrathMagicToolItem extends MagicProjectileToolItem
    }
 
    public InventoryItem onAttack(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int animAttack, int seed, GNDItemMap mapContent) {
-      Projectile projectile = ProjectileRegistry.getProjectile("winterwrath_projectile", level, attackerMob.x, attackerMob.y, (float)x, (float)y, (float)this.getProjectileVelocity(item, attackerMob), this.getAttackRange(item), this.getAttackDamage(item), this.getKnockback(item, attackerMob), attackerMob);
+      for(int i = -1; i <= 1; ++i) {
+         Projectile projectile = ProjectileRegistry.getProjectile("winterwrath_projectile", level, attackerMob.x, attackerMob.y, (float)x, (float)y, (float)this.getProjectileVelocity(item, attackerMob), this.getAttackRange(item), this.getAttackDamage(item), this.getKnockback(item, attackerMob), attackerMob);
       projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
       projectile.resetUniqueID(new GameRandom((long)seed));
-      attackerMob.addAndSendAttackerProjectile(projectile, 20);
+      attackerMob.addAndSendAttackerProjectile(projectile, 20, 10 * i);
+      }
       this.consumeMana(attackerMob, item);
       return item;
    }

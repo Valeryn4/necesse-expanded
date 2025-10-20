@@ -8,7 +8,7 @@ public class StaminaPotion extends SimplePotionItem
 {
     public StaminaPotion() 
     {
-        super(100, Item.Rarity.COMMON, "stamina_potion_buff", 300, new String[] { "stamina_potion1" });
+        super(100, Item.Rarity.COMMON, "stamina_potion_buff", 300, new String[] { "stamina_potion" });
         setItemCategory(ItemCategory.craftingManager, new String[] { "consumable", "buffpotions" });
     }
 }

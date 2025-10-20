@@ -17,7 +17,7 @@ public class MurasamaRevengeBuff extends Buff
 
    public void serverTick(ActiveBuff buff) 
    {
-      buff.setModifier(BuffModifiers.RESILIENCE_GAIN, (Float) 0.1f * buff.owner.buffManager.getStacks(this));
+      buff.setModifier(BuffModifiers.RESILIENCE_GAIN, (Float) 0.01f * buff.owner.buffManager.getStacks(this));
       buff.setModifier(BuffModifiers.ALL_DAMAGE, (Float) 0.02f * buff.owner.buffManager.getStacks(this));
    }
 

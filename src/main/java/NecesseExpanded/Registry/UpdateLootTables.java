@@ -25,28 +25,31 @@ public class UpdateLootTables
         Biome.defaultSurfaceFish.addSaltWater(30, "saltwater_shark").addSaltWater(20, "seaweed").addWater(10, "surface_treasure_chest").addSaltWater(1, "pearl_oyster");
         Biome.defaultCaveFish.addWater(15, "cave_treasure_chest").addWater(20, "demonfish").addWater(20, "seaweed").addWater(20, "oyster").addWater(1, "pearl_oyster");
 
-        System.out.println("[Necesse Expanded] Updating starter chest loot...");
-        LootTablePresets.startChest = new LootTable
-        (
-            new LootItemInterface[] 
-            {
-                (LootItemInterface) new LootItem("settlementflag"), 
-                (LootItemInterface) new LootItem("coin", 500),
-                (LootItemInterface) new LootItem("sprucelog", 250), 
-                (LootItemInterface) new LootItem("stone", 150),
-                (LootItemInterface) new LootItem("torch", 25), 
-                (LootItemInterface) new LootItem("farmland", 20),
-                (LootItemInterface) new LootItem("wheatseed", 20), 
-                (LootItemInterface) new LootItem("bread", 10),
-                (LootItemInterface) new LootItem("ironbomb", 10), 
-                (LootItemInterface) new LootItem("storagebox", 3),
-                (LootItemInterface) new LootItem("sprucebed", 3), 
-                (LootItemInterface) new LootItem("grainmill"),
-                (LootItemInterface) new LootItem("ironanvil"), 
-                (LootItemInterface) new LootItem("forge")
-            }
-        );
-
+        if (NecesseExpanded.Main.SettingsGetter.getBoolean("starter_kit_enabled"))
+        {
+            System.out.println("[Necesse Expanded] Updating starter chest loot...");
+            LootTablePresets.startChest = new LootTable
+            (
+                new LootItemInterface[] 
+                {
+                    (LootItemInterface) new LootItem("settlementflag"), 
+                    (LootItemInterface) new LootItem("coin", 500),
+                    (LootItemInterface) new LootItem("sprucelog", 250), 
+                    (LootItemInterface) new LootItem("stone", 150),
+                    (LootItemInterface) new LootItem("torch", 25), 
+                    (LootItemInterface) new LootItem("farmland", 20),
+                    (LootItemInterface) new LootItem("wheatseed", 20), 
+                    (LootItemInterface) new LootItem("bread", 10),
+                    (LootItemInterface) new LootItem("ironbomb", 10), 
+                    (LootItemInterface) new LootItem("storagebox", 3),
+                    (LootItemInterface) new LootItem("sprucebed", 3), 
+                    (LootItemInterface) new LootItem("grainmill"),
+                    (LootItemInterface) new LootItem("ironanvil"), 
+                    (LootItemInterface) new LootItem("forge")
+                }
+            );
+        }
+        
         System.out.println("[Necesse Expanded] Updating mob/treasure loot tables...");
         
         // Forest
@@ -104,22 +107,34 @@ public class UpdateLootTables
 
         // Chest loot tables
         // Forest
+        CaveChestLootTable.basicMainItems.items.add(new LootItem("sparkler"));
+        CaveChestLootTable.basicMainItems.items.add(new LootItem("leather_scabbard"));
         DeepCaveChestLootTable.basicMainItems.items.add(new LootItem("inferno"));
+        DeepCaveChestLootTable.basicMainItems.items.add(new LootItem("juggernaut_axe"));
+
+        // Snow
+        CaveChestLootTable.snowMainItems.items.add(new LootItem("frostbolt"));
+        DeepCaveChestLootTable.snowMainItems.items.add(new LootItem("winterwrath"));
 
         // Swamp
+        CaveChestLootTable.swampMainItems.items.add(new LootItem("berserker_ring"));
+        DeepCaveChestLootTable.swampMainItems.items.add(new LootItem("murasama"));
+        FishianBarrelLootTable.mainItems.items.add(new LootItem("forgotten_relic"));
         
         // Desert
         CaveChestLootTable.desertMainItems.items.add(new LootItem("lensmaker_glasses"));
         CaveChestLootTable.desertMainItems.items.add(new LootItem("warrior_ring"));
         CaveChestLootTable.desertMainItems.items.add(new LootItem("ancient_tablet"));
         CaveChestLootTable.desertMainItems.items.add(new LootItem("summoner_grimoire"));
+
+        // Temple
+        TempleChestLootTable.mainItems.items.add(new LootItem("brimstone"));
         
         // Pirates
         PirateDisplayStandLootTable.items.items.add(new LootItem("lucky_ring"));
         PirateDisplayStandLootTable.items.items.add(new LootItem("foolsgambit"));
         PirateChestLootTable.mainItems.items.add(new LootItem("lucky_ring"));
         PirateChestLootTable.mainItems.items.add(new LootItem("foolsgambit"));
-        PirateChestLootTable.mainItems.items.add(new LootItem("juggernaut_axe"));
 
         // Non-specific
         

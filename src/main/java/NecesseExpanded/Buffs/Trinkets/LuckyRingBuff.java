@@ -18,7 +18,7 @@ public class LuckyRingBuff extends TrinketBuff
 
     public void onHasKilledTarget(ActiveBuff buff, MobWasKilledEvent event) 
     {
-        if (!event.target.isBoss() && event.target instanceof WormMobBody)
+        if (!event.target.isBoss() && !(event.target instanceof WormMobBody))
         {
             InventoryItem Treasure = new InventoryItem("coin", event.target.getMaxHealth() / 10);
             ItemPickupEntity TreasureEntity = Treasure.getPickupEntity(event.target.getLevel(), event.target.x, event.target.y);

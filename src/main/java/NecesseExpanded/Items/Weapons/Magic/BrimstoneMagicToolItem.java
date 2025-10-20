@@ -16,22 +16,23 @@ import necesse.gfx.GameResources;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
+import necesse.inventory.lootTable.presets.MagicWeaponsLootTable;
 import necesse.level.maps.Level;
 
 public class BrimstoneMagicToolItem extends MagicProjectileToolItem
 {
     public BrimstoneMagicToolItem() 
    {
-      super(1200);
+      super(1200, MagicWeaponsLootTable.magicWeapons);
       this.rarity = Rarity.RARE;
       this.attackAnimTime.setBaseValue(500);
-      this.attackDamage.setBaseValue(80.0F).setUpgradedValue(1.0F, 100.0F);
+      this.attackDamage.setBaseValue(60.0F).setUpgradedValue(1.0F, 100.0F);
       this.velocity.setBaseValue(100);
       this.attackXOffset = 8;
       this.attackYOffset = 10;
       this.attackCooldownTime.setBaseValue(600);
       this.attackRange.setBaseValue(1000);
-      this.manaCost.setBaseValue(32F).setUpgradedValue(1.0F, 36.0F);
+      this.manaCost.setBaseValue(12F).setUpgradedValue(1.0F, 36.0F);
       this.resilienceGain.setBaseValue(5.0F);
       this.itemAttackerProjectileCanHitWidth = 5.0F;
       this.itemAttackerPredictionDistanceOffset = -20.0F;

@@ -10,9 +10,8 @@ import necesse.entity.mobs.friendly.human.humanShop.HumanShop;
 import necesse.entity.mobs.friendly.human.humanShop.MageHumanMob;
 import necesse.entity.mobs.friendly.human.humanShop.SellingShopItem;
 import necesse.inventory.InventoryItem;
-import necesse.inventory.item.placeableItem.objectItem.HomestoneObjectItem;
 import necesse.inventory.item.placeableItem.objectItem.WaystoneObjectItem;
-import necesse.level.maps.levelData.settlementData.SettlementLevelData;
+import necesse.level.maps.levelData.settlementData.ServerSettlementData;
 import net.bytebuddy.asm.Advice.OnMethodExit;
 import net.bytebuddy.asm.Advice.This;
 
@@ -27,9 +26,7 @@ public class MagePatch
       Mob.shop.addSellingItem("voidbag", new SellingShopItem()).setStaticPriceBasedOnHappiness(2500, 3000, 100);
       Mob.shop.addSellingItem("homestone", new SellingShopItem()).setItem(MagePatch::GenerateHomestone).setStaticPriceBasedOnHappiness(1000, 1250, 100);
       Mob.shop.addSellingItem("waystone", new SellingShopItem()).setItem(MagePatch::GenerateWaystone).setStaticPriceBasedOnHappiness(250, 500, 100);
-      Mob.shop.addSellingItem("travelstone", new SellingShopItem()).setStaticPriceBasedOnHappiness(1000, 1250, 100);
       Mob.shop.addSellingItem("recallscroll", new SellingShopItem()).setStaticPriceBasedOnHappiness(25, 50, 5);
-      Mob.shop.addSellingItem("travelscroll", new SellingShopItem()).setStaticPriceBasedOnHappiness(50, 75, 5);
       Mob.shop.addSellingItem("bloodbolt", new SellingShopItem()).setStaticPriceBasedOnHappiness(70, 100, 5);
       Mob.shop.addSellingItem("brainonastick", new SellingShopItem()).setStaticPriceBasedOnHappiness(425, 500, 15);
       Mob.shop.addSellingItem("voidstaff", new SellingShopItem()).setStaticPriceBasedOnHappiness(400, 600, 10).addKilledMobRequirement("evilsprotector");
@@ -51,16 +48,15 @@ public class MagePatch
   }
   
   public static InventoryItem GenerateHomestone(GameRandom random, ServerClient client, HumanShop mob) {
-    SettlementLevelData Settlement = mob.getSettlementLevelData();
+    ServerSettlementData Settlement = mob.getSettlerSettlementServerData();
     return (Settlement != null) ? 
-      HomestoneObjectItem.setupHomestoneItem(new InventoryItem("homestone"), Settlement.getLevel()) : 
-      null;
+      new InventoryItem("homestone") : null;
   }
   
   public static InventoryItem GenerateWaystone(GameRandom random, ServerClient client, HumanShop mob) {
-    SettlementLevelData Settlement = mob.getSettlementLevelData();
-    return (Settlement != null) ? 
-      WaystoneObjectItem.setupWaystoneItem(new InventoryItem("waystone"), Settlement.getLevel()) : 
+    ServerSettlementData Settlement = mob.getSettlerSettlementServerData();
+    return (Settlement != null) ?  
+      WaystoneObjectItem.setupWaystoneItem(new InventoryItem("waystone"), mob.getSettlementUniqueID()) : 
       null;
   }
 }

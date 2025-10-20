@@ -19,6 +19,7 @@ import necesse.inventory.item.matItem.MatItem;
 import necesse.inventory.item.placeableItem.consumableItem.food.FoodConsumableItem;
 import necesse.inventory.item.placeableItem.fishingRodItem.FishingRodItem;
 import necesse.inventory.item.trinketItem.SimpleTrinketItem;
+import necesse.inventory.lootTable.presets.TrinketsLootTable;
 import necesse.level.maps.levelData.settlementData.settler.FoodQuality;
 import necesse.level.maps.levelData.settlementData.settler.Settler;
 
@@ -39,7 +40,6 @@ public class RegisterItems
 
         // Consumables
         ItemRegistry.registerItem("greater_mana_elixir", new GreaterManaElixir(), 100.0F, true);
-        ItemRegistry.registerItem("greater_health_elixir", new GreaterHealthElixir(), 100.0F, true);
         ItemRegistry.registerItem("mana_elixir", new ManaElixir(), 25.0F, true);
         ItemRegistry.registerItem("stamina_potion", new StaminaPotion(), 10f, true);
         ItemRegistry.registerItem("mead", new FoodConsumableItem(250, Item.Rarity.UNCOMMON, Settler.FOOD_FINE, 10, 240, new ModifierValue[]{ new ModifierValue(BuffModifiers.MAX_RESILIENCE_FLAT, 20) }).setItemCategory(new String[] {"consumable"}), 10, true);
@@ -90,10 +90,13 @@ public class RegisterItems
         ItemRegistry.registerItem("shadow_crystal", new ShadowCrystalTrinket(), 250F, true);
         ItemRegistry.registerItem("lucky_ring", new LuckyRingTrinket(), 200F, true);
         ItemRegistry.registerItem("sandworm_tooth", new SandwormToothTrinket(), 250F, true);
-        ItemRegistry.registerItem("lensmaker_glasses", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "lensmaker_buff", 125), 125F, true);
-        ItemRegistry.registerItem("ancient_tablet", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "ancient_tablet_buff", 125), 125F, true);
-        ItemRegistry.registerItem("warrior_ring", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "warrior_ring_buff", 125), 125F, true);
-        ItemRegistry.registerItem("summoner_grimoire", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "summoner_book_buff", 125), 125F, true);
+        ItemRegistry.registerItem("lensmaker_glasses", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "lensmaker_buff", 125, TrinketsLootTable.trinkets), 125F, true);
+        ItemRegistry.registerItem("ancient_tablet", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "ancient_tablet_buff", 125, TrinketsLootTable.trinkets), 125F, true);
+        ItemRegistry.registerItem("warrior_ring", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "warrior_ring_buff", 125, TrinketsLootTable.trinkets), 125F, true);
+        ItemRegistry.registerItem("summoner_grimoire", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "summoner_book_buff", 125, TrinketsLootTable.trinkets), 125F, true);
+        ItemRegistry.registerItem("forgotten_relic", new ForgottenRelicTrinket(), 275F, true);
+        ItemRegistry.registerItem("berserker_ring", new BerserkerRingTrinket(), 200F, true);
+        ItemRegistry.registerItem("leather_scabbard", new SimpleTrinketItem(Item.Rarity.COMMON, "leather_scabbard_buff", 50, TrinketsLootTable.trinkets), 50f, true);
 
         // Materials
         ItemRegistry.registerItem("lunar_essence", new EssenceMatItem(250, Rarity.LEGENDARY, 3), 35.0F, true);

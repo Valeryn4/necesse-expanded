@@ -6,7 +6,6 @@ import java.util.HashMap;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.registries.BuffRegistry;
-import necesse.engine.registries.ItemRegistry;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
 import necesse.entity.levelEvent.mobAbilityLevelEvent.ToolItemMobAbilityEvent;
@@ -14,19 +13,19 @@ import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.attackHandler.KatanaDashAttackHandler;
 import necesse.entity.mobs.buffs.ActiveBuff;
-import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.SpiritBoardTrinketBuff;
 import necesse.entity.mobs.itemAttacker.ItemAttackSlot;
 import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.swordToolItem.KatanaToolItem;
+import necesse.inventory.lootTable.presets.CloseRangeWeaponsLootTable;
 import necesse.level.maps.Level;
 
 public class MurasamaToolItem extends KatanaToolItem
 {
     public MurasamaToolItem()
     {
-        super(400);
+        super(400, CloseRangeWeaponsLootTable.closeRangeWeapons);
         this.rarity = Rarity.LEGENDARY;
         this.attackAnimTime.setBaseValue(200);
         this.attackDamage.setBaseValue(50.0F).setUpgradedValue(1.0F, 100.0F);
@@ -85,6 +84,7 @@ public class MurasamaToolItem extends KatanaToolItem
          item.getGndData().setBoolean("sliceDash", false);
          if (animAttack == 0) {
             int animTime = this.getAttackAnimTime(item, attackerMob);
+            @SuppressWarnings({ "rawtypes", "unchecked" })
             ToolItemMobAbilityEvent event = new ToolItemMobAbilityEvent(attackerMob, seed, item, x - attackerMob.getX(), y - attackerMob.getY() + attackHeight, animTime, animTime, isSlash ? new HashMap() : null);
             attackerMob.addAndSendAttackerLevelEvent(event);
          }

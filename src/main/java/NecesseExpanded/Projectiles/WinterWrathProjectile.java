@@ -30,7 +30,7 @@ public class WinterWrathProjectile extends FollowingProjectile
     this.turnSpeed = 0.5F;
     this.givesLight = true;
     this.height = 18.0F;
-    this.piercing = 0;
+    this.piercing = 2;
   }
   
   public void updateTarget() {
@@ -45,7 +45,7 @@ public class WinterWrathProjectile extends FollowingProjectile
         {
             if (mob != null) 
             {
-                mob.buffManager.addBuff(new ActiveBuff("chilled", mob, 2000, null), true, true);
+                mob.buffManager.addBuff(new ActiveBuff("chilled", mob, 5000, null), true, true);
             }
         }
     }

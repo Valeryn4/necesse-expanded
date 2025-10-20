@@ -6,18 +6,19 @@ import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
+import necesse.inventory.lootTable.presets.CloseRangeWeaponsLootTable;
 import necesse.level.maps.incursion.IncursionData;
 
 public class JuggernautAxeToolItem extends SwordToolItem
 {
     public JuggernautAxeToolItem() 
     {
-        super(250);
+        super(250, CloseRangeWeaponsLootTable.closeRangeWeapons);
         this.rarity = Rarity.RARE;
         this.attackAnimTime.setBaseValue(450);
-        this.attackDamage.setBaseValue(60.0F).setUpgradedValue(1.0F, 90.0F);
+        this.attackDamage.setBaseValue(50.0F).setUpgradedValue(1.0F, 90.0F);
         this.attackRange.setBaseValue(80);
-        this.knockback.setBaseValue(300);
+        this.knockback.setBaseValue(150);
         this.canBeUsedForRaids = true;
         this.maxRaidTier = IncursionData.ITEM_TIER_UPGRADE_CAP;
     }

@@ -17,12 +17,13 @@ import necesse.gfx.drawOptions.itemAttack.ItemAttackDrawOptions;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
+import necesse.inventory.lootTable.presets.MagicWeaponsLootTable;
 import necesse.level.maps.Level;
 
 public class InfernoMagicToolItem extends MagicProjectileToolItem 
 {
    public InfernoMagicToolItem() {
-      super(300);
+      super(300, MagicWeaponsLootTable.magicWeapons);
       this.rarity = Rarity.RARE;
       this.attackAnimTime.setBaseValue(200);
       this.attackDamage.setBaseValue(16.0F).setUpgradedValue(1.0F, 50.0F);

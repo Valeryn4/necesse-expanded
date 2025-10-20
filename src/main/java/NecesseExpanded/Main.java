@@ -35,7 +35,6 @@ public class Main
     public void postInit()
     {
         UpdateHappinessMetrics.Update();
-        UpdateFishingTables.Update();
         UpdateLootTables.Update();
         UpdateSpawnTables.Update();
         UpdateAmmoTypes.Update();
@@ -70,6 +69,18 @@ public class Main
         .addBooleanSetting("happiness_changes_enabled", true)
         .addParagraph("happiness_changes_tip")
 
+        .addBooleanSetting("starter_equipment_enabled", true)
+        .addParagraph("starter_equipment_tip")
+
+        .addBooleanSetting("starter_kit_enabled", true)
+        .addParagraph("starter_kit_tip")
+
+        .addBooleanSetting("player_speed_patch", true)
+        .addParagraph("player_speed_tip")
+
+        .addIntSetting("player_speed_value", 50, 40, 80, IntSetting.DisplayMode.BAR)
+        .addParagraph("player_speed_value_tip")
+
         .addIntSetting("chest_size_value", 60, 40, 120, IntSetting.DisplayMode.BAR)
         .addParagraph("chest_size_tip");
 
@@ -82,6 +93,10 @@ public class Main
             "raider_bombs_destructive", 
             "raid_size_multiplier",
             "happiness_changes_enabled",
+            "starter_equipment_enabled",
+            "starter_kit_enabled",
+            "player_speed_patch",
+            "player_speed_value",
             "chest_size_value"
         );
         return ModSettings;

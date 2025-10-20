@@ -33,7 +33,7 @@ public class DeepTreasureChest extends PlaceableItem
         DeepCaveChestLootTable.swampVinyls.addPossibleLoot(List, new Object[0]);
         DeepCaveChestLootTable.snowVinyls.addPossibleLoot(List, new Object[0]);
         DeepCaveChestLootTable.plainsVinyls.addPossibleLoot(List, new Object[0]);
-        InventoryItem Vinyl = List.getCombinedItemsAndCustomItems().get(GameRandom.globalRandom.getIntBetween(0, List.getCombinedItemsAndCustomItems().size()));
+        InventoryItem Vinyl = List.getCombinedItemsAndCustomItems().get(GameRandom.globalRandom.getIntBetween(0, List.getCombinedItemsAndCustomItems().size() - 1));
         ItemPickupEntity VinylPickup = Vinyl.getPickupEntity(level, attackerMob.x, attackerMob.y);
         ItemPickupEntity CoinPickup = Coins.getPickupEntity(level, attackerMob.x, attackerMob.y);
         level.entityManager.pickups.add(VinylPickup);

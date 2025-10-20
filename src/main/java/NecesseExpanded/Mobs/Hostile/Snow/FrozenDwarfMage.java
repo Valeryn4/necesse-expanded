@@ -116,7 +116,7 @@ public class FrozenDwarfMage extends HostileItemAttackerMob
                 }
             }
         );
-        addShadowDrawables(tileList, x, y, light, camera);
+        addShadowDrawables(tileList, level, x, y, light, camera);
     }
 
     public ItemAttackSlot getCurrentSelectedAttackSlot() 

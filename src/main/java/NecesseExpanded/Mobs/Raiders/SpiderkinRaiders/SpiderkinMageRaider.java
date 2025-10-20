@@ -88,7 +88,7 @@ public class SpiderkinMageRaider extends SpiderkinRaiderTemplate
                 drawOptions.draw();
             }
         });
-        addShadowDrawables(tileList, x, y, light, camera);
+        addShadowDrawables(tileList, level, x, y, light, camera);
     }
 
     

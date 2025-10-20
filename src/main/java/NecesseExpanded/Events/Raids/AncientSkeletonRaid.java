@@ -5,7 +5,7 @@ import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.util.GameRandom;
 import necesse.entity.levelEvent.settlementRaidEvent.SettlementRaidLevelEvent;
-import necesse.level.maps.levelData.settlementData.SettlementLevelData;
+import necesse.level.maps.levelData.settlementData.ServerSettlementData;
 import necesse.level.maps.levelData.settlementData.SettlementRaidLoadout;
 import necesse.level.maps.levelData.settlementData.SettlementRaidOptions;
 
@@ -58,7 +58,7 @@ public class AncientSkeletonRaid extends SettlementRaidLevelEvent {
     public AncientSkeletonRaid() {
     }
 
-    public AncientSkeletonRaid(SettlementLevelData Data, SettlementRaidOptions Options) 
+    public AncientSkeletonRaid(ServerSettlementData Data, SettlementRaidOptions Options) 
     {
         float Size = Data.countTotalSettlers() * NecesseExpanded.Main.SettingsGetter.getInt("raid_size_multiplier") * Options.difficultyModifier;
         for (int Raiders = 0; Raiders < Size; Raiders++)

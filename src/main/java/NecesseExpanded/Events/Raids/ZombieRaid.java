@@ -4,7 +4,7 @@ import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.entity.levelEvent.settlementRaidEvent.SettlementRaidLevelEvent;
-import necesse.level.maps.levelData.settlementData.SettlementLevelData;
+import necesse.level.maps.levelData.settlementData.ServerSettlementData;
 import necesse.level.maps.levelData.settlementData.SettlementRaidLoadout;
 import necesse.level.maps.levelData.settlementData.SettlementRaidOptions;
 
@@ -55,7 +55,7 @@ public class ZombieRaid extends SettlementRaidLevelEvent
 
     public ZombieRaid() {}
 
-    public ZombieRaid(SettlementLevelData Data, SettlementRaidOptions Options)
+    public ZombieRaid(ServerSettlementData Data, SettlementRaidOptions Options)
     {
         float Size = Data.countTotalSettlers() * NecesseExpanded.Main.SettingsGetter.getInt("raid_size_multiplier") * Options.difficultyModifier;
         for (int Raiders = 0; Raiders < Size; Raiders++)

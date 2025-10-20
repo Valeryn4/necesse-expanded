@@ -53,13 +53,11 @@ public class RegisterRecipes
         Recipes.registerModRecipe(new Recipe("portablemusicplayer", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("anylog", 10), new Ingredient("demonicbar", 10), new Ingredient("quartz", 12) }));
         Recipes.registerModRecipe(new Recipe("missionboard", 1, RecipeTechRegistry.WORKSTATION, new Ingredient[] { new Ingredient("anylog", 20), new Ingredient("coin", 200) }));
         Recipes.registerModRecipe(new Recipe("shippingchest", 1, RecipeTechRegistry.WORKSTATION, new Ingredient[] { new Ingredient("anylog", 20), new Ingredient("coin", 400) }));
-        Recipes.registerModRecipe(new Recipe("bannerstand", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("ironbar", 5) }));
+        Recipes.registerModRecipe(new Recipe("bannerstand", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("demonicbar", 6) }));
 
         // Consumables
-        Recipes.registerModRecipe(new Recipe("greater_health_elixir", RecipeTechRegistry.FALLEN_ALCHEMY, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("alchemyshard", 5), new Ingredient("upgradeshard", 5), new Ingredient("anytier2essence", 5) }));
-        Recipes.registerModRecipe(new Recipe("greater_mana_elixir", RecipeTechRegistry.FALLEN_ALCHEMY, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("alchemyshard", 5), new Ingredient("upgradeshard", 5), new Ingredient("anytier2essence", 5) }));
-        Recipes.registerModRecipe(new Recipe("lifeelixir", 1, RecipeTechRegistry.CAVEGLOW_ALCHEMY, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("lifequartz", 10), new Ingredient("sunflower", 10) }));
-        Recipes.registerModRecipe(new Recipe("mana_elixir", RecipeTechRegistry.CAVEGLOW_ALCHEMY, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("caveglow", 10), new Ingredient("glacialshard", 3) }));
+        Recipes.registerModRecipe(new Recipe("greater_mana_elixir", RecipeTechRegistry.FALLEN_WORKSTATION, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("alchemyshard", 5), new Ingredient("upgradeshard", 5), new Ingredient("anytier2essence", 5) }).showAfter("greaterlifeelixir"));
+        Recipes.registerModRecipe(new Recipe("mana_elixir", RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("caveglow", 10), new Ingredient("glacialshard", 3) }).showAfter("lifeelixir"));
         Recipes.registerModRecipe(new Recipe("healthpotion", 1, RecipeTechRegistry.ALCHEMY, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("seaweed", 2) }).showBefore("healthpotion"));
         Recipes.registerModRecipe(new Recipe("greaterhealthpotion", 1, RecipeTechRegistry.CAVEGLOW_ALCHEMY, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("caveglow", 1), new Ingredient("sunflower", 3),}).showBefore("greaterhealthpotion"));
         Recipes.registerModRecipe(new Recipe("greatermanapotion", 1, RecipeTechRegistry.CAVEGLOW_ALCHEMY, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("caveglow", 1), new Ingredient("iceblossom", 3),}).showBefore("greatermanapotion"));
@@ -95,8 +93,10 @@ public class RegisterRecipes
         Recipes.registerModRecipe(new Recipe("lucky_ring", RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("goldbar", 8), new Ingredient("tungstenbar", 6)}));
         Recipes.registerModRecipe(new Recipe("lensmaker_glasses", RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("quartz", 16), new Ingredient("ironbar", 8)}));
         Recipes.registerModRecipe(new Recipe("ancient_tablet", RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("sandstone", 20), new Ingredient("quartz", 16)}));
-        Recipes.registerModRecipe(new Recipe("warrior_ring", RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("ironbar", 8), new Ingredient("quartz", 14)}));
-        Recipes.registerModRecipe(new Recipe("summoner_grimoire", RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("book", 1), new Ingredient("quartz", 16), new Ingredient("runestone", 8)}));
+        Recipes.registerModRecipe(new Recipe("warrior_ring", RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("ironbar", 8), new Ingredient("quartz", 14)}));
+        Recipes.registerModRecipe(new Recipe("summoner_grimoire", RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("book", 1), new Ingredient("quartz", 16)}));
+        Recipes.registerModRecipe(new Recipe("leather_scabbard", RecipeTechRegistry.WORKSTATION, new Ingredient[] { new Ingredient("leather", 8)}).showAfter("leatherglove"));
+
         Recipes.registerModRecipe(new Recipe("fuzzydice", 1, RecipeTechRegistry.WORKSTATION, new Ingredient[] { new Ingredient("wool", 12), new Ingredient("leather", 6)}));
         Recipes.registerModRecipe(new Recipe("shinebelt", 1, RecipeTechRegistry.WORKSTATION, new Ingredient[] { new Ingredient("leather", 10), new Ingredient("ironbar", 5), new Ingredient("voidshard", 2) }));
         Recipes.registerModRecipe(new Recipe("noblehorseshoe", 1, RecipeTechRegistry.WORKSTATION, new Ingredient[] { new Ingredient("goldbar", 8) }));
@@ -124,7 +124,12 @@ public class RegisterRecipes
         Recipes.registerModRecipe(new Recipe("forbiddenspellbook", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("book", 1), new Ingredient("voidshard", 10), new Ingredient("ancientfossilbar", 10) }));
 
         // Weapons
-        Recipes.registerModRecipe(new Recipe("juggernaut_axe", RecipeTechRegistry.TUNGSTEN_ANVIL, new Ingredient[] { new Ingredient("ectoplasm", 16), new Ingredient("tungstenbar", 12)}).showAfter("tungstensword"));
+        Recipes.registerModRecipe(new Recipe("murasama", 1, RecipeTechRegistry.FALLEN_ANVIL, new Ingredient[] { new Ingredient("bioessence", 20)}));
+        Recipes.registerModRecipe(new Recipe("inferno", 1, RecipeTechRegistry.FALLEN_ANVIL, new Ingredient[] { new Ingredient("shadowessence", 20)}));
+        Recipes.registerModRecipe(new Recipe("winterwrath", 1, RecipeTechRegistry.FALLEN_ANVIL, new Ingredient[] { new Ingredient("cryoessence", 20)}));
+        Recipes.registerModRecipe(new Recipe("brimstone", 1, RecipeTechRegistry.FALLEN_ANVIL, new Ingredient[] { new Ingredient("primordialessence", 20)}));
+        Recipes.registerModRecipe(new Recipe("juggernaut_axe", 1, RecipeTechRegistry.TUNGSTEN_ANVIL, new Ingredient[] { new Ingredient("ectoplasm", 16), new Ingredient("tungstenbar", 12)}).showAfter("tungstensword"));
+        Recipes.registerModRecipe(new Recipe("glacial_spear", 1, RecipeTechRegistry.TUNGSTEN_ANVIL, new Ingredient[] { new Ingredient("glacialbar", 14), new Ingredient("glacialshard", 6)}).showAfter("glacialboomerang"));
         Recipes.registerModRecipe(new Recipe("handgun", 1, RecipeTechRegistry.IRON_ANVIL, new Ingredient[] { new Ingredient("ironbar", 5) }));
         Recipes.registerModRecipe(new Recipe("machinegun", 1, RecipeTechRegistry.DEMONIC_ANVIL, new Ingredient[] { new Ingredient("ironbar", 10) }));
         Recipes.registerModRecipe(new Recipe("shotgun", 1, RecipeTechRegistry.DEMONIC_ANVIL, new Ingredient[] { new Ingredient("ironbar", 12), new Ingredient("frostshard", 8) }));

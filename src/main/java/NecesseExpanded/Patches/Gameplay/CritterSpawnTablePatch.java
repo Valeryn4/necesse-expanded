@@ -15,11 +15,11 @@ public class CritterSpawnTablePatch
     @OnMethodExit
     static void onExit(@This Biome Biome, @Advice.Argument(0) Level ThisLevel, @Advice.Return(readOnly = false) MobSpawnTable Table)
     {
-        if (ThisLevel.biome == BiomeRegistry.CRYSTAL_HOLLOW)
+        if (ThisLevel.baseBiome == BiomeRegistry.CRYSTAL_HOLLOW)
         {
             Table.add(20, "shard_caveling").add(20, "crystal_caveling");
         }
-        else if (ThisLevel.biome == BiomeRegistry.SLIME_CAVE)
+        else if (ThisLevel.baseBiome == BiomeRegistry.SLIME_CAVE)
         {
             Table.add(20, "shard_caveling").add(20, "slime_caveling");
         }
