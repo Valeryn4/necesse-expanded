@@ -8,7 +8,7 @@ import NecesseExpanded.Buffs.Trinkets.LuckyRingBuff;
 import NecesseExpanded.Buffs.Trinkets.NecromancerRingBuff;
 import NecesseExpanded.Buffs.Trinkets.SandwormToothBuff;
 import NecesseExpanded.Buffs.Trinkets.ShadowCrystalBuff;
-import NecesseExpanded.Buffs.Weapons.MurasamaRevengeBuff;
+import NecesseExpanded.Buffs.Weapons.Melee.MurasamaRevengeBuff;
 import necesse.engine.modifiers.ModifierValue;
 import necesse.engine.registries.BuffRegistry;
 import necesse.entity.mobs.buffs.BuffModifiers;

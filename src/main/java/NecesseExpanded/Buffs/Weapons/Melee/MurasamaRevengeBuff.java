@@ -1,4 +1,4 @@
-package NecesseExpanded.Buffs.Weapons;
+package NecesseExpanded.Buffs.Weapons.Melee;
 
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
