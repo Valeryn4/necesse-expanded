@@ -36,25 +36,27 @@ public class HappinessModifiersPatch {
     static void onExit(@This HumanMob ThisSettler, @Return(readOnly = false) List<HappinessModifier> list) 
     {
         ArrayList<HappinessModifier> Modifiers = new ArrayList<>();
-        if (ThisSettler.lastFoodEaten != null && ThisSettler.lastFoodEaten.quality != null) 
+        if (ThisSettler.getWorldEntity() != null)
         {
-            if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 10) 
+            if (ThisSettler.lastFoodEaten != null && ThisSettler.lastFoodEaten.quality != null) 
             {
-                Modifiers.add(new HappinessModifier(8, (GameMessage) new LocalMessage("settlement", "simplemeal")));
+                if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 10) 
+                {
+                    Modifiers.add(new HappinessModifier(8, (GameMessage) new LocalMessage("settlement", "simplemeal")));
+                } 
+                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 20) 
+                {
+                    Modifiers.add(new HappinessModifier(12, (GameMessage) new LocalMessage("settlement", "finemeal")));
+                } 
+                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 35) 
+                {
+                    Modifiers.add(new HappinessModifier(18, (GameMessage) new LocalMessage("settlement", "gourmetmeal")));
+                } 
+                else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 40)
+                {
+                    Modifiers.add(new HappinessModifier(24, (GameMessage) new LocalMessage("settlement", "perfectmeal")));
+                }
             } 
-            else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 20) 
-            {
-                Modifiers.add(new HappinessModifier(12, (GameMessage) new LocalMessage("settlement", "finemeal")));
-            } 
-            else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 35) 
-            {
-                Modifiers.add(new HappinessModifier(18, (GameMessage) new LocalMessage("settlement", "gourmetmeal")));
-            } 
-            else if (ThisSettler.lastFoodEaten.quality.happinessIncrease == 40)
-            {
-                Modifiers.add(new HappinessModifier(24, (GameMessage) new LocalMessage("settlement", "perfectmeal")));
-            }
-        } 
             else 
             {
                 Modifiers.add(FoodQuality.noFoodModifier);
@@ -62,7 +64,9 @@ public class HappinessModifiersPatch {
             int differentFoodsEaten = (int) ThisSettler.recentFoodItemIDsEaten.stream().distinct().count();
             DietThought DietThought = Settler.getDietThought(differentFoodsEaten);
             if (DietThought != null)
+            {
                 Modifiers.add(DietThought.getModifier());
+            }
             if (ThisSettler.levelSettler != null) 
             {
                 HappinessModifier.bedOutsideModifier = new HappinessModifier(-10, (GameMessage) new LocalMessage("settlement", "bedoutside"));
@@ -149,7 +153,13 @@ public class HappinessModifiersPatch {
                     System.out.println(Ex);
                 }
             }
-    
+
+            if (ThisSettler.buffManager.hasBuff("settler_death_penalty"))
+            {
+                Modifiers.add(new HappinessModifier(-5, (GameMessage) new LocalMessage("settlement", "recent_settler_death")));
+            }
+
             list = Modifiers;
         }
+    }
 }

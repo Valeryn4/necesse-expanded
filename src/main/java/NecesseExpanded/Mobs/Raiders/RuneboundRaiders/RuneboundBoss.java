@@ -8,6 +8,9 @@ import necesse.engine.eventStatusBars.EventStatusBarManager;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.network.client.Client;
 import necesse.engine.registries.MobRegistry;
+import necesse.engine.registries.MusicRegistry;
+import necesse.engine.sound.SoundManager;
+import necesse.engine.sound.SoundManager.MusicPriority;
 import necesse.entity.mobs.MaskShaderOptions;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
@@ -52,16 +55,23 @@ public class RuneboundBoss extends ItemAttackerRaiderMob {
             new LootItem("brutesbattleaxe")
         }
     );
-
     this.weapon = new InventoryItem("battleaxe_special");
   }
 
-  public void serverTick() {
-    super.serverTick();
+  public void init()
+  {
+    super.init();
+  }
+
+  public void clientTick() {
+    super.clientTick();
     if (this.isHostile) {
-      EventStatusBarManager.registerMobHealthStatusBar((Mob) this);
-      BossNearbyBuff.applyAround((Mob) this);
-    }
+         if (this.isClientPlayerNearby()) {
+            SoundManager.setMusic(MusicRegistry.TheRuneboundTrialPart2, MusicPriority.EVENT, 1.5F);
+            EventStatusBarManager.registerMobHealthStatusBar(this);
+         }
+         BossNearbyBuff.applyAround(this);
+      }
   }
 
   public void updateArmor() {}

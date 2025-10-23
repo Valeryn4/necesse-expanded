@@ -15,10 +15,16 @@ public class Main
 {
     public static CustomModSettingsGetter SettingsGetter;
 
+    public void preInit()
+    {
+        RegisterMobs.Register();
+        RegisterItems.Register();
+    }
+
     public void init() 
     {
-        RegisterItems.Register();
-        RegisterMobs.Register();
+        RegisterItems2.Register();
+        RegisterMobs2.Register();
         RegisterObjects.Register();
         RegisterEvents.Register();
         RegisterBuffs.Register();

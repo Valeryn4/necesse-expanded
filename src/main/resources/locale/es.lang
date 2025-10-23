@@ -75,6 +75,8 @@ murasama_tip_2=Propiedad de un espíritu sanginario. Esta hoja maldita otorga ac
 // Ammunition
 venom_bullet_tip=10% de probabilidad de envenenar al golpear, haciendo que la víctima reciba +20% de daño por 5 segundos.
 vampire_bullet_tip=10% de probabilidad al golpear de absorber la esencia vital del objetivo, curándote un 1% de tu vida máxima.
+solar_bullet_tip=10% chance on hit for the target to gain a stack of Sunlight's Judgement, dealing increasing damage over time based on the number of stacks, and lasting until all stacks have depleted.
+lunar_bullet_tip=Inflicts the Moonlight Curse, halving the victim's armour, and causing them to take 25% more damage for five seconds.
 
 [object]
 keg=Barril
@@ -124,6 +126,8 @@ brimstone=Azufre
 // Ammunition
 vampire_bullet=Bala Vampírica
 venom_bullet=Bala Venenosa
+solar_bullet=
+lunar_bullet=
 
 // Tools
 crystal_fishing_rod=Caña de Pescar de Cristal
@@ -332,8 +336,7 @@ averagesettlement=Este colono vive en un asentamiento de tamaño promedio.
 largesettlement=Este colono vive en un asentamiento grande.
 hugesettlement=Este colono vive en un asentamiento enorme.
 
-// Settlement features bonuses.
+// Misc happiness effects
 travel_bonus=Este asentamiento tiene acceso a una red de viaje rápido.
-
-// Food happiness effects.
+recent_settler_death=A settler recently died at this settlement.
 

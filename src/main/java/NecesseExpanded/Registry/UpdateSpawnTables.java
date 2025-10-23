@@ -9,11 +9,8 @@ public class UpdateSpawnTables
 {
     public static void Update()
     {
-        Biome.defaultSurfaceMobs.clear();
-        Biome.defaultSurfaceMobs = (new MobSpawnTable())
-        .add(60, "zombie")
-        .add(35, "zombiearcher")
-        .add(5, "stabbybush");
+        Biome.defaultSurfaceMobs
+        .add(10, "stabbybush");
 
         Biome.defaultCaveMobs.clear();
         Biome.defaultCaveMobs = (new MobSpawnTable())

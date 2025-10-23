@@ -75,6 +75,8 @@ murasama_tip_2=Possédée par un esprit sanguinaire, cette lame maudite confère
 // Munitions
 venom_bullet_tip=10 % de chances d'infliger un puissant poison à l'impact, augmentant les dégâts infligés à la victime de 20 % pendant cinq secondes.
 vampire_bullet_tip=10 % de chances d'absorber l'essence vitale de la cible à l'impact, vous soignant de 1 % de vos points de vie maximum.
+solar_bullet_tip=10% chance on hit for the target to gain a stack of Sunlight's Judgement, dealing increasing damage over time based on the number of stacks, and lasting until all stacks have depleted.
+lunar_bullet_tip=Inflicts the Moonlight Curse, halving the victim's armour, and causing them to take 25% more damage for five seconds.
 
 [object]
 keg=Baril
@@ -124,6 +126,8 @@ brimstone=Soufre
 // Munitions
 vampire_bullet=Balle de vampire
 venom_bullet=Balle de venin
+solar_bullet=
+lunar_bullet=
 
 // Outils
 crystal_fishing_rod=Canne à pêche en cristal
@@ -343,8 +347,6 @@ averagesettlement=Ce colon vit dans une colonie de taille moyenne.
 largesettlement=Ce colon vit dans une grande colonie.
 hugesettlement=Ce colon vit dans une immense colonie.
 
-// Bonus de fonctionnalités de la colonie.
+// Misc happiness effects
 travel_bonus=Cette colonie a accès à un réseau de transport rapide.
-
-// Effets du bonheur alimentaire.
-
+recent_settler_death=A settler recently died at this settlement.

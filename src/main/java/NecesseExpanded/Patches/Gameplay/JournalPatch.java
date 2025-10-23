@@ -1,108 +1,183 @@
 package NecesseExpanded.Patches.Gameplay;
 
-import NecesseExpanded.Journal.PirateTrinketChallenge;
+import necesse.engine.GameLoadingScreen;
 import necesse.engine.journal.*;
+import necesse.engine.localization.Localization;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
+import necesse.engine.registries.BiomeRegistry;
+import necesse.engine.registries.IncursionBiomeRegistry;
 import necesse.engine.registries.JournalChallengeRegistry;
+import necesse.engine.registries.JournalRegistry;
+import necesse.engine.util.LevelIdentifier;
+import necesse.inventory.lootTable.LootTable;
+import necesse.inventory.lootTable.LootTablePresets;
 import net.bytebuddy.asm.Advice;
 import net.bytebuddy.asm.Advice.OnMethodEnter;
 import net.bytebuddy.asm.Advice.This;
 
-@ModMethodPatch(target = JournalChallengeRegistry.class, name = "registerCore", arguments = {})
+@ModMethodPatch(target = JournalRegistry.class, name = "registerCore", arguments = {})
 public class JournalPatch 
 {
     @OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
-    static boolean onEnter(@This JournalChallengeRegistry Registry) 
+    static boolean onEnter(@This JournalRegistry Registry) 
     {
-        JournalChallengeRegistry.KILL_ZOMBIES_ID = JournalChallengeRegistry.registerChallenge("killzombies", new KillZombiesInForestSurfaceJournalChallenge());
-        JournalChallengeRegistry.CAPTURE_COW_ID = JournalChallengeRegistry.registerChallenge("capturecow", new SimpleJournalChallenge());
-        JournalChallengeRegistry.USE_MYSTERIOUS_PORTAL_ID = JournalChallengeRegistry.registerChallenge("usemysteriousportal", new SimpleJournalChallenge());
-        JournalChallengeRegistry.FOREST_SURFACE_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("forestsurface", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.KILL_ZOMBIES_ID, JournalChallengeRegistry.CAPTURE_COW_ID, JournalChallengeRegistry.USE_MYSTERIOUS_PORTAL_ID})).setReward(JournalChallengeRegistry.FOREST_SURFACE_REWARD));
+        GameLoadingScreen.drawLoadingString(Localization.translate("loading", "biomes"));
+
+        // Forest
+        JournalEntry forestSurface = JournalRegistry.registerJournalEntry("forestsurface", new JournalEntry(BiomeRegistry.FOREST, LevelIdentifier.SURFACE_IDENTIFIER));
+        forestSurface.addBiomeLootEntry(new String[]{"oaklog", "sprucelog", "apple", "blueberry", "firemone", "gobfish", "halffish", "furfish", "carp", "herring", "mackerel", "salmon", "trout"});
+        forestSurface.addMobEntries(new String[]{"cow", "bull", "sheep", "ram", "rabbit", "duck", "zombie", "zombiearcher", "stabbybush", "evilsprotector"});
+        forestSurface.addTreasureEntry(new LootTable[]{LootTablePresets.surfaceRuinsChest, LootTablePresets.rollingPinDisplayStand});
+        forestSurface.addEntryChallenges(new Integer[]{JournalChallengeRegistry.FOREST_SURFACE_CHALLENGES_ID});
+
+        JournalEntry forestCave = JournalRegistry.registerJournalEntry("forestcave", new JournalEntry(BiomeRegistry.FOREST, LevelIdentifier.CAVE_IDENTIFIER));
+        forestCave.addBiomeLootEntry(new String[]{"stone", "clay", "copperore", "ironore", "goldore", "sapphire", "salmon", "trout", "carp", "rockfish", "terrorfish", "demonfish"});
+        forestCave.addMobEntries(new String[]{"zombie", "zombiearcher", "crawlingzombie", "goblin", "vampire", "cavemole", "giantcavespider", "trenchcoatgoblinstacked", "grizzlybear", "beetcavecroppler", "stonecaveling"});
+        forestCave.addTreasureEntry(new LootTable[]{LootTablePresets.basicCaveChest, LootTablePresets.basicCaveRuinsChest});
+        forestCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.FOREST_CAVES_CHALLENGES_ID});
+
+        JournalEntry forestDeepCave = JournalRegistry.registerJournalEntry("forestdeepcave", new JournalEntry(BiomeRegistry.FOREST, LevelIdentifier.DEEP_CAVE_IDENTIFIER));
+        forestDeepCave.addBiomeLootEntry(new String[]{"deepstone", "copperore", "ironore", "goldore", "obsidian", "tungstenore", "lifequartz", "ruby", "heartfish", "deep_treasure_chest"});
+        forestDeepCave.addMobEntries(new String[]{"skeleton", "skeletonthrower", "skeletonminer", "deepcavespirit", "beetcavecroppler", "deepstonecaveling", "reaper"});
+        forestDeepCave.addTreasureEntry(new LootTable[]{LootTablePresets.deepCaveChest, LootTablePresets.basicDeepCaveRuinsChest});
+        forestDeepCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.FOREST_DEEP_CAVES_CHALLENGES_ID});
+
+        // Pirate
+        JournalEntry pirateVillage = JournalRegistry.registerJournalEntry("forestpiratevillage", new JournalEntry(BiomeRegistry.PIRATE_VILLAGE, LevelIdentifier.SURFACE_IDENTIFIER));
+        pirateVillage.addBiomeLootEntry(new String[]{"oaklog", "sprucelog", "apple", "blueberry", "firemone"});
+        pirateVillage.addMobEntries(new String[]{"pirateparrot", "piraterecruit", "piratecaptain"});
+        pirateVillage.addTreasureEntry(new LootTable[]{LootTablePresets.pirateChest, LootTablePresets.pirateDisplayStand});
+        pirateVillage.addEntryChallenges(new Integer[]{JournalChallengeRegistry.PIRATE_VILLAGE_CHALLENGES_ID});
+
+        // Plains
+        JournalEntry plainsSurface = JournalRegistry.registerJournalEntry("plainssurface", new JournalEntry(BiomeRegistry.PLAINS, LevelIdentifier.SURFACE_IDENTIFIER));
+        plainsSurface.addBiomeLootEntry(new String[]{"birchlog", "maplelog", "raspberry", "sunflower", "gobfish", "halffish", "furfish", "carp", "herring", "mackerel", "salmon", "trout"});
+        plainsSurface.addMobEntries(new String[]{"cow", "bull", "sheep", "ram", "rabbit", "duck", "zombie", "zombiearcher", "stabbybush", "evilsprotector"});
+        plainsSurface.addTreasureEntry(new LootTable[]{LootTablePresets.surfaceRuinsChest, LootTablePresets.rollingPinDisplayStand});
+        plainsSurface.addEntryChallenges(new Integer[]{JournalChallengeRegistry.PLAINS_SURFACE_CHALLENGES_ID});
+
+        JournalEntry plainsCave = JournalRegistry.registerJournalEntry("plainscave", new JournalEntry(BiomeRegistry.PLAINS, LevelIdentifier.CAVE_IDENTIFIER));
+        plainsCave.addBiomeLootEntry(new String[]{"granite", "runestone", "copperore", "ironore", "goldore", "salmon", "trout", "carp", "rockfish", "terrorfish"});
+        plainsCave.addMobEntries(new String[]{"runeboundbrute", "runeboundshaman", "runeboundtrapper", "bonewalker", "goblin", "trenchcoatgoblinstacked", "grizzlybear", "beetcavecroppler", "granitecaveling", "chieftain"});
+        plainsCave.addTreasureEntry(new LootTable[]{LootTablePresets.plainsCaveChest, LootTablePresets.plainsCaveRuinsChest});
+        plainsCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.PLAINS_CAVES_CHALLENGES_ID});
+
+        JournalEntry plainsDeepCave = JournalRegistry.registerJournalEntry("plainsdeepcave", new JournalEntry(BiomeRegistry.PLAINS, LevelIdentifier.DEEP_CAVE_IDENTIFIER));
+        plainsDeepCave.addBiomeLootEntry(new String[]{"basalt", "amber", "dryadlog", "birchlog", "maplelog", "copperore", "ironore", "goldore", "tungstenore", "lifequartz", "topaz", "salmon", "trout", "carp", "rockfish", "terrorfish", "heartfish", "deep_treasure_chest"});
+        plainsDeepCave.addMobEntries(new String[]{"forestspector", "dryadsentinel", "spiritghoul", "beetcavecroppler", "dryadcaveling", "thecursedcrone"});
+        plainsDeepCave.addTreasureEntry(new LootTable[]{LootTablePresets.deepPlainsCaveChest, LootTablePresets.plainsDeepCaveRuinsChest});
+        plainsDeepCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.PLAINS_DEEP_CAVES_CHALLENGES_ID});
+
+        // Snow
+        JournalEntry snowSurface = JournalRegistry.registerJournalEntry("snowsurface", new JournalEntry(BiomeRegistry.SNOW, LevelIdentifier.SURFACE_IDENTIFIER));
+        snowSurface.addBiomeLootEntry(new String[]{"pinelog", "blackberry", "iceblossom", "gobfish", "halffish", "icefish", "carp", "cod", "salmon", "trout"});
+        snowSurface.addMobEntries(new String[]{"sheep", "ram", "penguin", "snowhare", "duck", "polarbear", "zombie", "zombiearcher", "trapperzombie"});
+        snowSurface.addTreasureEntry(new LootTable[]{LootTablePresets.surfaceRuinsChest, LootTablePresets.rollingPinDisplayStand});
+        snowSurface.addEntryChallenges(new Integer[]{JournalChallengeRegistry.SNOW_SURFACE_CHALLENGES_ID});
+
+        JournalEntry snowCave = JournalRegistry.registerJournalEntry("snowcave", new JournalEntry(BiomeRegistry.SNOW, LevelIdentifier.CAVE_IDENTIFIER));
+        snowCave.addBiomeLootEntry(new String[]{"snowstone", "copperore", "ironore", "goldore", "frostshard", "salmon", "trout", "carp", "rockfish", "terrorfish", "demonfish"});
+        snowCave.addMobEntries(new String[]{"trapperzombie", "cavemole", "frozendwarf", "frozen_dwarf", "frozen_dwarf_mage", "frostsentry", "goblin", "vampire", "blackcavespider", "beetcavecroppler", "snowstonecaveling", "queenspider"});
+        snowCave.addTreasureEntry(new LootTable[]{LootTablePresets.snowCaveChest, LootTablePresets.snowCaveRuinsChest});
+        snowCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.SNOW_CAVES_CHALLENGES_ID});
+
+        JournalEntry snowDeepCave = JournalRegistry.registerJournalEntry("snowdeepcave", new JournalEntry(BiomeRegistry.SNOW, LevelIdentifier.DEEP_CAVE_IDENTIFIER));
+        snowDeepCave.addBiomeLootEntry(new String[]{"deepsnowstone", "copperore", "ironore", "goldore", "tungstenore", "lifequartz", "glacialore", "salmon", "trout", "carp", "rockfish", "terrorfish", "heartfish", "glacierfish", "deep_treasure_chest"});
+        snowDeepCave.addMobEntries(new String[]{"skeleton", "skeletonthrower", "snowwolf", "cryoflake", "ninja", "ice_golem", "beetcavecroppler", "deepsnowstonecaveling", "cryoqueen"});
+        snowDeepCave.addTreasureEntry(new LootTable[]{LootTablePresets.deepSnowCaveChest, LootTablePresets.snowDeepCaveRuinsChest, LootTablePresets.stringsVinyls2LootTable});
+        snowDeepCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.SNOW_DEEP_CAVES_CHALLENGES_ID});
+
+        // Dungeon
+        JournalEntry dungeon = JournalRegistry.registerJournalEntry("dungeon", new JournalEntry(BiomeRegistry.DUNGEON));
+        dungeon.addMobEntries(new String[]{"enchantedzombie", "enchantedzombiearcher", "enchantedcrawlingzombie", "voidapprentice", "beetcavecroppler", "voidwizard"});
+        dungeon.addTreasureEntry(new LootTable[]{LootTablePresets.dungeonChest});
+        dungeon.addTreasureEntry(new String[]{"bashybush"});
+        dungeon.addEntryChallenges(new Integer[]{JournalChallengeRegistry.DUNGEON_CHALLENGES_ID});
+
+        // Swamp
+        JournalEntry swampSurface = JournalRegistry.registerJournalEntry("swampsurface", new JournalEntry(BiomeRegistry.SWAMP, LevelIdentifier.SURFACE_IDENTIFIER));
+        swampSurface.addBiomeLootEntry(new String[]{"willowlog", "cattail", "mushroom", "gobfish", "halffish", "swampfish", "carp", "mackerel", "salmon", "tuna"});
+        swampSurface.addMobEntries(new String[]{"cow", "bull", "sheep", "ram", "swampslug", "frog", "duck", "zombie", "zombiearcher", "swampzombie", "swampslime"});
+        swampSurface.addTreasureEntry(new LootTable[]{LootTablePresets.surfaceRuinsChest, LootTablePresets.rollingPinDisplayStand});
+        swampSurface.addEntryChallenges(new Integer[]{JournalChallengeRegistry.SWAMP_SURFACE_CHALLENGES_ID});
+
+        JournalEntry swampCave = JournalRegistry.registerJournalEntry("swampcave", new JournalEntry(BiomeRegistry.SWAMP, LevelIdentifier.CAVE_IDENTIFIER));
+        swampCave.addBiomeLootEntry(new String[]{"swampstone", "copperore", "ironore", "goldore", "ivyore", "salmon", "carp", "rockfish", "terrorfish", "demonfish"});
+        swampCave.addMobEntries(new String[]{"frog", "zombie", "zombiearcher", "crawlingzombie", "swampzombie", "swampslime", "swampshooter", "goblin", "vampire", "cavemole", "swampcavespider", "evilwitch", "beetcavecroppler", "swampstonecaveling", "swampguardian"});
+        swampCave.addTreasureEntry(new LootTable[]{LootTablePresets.swampCaveChest, LootTablePresets.swampCaveRuinsChest, LootTablePresets.evilWitchChest});
+        swampCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.SWAMP_CAVES_CHALLENGES_ID});
+
+        JournalEntry swampDeepCave = JournalRegistry.registerJournalEntry("swampdeepcave", new JournalEntry(BiomeRegistry.SWAMP, LevelIdentifier.DEEP_CAVE_IDENTIFIER));
+        swampDeepCave.addBiomeLootEntry(new String[]{"deepswampstone", "copperore", "ironore", "goldore", "tungstenore", "lifequartz", "myceliumore", "emerald", "heartfish", "deep_treasure_chest"});
+        swampDeepCave.addMobEntries(new String[]{"ancientskeleton", "ancientskeletonthrower", "swampskeleton", "swampdweller", "giantswampslime", "smallswampcavespider", "staticjellyfish", "fishianhookwarrior", "fishianhealer", "mosquito", "beetcavecroppler", "deepswampstonecaveling", "pestwarden"});
+        swampDeepCave.addTreasureEntry(new LootTable[]{LootTablePresets.deepSwampCaveChest, LootTablePresets.swampDeepCaveRuinsChest, LootTablePresets.fishianBarrel});
+        swampDeepCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.SWAMP_DEEP_CAVES_CHALLENGES_ID});
+
+        // Desert
+        JournalEntry desertSurface = JournalRegistry.registerJournalEntry("desertsurface", new JournalEntry(BiomeRegistry.DESERT, LevelIdentifier.SURFACE_IDENTIFIER));
+        desertSurface.addBiomeLootEntry(new String[]{"palmlog", "coconut", "gobfish", "halffish", "carp", "mackerel", "salmon", "tuna"});
+        desertSurface.addMobEntries(new String[]{"wildostrich", "duck", "zombie", "zombiearcher", "mummy"});
+        desertSurface.addTreasureEntry(new LootTable[]{LootTablePresets.surfaceRuinsChest, LootTablePresets.rollingPinDisplayStand});
+        desertSurface.addEntryChallenges(new Integer[]{JournalChallengeRegistry.DESERT_SURFACE_CHALLENGES_ID});
+
+        JournalEntry desertCave = JournalRegistry.registerJournalEntry("desertcave", new JournalEntry(BiomeRegistry.DESERT, LevelIdentifier.CAVE_IDENTIFIER));
+        desertCave.addBiomeLootEntry(new String[]{"sandstone", "copperore", "ironore", "goldore", "quartz", "amethyst", "salmon", "carp", "rockfish", "terrorfish", "demonfish"});
+        desertCave.addMobEntries(new String[]{"mummy", "mummymage", "sandspirit", "jackal", "beetcavecroppler", "sandstonecaveling", "ancientvulture"});
+        desertCave.addTreasureEntry(new LootTable[]{LootTablePresets.desertCaveChest, LootTablePresets.desertCaveRuinsChest});
+        desertCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.DESERT_CAVES_CHALLENGES_ID});
+
+        JournalEntry desertDeepCave = JournalRegistry.registerJournalEntry("desertdeepcave", new JournalEntry(BiomeRegistry.DESERT, LevelIdentifier.DEEP_CAVE_IDENTIFIER));
+        desertDeepCave.addBiomeLootEntry(new String[]{"deepsandstone", "copperore", "ironore", "goldore", "ancientfossilore", "lifequartz", "ruby", "heartfish", "deep_treasure_chest"});
+        desertDeepCave.addMobEntries(new String[]{"ancientskeleton", "ancientskeletonthrower", "desertcrawler", "sandworm", "beetcavecroppler", "deepsandstonecaveling", "sageandgrit"});
+        desertDeepCave.addTreasureEntry(new LootTable[]{LootTablePresets.deepDesertCaveChest, LootTablePresets.desertDeepCaveRuinsChest});
+        desertDeepCave.addEntryChallenges(new Integer[]{JournalChallengeRegistry.DESERT_DEEP_CAVES_CHALLENGES_ID});
+
+        JournalEntry temple = JournalRegistry.registerJournalEntry("temple", new JournalEntry(BiomeRegistry.TEMPLE));
+        temple.addMobEntries(new String[]{"ancientskeleton", "ancientarmoredskeleton", "ancientskeletonthrower", "ancientskeletonmage", "beetcavecroppler", "fallenwizard"});
+        temple.addTreasureEntry(new LootTable[]{LootTablePresets.templeChest});
+        temple.addEntryChallenges(new Integer[]{JournalChallengeRegistry.TEMPLE_CHALLENGES_ID});
+
+        // Tier 1 incursions
+        JournalEntry forestDeepCaveIncursion = JournalRegistry.registerJournalEntry("forestdeepcaveincursion", new JournalEntry(BiomeRegistry.FOREST_DEEP_CAVE_INCURSION, IncursionBiomeRegistry.FOREST_DEEP_CAVE_INCURSION));
+        forestDeepCaveIncursion.addBiomeLootEntry(new String[]{"deepstone", "tungstenore", "upgradeshard", "alchemyshard"});
+        forestDeepCaveIncursion.addMobEntries(new String[]{"skeleton", "skeletonthrower", "deepcavespirit", "beetcavecroppler", "shard_caveling", "reaper"});
+
+        JournalEntry snowDeepCaveIncursion = JournalRegistry.registerJournalEntry("snowdeepcaveincursion", new JournalEntry(BiomeRegistry.SNOW_DEEP_CAVE_INCURSION, IncursionBiomeRegistry.SNOW_DEEP_CAVE_INCURSION));
+        snowDeepCaveIncursion.addBiomeLootEntry(new String[]{"deepsnowstone", "glacialore", "upgradeshard", "alchemyshard", "salmon", "trout", "carp", "rockfish", "terrorfish"});
+        snowDeepCaveIncursion.addMobEntries(new String[]{"skeleton", "skeletonthrower", "snowwolf", "cryoflake", "ninja", "ice_golem", "beetcavecroppler", "shard_caveling", "cryoqueen"});
+
+        JournalEntry swampDeepCaveIncursion = JournalRegistry.registerJournalEntry("swampdeepcaveincursion", new JournalEntry(BiomeRegistry.SWAMP_DEEP_CAVE_INCURSION, IncursionBiomeRegistry.SWAMP_DEEP_CAVE_INCURSION));
+        swampDeepCaveIncursion.addBiomeLootEntry(new String[]{"deepswampstone", "myceliumore", "upgradeshard", "alchemyshard"});
+        swampDeepCaveIncursion.addMobEntries(new String[]{"ancientskeleton", "ancientskeletonthrower", "swampskeleton", "swampdweller", "giantswampslime", "smallswampcavespider", "beetcavecroppler", "shard_caveling", "pestwarden"});
         
-        JournalChallengeRegistry.BEAT_A_BEAR_ID = JournalChallengeRegistry.registerChallenge("beatabear", new DefeatMobJournalChallenge(new String[]{"grizzlybear"}));
-        JournalChallengeRegistry.MINE_ORE_WITH_EXPLOSIVES_ID = JournalChallengeRegistry.registerChallenge("mineorewithexplosive", new MineOreWithExplosivesChallenge());
-        JournalChallengeRegistry.DEFEAT_CAVELING_ID = JournalChallengeRegistry.registerChallenge("defeatcaveling", new DefeatMobJournalChallenge(new String[]{"stonecaveling"}));
-        JournalChallengeRegistry.FOREST_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("forestcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.BEAT_A_BEAR_ID, JournalChallengeRegistry.MINE_ORE_WITH_EXPLOSIVES_ID, JournalChallengeRegistry.DEFEAT_CAVELING_ID})).setReward(JournalChallengeRegistry.FOREST_CAVE_REWARD));
+        JournalEntry desertDeepCaveIncursion = JournalRegistry.registerJournalEntry("desertdeepcaveincursion", new JournalEntry(BiomeRegistry.DESERT_DEEP_CAVE_INCURSION, IncursionBiomeRegistry.DESERT_DEEP_CAVE_INCURSION));
+        desertDeepCaveIncursion.addBiomeLootEntry(new String[]{"deepsandstone", "ancientfossilore", "upgradeshard", "alchemyshard"});
+        desertDeepCaveIncursion.addMobEntries(new String[]{"ancientskeleton", "ancientskeletonthrower", "desertcrawler", "sandworm", "beetcavecroppler", "shard_caveling", "sageandgrit"});
         
-        JournalChallengeRegistry.CRAFT_TUNGSTEN_WEAPON_ID = JournalChallengeRegistry.registerChallenge("crafttungstenweapon", new CraftItemJournalChallenge(new String[]{"tungstensword", "tungstenspear", "tungstenbow", "tungstengreatbow", "tungstenboomerang"}));
-        JournalChallengeRegistry.CRAFT_LIFE_ELIXIR_ID = JournalChallengeRegistry.registerChallenge("craftlifeelixir", new CraftItemJournalChallenge(new String[]{"lifeelixir"}));
-        JournalChallengeRegistry.PLANT_LEMON_TREE_ID = JournalChallengeRegistry.registerChallenge("plantlemontree", new ObjectPlacedJournalChallenge(new String[]{"lemonsapling"}));
-        JournalChallengeRegistry.FOREST_DEEP_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("forestdeepcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.CRAFT_TUNGSTEN_WEAPON_ID, JournalChallengeRegistry.CRAFT_LIFE_ELIXIR_ID, JournalChallengeRegistry.PLANT_LEMON_TREE_ID})).setReward(JournalChallengeRegistry.FOREST_DEEP_CAVE_REWARD));
+        // Tier 2 incursions
+        JournalEntry slimeCaveIncursion = JournalRegistry.registerJournalEntry("slimecaveincursion", new JournalEntry(BiomeRegistry.SLIME_CAVE, IncursionBiomeRegistry.SLIME_CAVE));
+        slimeCaveIncursion.addBiomeLootEntry(new String[]{"slimestone", "slimeum", "upgradeshard", "alchemyshard", "slimefish"});
+        slimeCaveIncursion.addMobEntries(new String[]{"warriorslime", "leggedslimethrower", "mageslime", "ghostslime", "slimeworm", "beetcavecroppler", "shard_caveling", "motherslime"});
         
-        JournalChallengeRegistry.CRAFT_RASPBERRY_JUICE_ID = JournalChallengeRegistry.registerChallenge("craftraspberryjuice", new CraftItemJournalChallenge(new String[]{"raspberryjuice"}));
-        JournalChallengeRegistry.SMACK_LEAF_PILES_ID = JournalChallengeRegistry.registerChallenge("smackleafpiles", new ObjectsDestroyedJournalChallenge(20, new String[]{"leafpile"}));
-        JournalChallengeRegistry.CAPTURE_BEE_ID = JournalChallengeRegistry.registerChallenge("capturebee", new SimpleJournalChallenge());
-        JournalChallengeRegistry.PLAINS_SURFACE_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("plainssurface", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.CRAFT_RASPBERRY_JUICE_ID, JournalChallengeRegistry.SMACK_LEAF_PILES_ID, JournalChallengeRegistry.CAPTURE_BEE_ID})).setReward(JournalChallengeRegistry.PLAINS_SURFACE_REWARD));
+        JournalEntry graveyardIncursion = JournalRegistry.registerJournalEntry("graveyardincursion", new JournalEntry(BiomeRegistry.GRAVEYARD, IncursionBiomeRegistry.GRAVEYARD));
+        graveyardIncursion.addBiomeLootEntry(new String[]{"nightsteelore", "upgradeshard", "alchemyshard"});
+        graveyardIncursion.addMobEntries(new String[]{"cryptvampire", "cryptbat", "phantom", "beetcavecroppler", "shard_caveling", "nightswarm"});
         
-        JournalChallengeRegistry.BREAK_RUNIC_BOULDERS_ID = JournalChallengeRegistry.registerChallenge("breakrunicboulder", new ObjectsDestroyedJournalChallenge(3, new String[]{"runicboulder"}));
-        JournalChallengeRegistry.EQUIP_RUNIC_SET_ID = JournalChallengeRegistry.registerChallenge("equiprunicset", new EquippedArmorSetJournalChallenge("runicboots", "runicchestplate", new String[]{"runichat", "runichood", "runichelmet", "runiccrown"}));
-        JournalChallengeRegistry.FELL_THE_CHIEFTAIN_ID = JournalChallengeRegistry.registerChallenge("fellthechieftain", new DefeatMobJournalChallenge(new String[]{"chieftain"}));
-        JournalChallengeRegistry.PLAINS_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("plainscave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.BREAK_RUNIC_BOULDERS_ID, JournalChallengeRegistry.EQUIP_RUNIC_SET_ID, JournalChallengeRegistry.FELL_THE_CHIEFTAIN_ID})).setReward(JournalChallengeRegistry.PLAINS_CAVE_REWARD));
+        JournalEntry spiderCastleIncursion = JournalRegistry.registerJournalEntry("spidercastleincursion", new JournalEntry(BiomeRegistry.SPIDER_CASTLE, IncursionBiomeRegistry.SPIDER_CASTLE));
+        spiderCastleIncursion.addBiomeLootEntry(new String[]{"spiderstone", "spideriteore", "upgradeshard", "alchemyshard"});
+        spiderCastleIncursion.addMobEntries(new String[]{"spiderkin", "spiderkinwarrior", "spiderkinarcher", "spiderkinmage", "bloatedspider", "webspinner", "beetcavecroppler", "shard_caveling", "spiderempress"});
         
-        JournalChallengeRegistry.CRAFT_DRYAD_WEAPON_ID = JournalChallengeRegistry.registerChallenge("craftdryadweapon", new CraftItemJournalChallenge(new String[]{"dryadgreathammer", "dryadbow", "dryadbarrage", "dryadbranch"}));
-        JournalChallengeRegistry.POSSESSED_BY_FOREST_SPECTOR_ID = JournalChallengeRegistry.registerChallenge("possessedbyforestspector", new BecomePossessedByAForestSpectorJournalChallenge());
-        JournalChallengeRegistry.WIN_TIC_TAC_TOE_VS_CRONE_ID = JournalChallengeRegistry.registerChallenge("wintictactoevscrone", new SimpleJournalChallenge());
-        JournalChallengeRegistry.PLAINS_DEEP_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("plainsdeepcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.CRAFT_DRYAD_WEAPON_ID, JournalChallengeRegistry.POSSESSED_BY_FOREST_SPECTOR_ID, JournalChallengeRegistry.WIN_TIC_TAC_TOE_VS_CRONE_ID})).setReward(JournalChallengeRegistry.PLAINS_DEEP_CAVE_REWARD));
-        
-        JournalChallengeRegistry.CATCH_ICEFISH_ID = JournalChallengeRegistry.registerChallenge("catchicefish", new SimpleJournalChallenge());
-        JournalChallengeRegistry.PICKUP_SNOWBALLS_ID = JournalChallengeRegistry.registerChallenge("pickupsnowballs", new PickupItemsJournalChallenge(25, true, new String[]{"snowball"}));
-        JournalChallengeRegistry.FIND_WET_ICICLE_ID = JournalChallengeRegistry.registerChallenge("findweticicle", new ItemObtainedJournalChallenge(new String[]{"weticicle"}));
-        JournalChallengeRegistry.SNOW_SURFACE_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("snowsurface", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.CATCH_ICEFISH_ID, JournalChallengeRegistry.PICKUP_SNOWBALLS_ID, JournalChallengeRegistry.FIND_WET_ICICLE_ID})).setReward(JournalChallengeRegistry.SNOW_SURFACE_REWARD));
-        
-        int DEFEAT_DWARVEN_MAGES = JournalChallengeRegistry.registerChallenge("snow_defeatmages", new MobsKilledJournalChallenge(3, "frozen_dwarf_mage"));
-        JournalChallengeRegistry.IMPALE_FIVE_ICE_JAVELINS_ID = JournalChallengeRegistry.registerChallenge("impalejavelins", new ImpaleIceJavelinsJournalChallenge());
-        JournalChallengeRegistry.DESTROY_ROYAL_EGG_ID = JournalChallengeRegistry.registerChallenge("destroyroyalegg", new SimpleJournalChallenge());
-        JournalChallengeRegistry.SNOW_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("snowcave", (new MultiJournalChallenge(new Integer[]{DEFEAT_DWARVEN_MAGES, JournalChallengeRegistry.IMPALE_FIVE_ICE_JAVELINS_ID, JournalChallengeRegistry.DESTROY_ROYAL_EGG_ID})).setReward(JournalChallengeRegistry.SNOW_CAVE_REWARD));
-        
-        JournalChallengeRegistry.WALK_ON_DEEP_ICE_ID = JournalChallengeRegistry.registerChallenge("walkondeepice", new SimpleJournalChallenge());
-        int DEFEAT_ICE_GOLEMS = JournalChallengeRegistry.registerChallenge("snow_defeatgolems", new MobsKilledJournalChallenge(5, "ice_golem"));
-        JournalChallengeRegistry.SEVERAL_POTION_BUFFS_ID = JournalChallengeRegistry.registerChallenge("severalpotionbuffs", new SeveralPotionBuffsInDeepSnowCavesJournalChallenge());
-        JournalChallengeRegistry.SNOW_DEEP_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("snowdeepcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.WALK_ON_DEEP_ICE_ID, DEFEAT_ICE_GOLEMS, JournalChallengeRegistry.SEVERAL_POTION_BUFFS_ID})).setReward(JournalChallengeRegistry.SNOW_DEEP_CAVE_REWARD));
-        
-        JournalChallengeRegistry.FREE_CAPTURED_MAGE_ID = JournalChallengeRegistry.registerChallenge("freecapturedmage", new FreeMageJournalChallenge());
-        JournalChallengeRegistry.UPGRADE_ALCHEMY_TABLE = JournalChallengeRegistry.registerChallenge("upgradealchemytable", new SimpleJournalChallenge());
-        JournalChallengeRegistry.FIND_VOID_WIZARD_CHAMBER_ID = JournalChallengeRegistry.registerChallenge("findvoidwizardchamber", new LevelVisitedJournalChallenge(new String[]{"dungeonarena"}));
-        JournalChallengeRegistry.DUNGEON_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("dungeon", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.FREE_CAPTURED_MAGE_ID, JournalChallengeRegistry.UPGRADE_ALCHEMY_TABLE, JournalChallengeRegistry.FIND_VOID_WIZARD_CHAMBER_ID})).setReward(JournalChallengeRegistry.DUNGEON_REWARD));
-        
-        JournalChallengeRegistry.CRAFT_ROASTED_FROG_LEG_ID = JournalChallengeRegistry.registerChallenge("craftroastedfrogleg", new CraftItemJournalChallenge(new String[]{"roastedfrogleg"}));
-        JournalChallengeRegistry.PICK_UP_SWAMP_LARVAE_ID = JournalChallengeRegistry.registerChallenge("pickupswamplarvae", new PickupItemsJournalChallenge(10, true, new String[]{"swamplarva"}));
-        JournalChallengeRegistry.GATHER_MUSHROOMS_ID = JournalChallengeRegistry.registerChallenge("gathermushrooms", new PickupItemsJournalChallenge(30, true, new String[]{"mushroom"}));
-        JournalChallengeRegistry.SWAMP_SURFACE_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("swampsurface", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.CRAFT_ROASTED_FROG_LEG_ID, JournalChallengeRegistry.PICK_UP_SWAMP_LARVAE_ID, JournalChallengeRegistry.GATHER_MUSHROOMS_ID})).setReward(JournalChallengeRegistry.SWAMP_SURFACE_REWARD));
-        
-        JournalChallengeRegistry.CUT_SWAMP_THORNS_ID = JournalChallengeRegistry.registerChallenge("cutswampthorns", new CutSwampThornsJournalChallenge());
-        JournalChallengeRegistry.CRAFT_IVY_TOOL_ID = JournalChallengeRegistry.registerChallenge("craftivytool", new CraftItemJournalChallenge(new String[]{"ivypickaxe", "ivyaxe", "ivyshovel"}));
-        JournalChallengeRegistry.PARTY_IN_SWAMP_CAVES_ID = JournalChallengeRegistry.registerChallenge("partyinswampcaves", new PartyInSwampCavesJournalChallenge());
-        JournalChallengeRegistry.SWAMP_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("swampcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.CUT_SWAMP_THORNS_ID, JournalChallengeRegistry.CRAFT_IVY_TOOL_ID, JournalChallengeRegistry.PARTY_IN_SWAMP_CAVES_ID})).setReward(JournalChallengeRegistry.SWAMP_CAVE_REWARD));
-        
-        JournalChallengeRegistry.ENCHANT_AND_EQUIP_ARMOR_SET_ID = JournalChallengeRegistry.registerChallenge("enchantandequipset", new EnchantAndEquipJournalChallenge());
-        JournalChallengeRegistry.CRAFT_DECAYING_LEAF_ID = JournalChallengeRegistry.registerChallenge("craftdecayingleaf", new CraftItemJournalChallenge(new String[]{"decayingleaf"}));
-        JournalChallengeRegistry.CUT_SWAMP_COBWEB_ID = JournalChallengeRegistry.registerChallenge("cutswampcobweb", new CutSwampCobwebJournalChallenge());
-        JournalChallengeRegistry.SWAMP_DEEP_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("swampdeepcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.ENCHANT_AND_EQUIP_ARMOR_SET_ID, JournalChallengeRegistry.CRAFT_DECAYING_LEAF_ID, JournalChallengeRegistry.CUT_SWAMP_COBWEB_ID})).setReward(JournalChallengeRegistry.SWAMP_DEEP_CAVE_REWARD));
-        
-        JournalChallengeRegistry.FIND_INEFFICIENT_FEATHER_ID = JournalChallengeRegistry.registerChallenge("findinefficientfeather", new ItemObtainedJournalChallenge(new String[]{"inefficientfeather"}));
-        JournalChallengeRegistry.EAT_COCONUT_ID = JournalChallengeRegistry.registerChallenge("eatcoconut", new FoodConsumedJournalChallenge(new String[]{"coconut"}));
-        JournalChallengeRegistry.CRAFT_PALM_FURNITURE_ID = JournalChallengeRegistry.registerChallenge("craftpalmfurniture", new CraftItemJournalChallenge(new String[]{"palmchest", "palmdinnertable", "palmdesk", "palmmodulartable", "palmchair", "palmbench", "palmbookshelf", "palmcabinet", "palmbed", "palmdoublebed", "palmdresser", "palmclock", "palmcandelabra", "palmdisplay", "palmbathtub", "palmtoilet"}));
-        JournalChallengeRegistry.DESERT_SURFACE_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("desertsurface", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.FIND_INEFFICIENT_FEATHER_ID, JournalChallengeRegistry.EAT_COCONUT_ID, JournalChallengeRegistry.CRAFT_PALM_FURNITURE_ID})).setReward(JournalChallengeRegistry.DESERT_SURFACE_REWARD));
-        
-        JournalChallengeRegistry.SMASH_VASES_ID = JournalChallengeRegistry.registerChallenge("smashvases", new DestroyVasesInDesertCaveJournalChallenge());
-        JournalChallengeRegistry.EQUIP_SETTLER_QUARTZ_ID = JournalChallengeRegistry.registerChallenge("equipsettlerquartz", new EquipSettlerWithQuartzJournalChallenge());
-        JournalChallengeRegistry.FIND_CAVELING_OASIS_ID = JournalChallengeRegistry.registerChallenge("findcavelingoasis", new SimpleJournalChallenge());
-        JournalChallengeRegistry.DESERT_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("desertcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.SMASH_VASES_ID, JournalChallengeRegistry.EQUIP_SETTLER_QUARTZ_ID, JournalChallengeRegistry.FIND_CAVELING_OASIS_ID})).setReward(JournalChallengeRegistry.DESERT_CAVE_REWARD));
-        
-        JournalChallengeRegistry.LOOT_DEEP_DESERT_TRINKET_ID = JournalChallengeRegistry.registerChallenge("lootdeepdeserttrinket", new ObtainDeepDesertTrinketJournalChallenge());
-        JournalChallengeRegistry.ONESHOT_SKELETON_ID = JournalChallengeRegistry.registerChallenge("oneshotskeleton", new SimpleJournalChallenge());
-        JournalChallengeRegistry.FIND_TEMPLE_BIOME_ID = JournalChallengeRegistry.registerChallenge("findtemplebiome", new LevelVisitedJournalChallenge(new String[]{"temple", "templearena"}));
-        JournalChallengeRegistry.DESERT_DEEP_CAVES_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("desertdeepcave", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.LOOT_DEEP_DESERT_TRINKET_ID, JournalChallengeRegistry.ONESHOT_SKELETON_ID, JournalChallengeRegistry.FIND_TEMPLE_BIOME_ID})).setReward(JournalChallengeRegistry.DESERT_DEEP_CAVE_REWARD));
-        
-        JournalChallengeRegistry.FIND_SECRET_PAINTING_ID = JournalChallengeRegistry.registerChallenge("findsecretpainting", new ItemObtainedJournalChallenge(new String[]{"paintingcooljonas", "paintingelder"}));
-        JournalChallengeRegistry.DEFEAT_OLD_NEMESIS_ID = JournalChallengeRegistry.registerChallenge("defeatoldnemesis", new DefeatMobJournalChallenge(new String[]{"fallenwizard"}));
-        JournalChallengeRegistry.CRAFT_FALLEN_ALTAR_ID = JournalChallengeRegistry.registerChallenge("craftfallenaltar", new CraftItemJournalChallenge(new String[]{"fallenaltar"}));
-        JournalChallengeRegistry.TEMPLE_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("temple", (new MultiJournalChallenge(new Integer[]{JournalChallengeRegistry.FIND_SECRET_PAINTING_ID, JournalChallengeRegistry.DEFEAT_OLD_NEMESIS_ID, JournalChallengeRegistry.CRAFT_FALLEN_ALTAR_ID})).setReward(JournalChallengeRegistry.TEMPLE_REWARD));
-        
-        int DEFEAT_PIRATE_CAPTAIN = JournalChallengeRegistry.registerChallenge("defeatpiratecaptain", new DefeatMobJournalChallenge(new String[]{"piratecaptain"}));
-        JournalChallengeRegistry.FREE_CAPTURED_STYLIST_ID = JournalChallengeRegistry.registerChallenge("freecapturedstylist", new FreeStylistJournalChallenge());
-        int FIND_PIRATE_TRINKET = JournalChallengeRegistry.registerChallenge("findpiratetrinket", new PirateTrinketChallenge());
-        JournalChallengeRegistry.PIRATE_VILLAGE_CHALLENGES_ID = JournalChallengeRegistry.registerChallenge("forestpiratevillage", (new MultiJournalChallenge(new Integer[]{DEFEAT_PIRATE_CAPTAIN, JournalChallengeRegistry.FREE_CAPTURED_STYLIST_ID, FIND_PIRATE_TRINKET})).setReward(JournalChallengeRegistry.PIRATE_VILLAGE_REWARD));
+        // Tier 3 incursions
+        JournalEntry sunArenaIncursion = JournalRegistry.registerJournalEntry("sunarenaincursion", new JournalEntry(BiomeRegistry.SUN_ARENA, IncursionBiomeRegistry.SUN_ARENA));
+        sunArenaIncursion.addMobEntries(new String[]{"sunlightchampion"});
+
+        JournalEntry moonArenaIncursion = JournalRegistry.registerJournalEntry("moonarenaincursion", new JournalEntry(BiomeRegistry.MOON_ARENA, IncursionBiomeRegistry.MOON_ARENA));
+        moonArenaIncursion.addMobEntries(new String[]{"moonlightdancer"});
+
+        // Tier 4 incursions
+        JournalEntry crystalHollowIncursion = JournalRegistry.registerJournalEntry("crystalhollowincursion", new JournalEntry(BiomeRegistry.CRYSTAL_HOLLOW, IncursionBiomeRegistry.CRYSTAL_HOLLOW));
+        crystalHollowIncursion.addBiomeLootEntry(new String[]{"omnicrystal", "amethyst", "sapphire", "emerald", "ruby", "pearlescentshard", "upgradeshard", "alchemyshard", "salmon", "carp", "rockfish", "terrorfish", "pearlfish"});
+        crystalHollowIncursion.addMobEntries(new String[]{"crystalgolem", "crystalarmadillo", "shard_caveling", "crystal_caveling", "crystaldragon"});
 
         return true;
     }

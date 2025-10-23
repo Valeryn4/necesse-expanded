@@ -26,6 +26,8 @@ public class AnglerPatch {
 
       Mob.shop.buyingShop.addItem("demonfish", new BuyingShopItem().setPriceBasedOnHappiness(25, 15).addKilledMobRequirement("voidwizard"));
       Mob.shop.buyingShop.addItem("heartfish", new BuyingShopItem().setPriceBasedOnHappiness(35, 25).addKilledMobRequirement("reaper"));
+      Mob.shop.buyingShop.addItem("glacierfish", new BuyingShopItem().setPriceBasedOnHappiness(35, 25).addKilledMobRequirement("reaper"));
+      Mob.shop.buyingShop.addItem("slimefish", new BuyingShopItem().setPriceBasedOnHappiness(45, 35).addKilledMobRequirement("fallenwizard"));
       Mob.shop.buyingShop.addItem("pearlfish", new BuyingShopItem().setPriceBasedOnHappiness(60, 50).addKilledMobRequirement("crystaldragon"));
   }
 }

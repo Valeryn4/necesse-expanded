@@ -6,7 +6,7 @@ import net.bytebuddy.asm.Advice.OnMethodExit;
 import net.bytebuddy.asm.Advice.This;
 
 @ModConstructorPatch(target = ElderHumanMob.class, arguments = {})
-public class ElderPatch 
+public class ElderActivityPatch 
 {
   @OnMethodExit
   static void onExit(@This ElderHumanMob Mob) 

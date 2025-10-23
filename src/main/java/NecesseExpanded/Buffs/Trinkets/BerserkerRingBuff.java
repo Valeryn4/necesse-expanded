@@ -1,18 +1,13 @@
 package NecesseExpanded.Buffs.Trinkets;
 
 import necesse.engine.localization.Localization;
-import necesse.engine.registries.BuffRegistry;
-import necesse.entity.levelEvent.mobAbilityLevelEvent.MobManaChangeEvent;
 import necesse.entity.mobs.MobWasHitEvent;
-import necesse.entity.mobs.MobWasKilledEvent;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
-import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
-import necesse.inventory.item.placeableItem.consumableItem.potionConsumableItem.resourcePotions.ManaPotionItem;
 import necesse.inventory.item.trinketItem.TrinketItem;
 
 public class BerserkerRingBuff extends TrinketBuff

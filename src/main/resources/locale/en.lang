@@ -73,8 +73,10 @@ murasama_tip_1=Hold [input=mouse2] to charge up a dash to slice through enemies.
 murasama_tip_2=Possessed by a bloodthirsty spirit, this accursed blade grants a stack of Murasama's Revenge on kill, increasing resilience gain and damage dealt.
 
 // Ammunition
-venom_bullet_tip=10% chance on hit to inflict a powerful poison, causing the victim to take 20% more damage for five seconds.
+venom_bullet_tip=Inflict a powerful poison, causing the victim to take 20% more damage for five seconds.
 vampire_bullet_tip=10% chance on hit to absorb the target's life essence, healing you for 1% of your maximum health.
+solar_bullet_tip=10% chance on hit for the target to gain a stack of Sunlight's Judgement, dealing increasing damage over time based on the number of stacks, and lasting until all stacks have depleted.
+lunar_bullet_tip=Inflicts the Moonlight Curse, halving the victim's armour, and causing them to take 25% more damage for five seconds.
 
 [object]
 keg=Keg
@@ -124,6 +126,8 @@ brimstone=Brimstone
 // Ammunition
 vampire_bullet=Vampire Bullet
 venom_bullet=Venom Bullet
+solar_bullet=Solar Bullet
+lunar_bullet=Lunar Bullet
 
 // Tools
 crystal_fishing_rod=Crystal Fishing Rod
@@ -332,8 +336,8 @@ averagesettlement=This settler lives in an average sized settlement.
 largesettlement=This settler lives in a large settlement.
 hugesettlement=This settler lives in a huge settlement.
 
-// Settlement features bonuses.
+// Misc effects
 travel_bonus=This settlement has access to a fast travel network.
+recent_settler_death=A settler recently died at this settlement.
 
 // Food happiness effects.
-

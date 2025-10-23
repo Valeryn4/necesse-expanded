@@ -75,6 +75,8 @@ murasama_tip_2=Diese verfluchte Klinge, die von einem blutrünstigen Geist beses
 // Munition
 venom_bullet_tip=10 % Chance, bei einem Treffer ein starkes Gift zu verursachen, das dem Opfer fünf Sekunden lang 20 % mehr Schaden zufügt.
 vampire_bullet_tip=10 % Chance, bei einem Treffer die Lebensessenz des Ziels zu absorbieren und dich um 1 % deiner maximalen Gesundheit zu heilen.
+solar_bullet_tip=10% chance on hit for the target to gain a stack of Sunlight's Judgement, dealing increasing damage over time based on the number of stacks, and lasting until all stacks have depleted.
+lunar_bullet_tip=Inflicts the Moonlight Curse, halving the victim's armour, and causing them to take 25% more damage for five seconds.
 
 [object]
 keg=Fass
@@ -124,6 +126,8 @@ brimstone=Schwefel
 // Munition
 vampire_bullet=Vampirkugel
 venom_bullet=Giftkugel
+solar_bullet=
+lunar_bullet=
 
 // Werkzeuge
 crystal_fishing_rod=Kristallangelrute
@@ -283,12 +287,12 @@ roommissinglights=Das Schlafzimmer dieses Siedlers hat keine Lichtquelle.
 sharingroom=Dieser Siedler teilt sich ein Schlafzimmer mit anderen Siedlern.
 
 // Zimmergröße
-sizebaby =winzig.
-sizetiny =sehr klein.
-sizesmall =klein.
-sizemediocre =mittelgroß.
-sizedecent =angenehm groß.
-sizelarge =sehr groß!
+sizebaby=winzig.
+sizetiny=sehr klein.
+sizesmall=klein.
+sizemediocre=mittelgroß.
+sizedecent=angenehm groß.
+sizelarge=sehr groß!
 sizehuge=riesig!
 sizemood=Das Schlafzimmer dieses Siedlers ist <size> groß.
 
@@ -332,8 +336,7 @@ averagesettlement=Dieser Siedler lebt in einer Siedlung durchschnittlicher Grö�
 largesettlement=Dieser Siedler lebt in einer großen Siedlung.
 hugesettlement=Dieser Siedler lebt in einer riesigen Siedlung.
 
-// Boni für Siedlungen.
+// Misc happiness effects
 travel_bonus=Diese Siedlung verfügt über ein Schnellreisenetz.
-
-// Glückseffekte durch Essen.
+recent_settler_death=A settler recently died at this settlement.
 
