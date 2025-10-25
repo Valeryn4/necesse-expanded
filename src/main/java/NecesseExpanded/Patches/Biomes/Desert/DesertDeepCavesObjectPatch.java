@@ -18,5 +18,7 @@ public class DesertDeepCavesObjectPatch
     {
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.002).onlyOnTile(TileRegistry.deepSandstoneID).placeObject("life_quartz_cluster_small");
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.002).onlyOnTile(TileRegistry.deepSandstoneID).placeObject("rubyclustersmall");
+        BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.0005).onlyOnTile(TileRegistry.deepSandstoneID).placeObject("life_quartz_cluster");
+        BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.0005).onlyOnTile(TileRegistry.deepSandstoneID).placeObject("rubycluster");
     }
 }

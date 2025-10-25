@@ -49,5 +49,6 @@ public class RegisterBuffs
 
         // Special invisible buffs that are unavailable to players. These should only be used to confer temporary happiness effects.
         BuffRegistry.registerBuff("settler_death_penalty", new SimplePotionBuff(new ModifierValue[]{new ModifierValue(BuffModifiers.ATTACK_SPEED, 0F)}));
+        BuffRegistry.registerBuff("settler_raid_bonus", new SimplePotionBuff(new ModifierValue[]{new ModifierValue(BuffModifiers.ATTACK_SPEED, 0F)}));
     }
 }

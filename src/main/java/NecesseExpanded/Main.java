@@ -28,6 +28,7 @@ public class Main
         RegisterObjects.Register();
         RegisterEvents.Register();
         RegisterBuffs.Register();
+        RegisterTiles.Register();
         RegisterProjectiles.Register();
         RegisterExpeditions.Register();
         RegisterRecipeTechs.Register();
@@ -51,7 +52,7 @@ public class Main
     {
         CustomModSettings ModSettings = new CustomModSettings()
 
-        // -----------------------------------------------------------------------------------------------------
+        // Raid Settings
         .addTextSeparator("ne_settings_separator_1")
 
         .addBooleanSetting("raids_enabled", true)
@@ -69,11 +70,14 @@ public class Main
         .addIntSetting("raid_size_multiplier", 3, 1, 100, IntSetting.DisplayMode.BAR)
         .addParagraph("raid_size_tip")
 
-        // -----------------------------------------------------------------------------------------------------
+        // Settlement Settings
         .addTextSeparator("ne_settings_separator_2")
 
         .addBooleanSetting("happiness_changes_enabled", true)
         .addParagraph("happiness_changes_tip")
+
+        // Miscellaneous Settings
+        .addTextSeparator("ne_settings_separator_3")
 
         .addBooleanSetting("starter_equipment_enabled", true)
         .addParagraph("starter_equipment_tip")

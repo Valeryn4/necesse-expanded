@@ -16,12 +16,10 @@ public class SettlerDeathHappinessPenalty
     @OnMethodExit
     static void onExit(@This HumanMob ThisSettler)
     {
-        System.out.println("TEST " + ThisSettler.getMob().getDisplayName());
-        if (ThisSettler.getSettlementServerData() != null)
+        if (ThisSettler.getSettlementServerData() != null && NecesseExpanded.Main.SettingsGetter.getBoolean("happiness_changes_enabled"))
         {
             for (LevelSettler Settler : ThisSettler.getSettlementServerData().settlers)
             {
-                System.out.println("TESTSTRING " + Settler.getMob().getSettlerName());
                 Settler.getMob().getMob().buffManager.addBuff(new ActiveBuff("settler_death_penalty", Settler.getMob().getMob(), 600f, Settler.getMob().getMob()), true);
             }
         }

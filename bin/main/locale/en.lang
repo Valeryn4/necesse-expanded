@@ -1,5 +1,5 @@
 [settingsui]
-ne_settings_separator_1=Necesse Expanded: Custom Raid Settings
+ne_settings_separator_1=Raid Configuration
 raids_enabled=Enable custom raids?
 raids_tip=If enabled, replaces the vanilla raid system with Necesse Expanded's custom raid system, offering nine new complex raids with multiple types of enemies.
 
@@ -15,10 +15,12 @@ bombs_tip=If enabled, certain custom raiders can use vanilla explosives, and wil
 raid_size_multiplier=Raid size multiplier:
 raid_size_tip=Raid size calculation: Settlement population * raid size multiplier * raid success factor. The raid success factor is based on how the settlement has previously fared against raiders, ranging from 0.5 (very poorly) to 1.25 (perfect).
 
-ne_settings_separator_2=Necesse Expanded: Gameplay Tweaks
+ne_settings_separator_2=Settlements and Settlers
 
 happiness_changes_enabled=Enable modified settler happiness system?
 happiness_changes_tip=If enabled, rebalances settler happiness calculations and implements new happiness modifiers. Settlers have reduced expectations regarding room size and diet variety, and gain happiness from larger settlement population.
+
+ne_settings_separator_3=Miscellaneous
 
 starter_equipment_enabled=Enable better starting equipment?
 starter_equipment_tip=If enabled, new players start with some basic supplies, iron tools, a recipe book, and leather dashers.
@@ -327,6 +329,7 @@ progression_bonus=You've completed multiple quest tiers for this settlement.
 
 // Raid effects
 well_defended_bonus=This settlement has been well defended from raiders.
+poorly_defended_penalty=This settlement has been poorly defended from raiders.
 settlement_survived_raid=This settlement has recently survived a raid.
 
 // Settlement size.

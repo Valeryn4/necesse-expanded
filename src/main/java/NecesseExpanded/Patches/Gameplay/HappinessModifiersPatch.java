@@ -1,6 +1,5 @@
 package NecesseExpanded.Patches.Gameplay;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import necesse.engine.localization.message.GameMessage;
@@ -18,25 +17,18 @@ import necesse.level.maps.levelData.settlementData.settler.PopulationThought;
 import necesse.level.maps.levelData.settlementData.settler.RoomQuality;
 import necesse.level.maps.levelData.settlementData.settler.RoomSize;
 import necesse.level.maps.levelData.settlementData.settler.Settler;
-import net.bytebuddy.asm.Advice;
-import net.bytebuddy.asm.Advice.OnMethodEnter;
 import net.bytebuddy.asm.Advice.OnMethodExit;
 import net.bytebuddy.asm.Advice.Return;
 import net.bytebuddy.asm.Advice.This;
 
 @ModMethodPatch(target = HumanMob.class, name = "getHappinessModifiers", arguments = {})
-public class HappinessModifiersPatch {
-    @OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
-    static boolean onEnter(@This HumanMob ThisSettler) 
-    {
-        return true;
-    }
-
+public class HappinessModifiersPatch 
+{
     @OnMethodExit
     static void onExit(@This HumanMob ThisSettler, @Return(readOnly = false) List<HappinessModifier> list) 
     {
         ArrayList<HappinessModifier> Modifiers = new ArrayList<>();
-        if (ThisSettler.getWorldEntity() != null)
+        if (ThisSettler.getWorldEntity() != null && NecesseExpanded.Main.SettingsGetter.getBoolean("happiness_changes_enabled"))
         {
             if (ThisSettler.lastFoodEaten != null && ThisSettler.lastFoodEaten.quality != null) 
             {
@@ -136,29 +128,18 @@ public class HappinessModifiersPatch {
                     Modifiers.add(
                             new HappinessModifier(6, (GameMessage) new LocalMessage("settlement", "well_defended_bonus")));
                 } else if (LevelData.getNextRaidDifficultyMod() <= 0.75F) {
-                    Modifiers.add(new HappinessModifier(0,
+                    Modifiers.add(new HappinessModifier(-3,
                             (GameMessage) new LocalMessage("settlement", "poorly_defended_penalty")));
                 }
-            if (LevelData != null) {
-                Class<?> ClassObject = LevelData.getClass();
-                try {
-                    Field ClassField = ClassObject.getDeclaredField("nextRaid");
-                    ClassField.setAccessible(true);
-                    long RaidTimer = ((Long) ClassField.get(LevelData)).longValue();
-                    if (RaidTimer >= (ServerSettlementData.MIN_SECONDS_RAID_TIMER / 2)
-                            && LevelData.stats.spawned_raids.getTotalRaids() >= 1)
-                        Modifiers.add(new HappinessModifier(5,
-                                (GameMessage) new LocalMessage("settlement", "settlement_survived_raid")));
-                } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException Ex) {
-                    System.out.println(Ex);
-                }
-            }
 
             if (ThisSettler.buffManager.hasBuff("settler_death_penalty"))
             {
                 Modifiers.add(new HappinessModifier(-5, (GameMessage) new LocalMessage("settlement", "recent_settler_death")));
             }
-
+            if (ThisSettler.buffManager.hasBuff("settler_raid_bonus"))
+            {
+                Modifiers.add(new HappinessModifier(4, (GameMessage) new LocalMessage("settlement", "settlement_survived_raid")));
+            }
             list = Modifiers;
         }
     }

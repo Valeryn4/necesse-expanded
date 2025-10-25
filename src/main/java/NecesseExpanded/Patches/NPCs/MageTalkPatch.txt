@@ -17,7 +17,7 @@ import necesse.engine.GameRaidFrequency;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.LocalMessage;
 
-// This patch modifies the <age>'s message code to provide new messages based on a list.
+// This patch modifies the mage's message code to provide new messages based on a list.
 @ModMethodPatch(target = MageHumanMob.class, name = "getMessages", arguments = {ServerClient.class})
 public class MageTalkPatch 
 {

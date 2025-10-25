@@ -11,49 +11,79 @@ public class RegisterRecipes
     public static void Register()
     {
         System.out.println("[Necesse Expanded] Registering new recipes...");
-        
-        // Additional vanilla recipes
-        Recipes.registerModRecipe(new Recipe("woodarrowtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("anylog", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("woodsawtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("anylog", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("stonearrowtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("stone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("stoneflametrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("stone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("stonesawtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("stone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("sandstonearrowtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("sandstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("sandstoneflametrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("sandstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("sandstonesawtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("sandstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("swampstonearrowtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("swampstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("swampstoneflametrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("swampstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("swampstonesawtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("swampstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("snowstonearrowtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("snowstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("snowstonesawtrap", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("snowstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepstonearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepstoneflametrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepstonesawtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("icearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("icesawtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepsnowstonearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepsnowstoneflametrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepsnowstonesawtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepswampstonearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepswampstoneflametrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepswampstonesawtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepsandstonearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepsandstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepsandstoneflametrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepsandstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("deepsandstonesawtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("deepsandstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("spidercastlearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("spiderstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("obsidianarrowtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("obsidian", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("obsidianflametrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("obsidian", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("obsidiansawtrap", 1, RecipeTechRegistry.TUNGSTEN_WORKSTATION, new Ingredient[] { new Ingredient("obsidian", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("traptrack", 10, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("ironbar", 1) }));
-        Recipes.registerModRecipe(new Recipe("spiketrap", 5, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
 
         // Objects
         Recipes.registerModRecipe(new Recipe("keg", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("anylog", 10), new Ingredient("demonicbar", 5) }));
+        
         Recipes.registerModRecipe(new Recipe("musicplayer", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("anylog", 10), new Ingredient("demonicbar", 10) }));
         Recipes.registerModRecipe(new Recipe("portablemusicplayer", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("anylog", 10), new Ingredient("demonicbar", 10), new Ingredient("quartz", 12) }));
+        
         Recipes.registerModRecipe(new Recipe("missionboard", 1, RecipeTechRegistry.WORKSTATION, new Ingredient[] { new Ingredient("anylog", 20), new Ingredient("coin", 200) }));
         Recipes.registerModRecipe(new Recipe("shippingchest", 1, RecipeTechRegistry.WORKSTATION, new Ingredient[] { new Ingredient("anylog", 20), new Ingredient("coin", 400) }));
         Recipes.registerModRecipe(new Recipe("bannerstand", 1, RecipeTechRegistry.DEMONIC_WORKSTATION, new Ingredient[] { new Ingredient("demonicbar", 6) }));
+        
+        Recipes.registerModRecipe(new Recipe("woodarrowtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("anylog", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("woodsawtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("anylog", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("stonearrowtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("stone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("stoneflametrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("stone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("stonesawtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("stone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("sandstonearrowtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("sandstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("sandstoneflametrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("sandstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("sandstonesawtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("sandstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("swampstonearrowtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("swampstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("swampstoneflametrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("swampstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("swampstonesawtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("swampstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("snowstonearrowtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("snowstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("snowstonesawtrap", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("snowstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("deepstonearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("deepstoneflametrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("deepstonesawtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("icearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("icesawtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("deepsnowstonearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("deepsnowstoneflametrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("deepsnowstonesawtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepsnowstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("deepswampstonearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("deepswampstoneflametrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("deepswampstonesawtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("deepsandstonearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepsandstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("deepsandstoneflametrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepsandstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("deepsandstonesawtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepsandstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("spidercastlearrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("spiderstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("obsidianarrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("obsidian", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("obsidianflametrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("obsidian", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("obsidiansawtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("obsidian", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("traptrack", 10, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("ironbar", 1) }));
+        Recipes.registerModRecipe(new Recipe("spiketrap", 5, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        
+        Recipes.registerModRecipe(new Recipe("fishian_arrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("fishian_flametrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("fishian_sawtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("fishian_voidtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("voidshard", 3), new Ingredient("wire", 5) }));
+
+        Recipes.registerModRecipe(new Recipe("fishian_wall", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 4) }));
+        Recipes.registerModRecipe(new Recipe("fishian_door", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 4) }));
+        Recipes.registerModRecipe(new Recipe("fishian_tile", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 1) }));
+
+        Recipes.registerModRecipe(new Recipe("frostshard_cluster", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("frostshard", 4)}));
+        Recipes.registerModRecipe(new Recipe("frostshard_cluster_pure", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("frostshard", 4)}));
+        Recipes.registerModRecipe(new Recipe("frostshard_cluster_small", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("frostshard", 2)}));
+
+        Recipes.registerModRecipe(new Recipe("life_quartz_cluster", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("lifequartz", 4)}));
+        Recipes.registerModRecipe(new Recipe("life_quartz_cluster_pure", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("lifequartz", 4)}));
+        Recipes.registerModRecipe(new Recipe("life_quartz_cluster_small", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("lifequartz", 2)}));
 
         // Consumables
         Recipes.registerModRecipe(new Recipe("greater_mana_elixir", RecipeTechRegistry.FALLEN_WORKSTATION, new Ingredient[] { new Ingredient("glassbottle", 1), new Ingredient("alchemyshard", 5), new Ingredient("upgradeshard", 5), new Ingredient("anytier2essence", 5) }).showAfter("greaterlifeelixir"));

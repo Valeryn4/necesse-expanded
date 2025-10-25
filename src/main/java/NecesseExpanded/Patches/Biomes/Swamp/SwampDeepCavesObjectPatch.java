@@ -18,5 +18,7 @@ public class SwampDeepCavesObjectPatch
     {
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.002).onlyOnTile(TileRegistry.deepSwampRockID).placeObject("life_quartz_cluster_small");
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.002).onlyOnTile(TileRegistry.deepSwampRockID).placeObject("emeraldclustersmall");
+        BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.0005).onlyOnTile(TileRegistry.deepSwampRockID).placeObject("life_quartz_cluster");
+        BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.0005).onlyOnTile(TileRegistry.deepSwampRockID).placeObject("emeraldcluster");
     }
 }

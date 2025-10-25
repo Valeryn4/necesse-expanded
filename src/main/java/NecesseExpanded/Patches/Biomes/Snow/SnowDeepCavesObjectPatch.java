@@ -18,5 +18,8 @@ public class SnowDeepCavesObjectPatch
     {
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.002).onlyOnTile(TileRegistry.deepSnowRockID).placeObject("life_quartz_cluster_small");
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.002).onlyOnTile(TileRegistry.deepSnowRockID).placeObject("rubyclustersmall");
+        BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.0005).onlyOnTile(TileRegistry.deepSnowRockID).placeObject("life_quartz_cluster");
+        BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.0005).onlyOnTile(TileRegistry.deepSnowRockID).placeObject("rubycluster");
+        
     }
 }
