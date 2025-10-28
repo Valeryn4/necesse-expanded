@@ -89,6 +89,10 @@ life_quartz_cluster=Amas de quartz de vie
 life_quartz_cluster_pure=Amas de quartz de vie pur
 life_quartz_cluster_small=Petit amas de quartz de vie
 
+fishian_wall=Fishian Wall
+fishian_door=Fishian Door
+fishian_arrowtrap=Fishian Arrow Trap
+
 [buff]
 murasama_revenge_buff=La vengeance de Murasama
 endurance_stack_buff=Endurance

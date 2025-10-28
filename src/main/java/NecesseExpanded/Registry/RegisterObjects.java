@@ -6,18 +6,14 @@ import NecesseExpanded.Objects.*;
 import necesse.engine.registries.ObjectRegistry;
 import necesse.level.gameObject.CrystalClusterObject;
 import necesse.level.gameObject.CrystalClusterSmallObject;
-import necesse.level.gameObject.WallArrowTrapObject;
-import necesse.level.gameObject.WallFlameTrapObject;
 import necesse.level.gameObject.WallObject;
-import necesse.level.gameObject.WallSawTrapObject;
-import necesse.level.gameObject.WallVoidTrapObject;
 
 public class RegisterObjects 
 {
     public static void Register()
     {
         System.out.println("[Necesse Expanded] Registering new objects...");
-        ObjectRegistry.registerObject("keg", new Keg(), 10, true);
+        ObjectRegistry.registerObject("keg", new KegObject(), 10, true);
 
         String[] crystalsCategory = new String[]{"objects", "landscaping", "crystals"};
 
@@ -31,9 +27,8 @@ public class RegisterObjects
 
         int[] FishWallIDs = WallObject.registerWallObjects("fishian_", "fishian_wall", 3.0F, new Color(0, 62, 81), 0.5F, 1.0F);
         WallObject FishWall = (WallObject)ObjectRegistry.getObject(FishWallIDs[0]);
-        ObjectRegistry.registerObject("fishian_flametrap", new WallFlameTrapObject(FishWall), 50.0F, true);
-        ObjectRegistry.registerObject("fishian_arrowtrap", new WallArrowTrapObject(FishWall), 50.0F, true);
-        ObjectRegistry.registerObject("fishian_voidtrap", new WallVoidTrapObject(FishWall), 50.0F, true);
-        ObjectRegistry.registerObject("fishian_sawtrap", new WallSawTrapObject(FishWall), 50.0F, false, true, true);
+        ObjectRegistry.registerObject("fishian_venom_trap", new VenomTrapObject(FishWall), 50.0f, true);
+        ObjectRegistry.registerObject("fishian_brazier", new FishianBrazierObject(), 10f, true);
+        ObjectRegistry.registerObject("fishian_dungeon_entrance", new FishianDungeonEntranceObject(), 0.0F, false, false, true);
     }
 }

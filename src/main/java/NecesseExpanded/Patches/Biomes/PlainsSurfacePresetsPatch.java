@@ -1,6 +1,6 @@
 package NecesseExpanded.Patches.Biomes;
 
-import NecesseExpanded.World.Presets.DryadHouseWorldPreset;
+import NecesseExpanded.World.WorldPresets.DryadHouseWorldPreset;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.engine.world.worldPresets.SurfacePresetsWorldPreset;
 import net.bytebuddy.asm.Advice.OnMethodExit;

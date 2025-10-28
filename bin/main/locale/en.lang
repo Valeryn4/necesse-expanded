@@ -80,6 +80,9 @@ vampire_bullet_tip=10% chance on hit to absorb the target's life essence, healin
 solar_bullet_tip=10% chance on hit for the target to gain a stack of Sunlight's Judgement, dealing increasing damage over time based on the number of stacks, and lasting until all stacks have depleted.
 lunar_bullet_tip=Inflicts the Moonlight Curse, halving the victim's armour, and causing them to take 25% more damage for five seconds.
 
+[tile]
+fishian_tile=Fishian Tile
+
 [object]
 keg=Keg
 
@@ -90,6 +93,11 @@ frostshard_cluster_small=Small Frost Shard Cluster
 life_quartz_cluster=Life Quartz Cluster
 life_quartz_cluster_pure=Pure Life Quartz Cluster
 life_quartz_cluster_small=Small Life Quartz Cluster
+
+fishian_wall=Fishian Wall
+fishian_door=Fishian Door
+fishian_venom_trap=Fishian Venom Trap
+fishian_walltrap=Fishian Venom Trap
 
 [buff]
 murasama_revenge_buff=Murasama's Revenge
