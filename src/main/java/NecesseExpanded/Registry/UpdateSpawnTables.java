@@ -9,14 +9,7 @@ public class UpdateSpawnTables
 {
     public static void Update()
     {
-        Biome.defaultSurfaceMobs
-        .add(10, "stabbybush");
-
-        Biome.defaultCaveMobs.clear();
-        Biome.defaultCaveMobs = (new MobSpawnTable())
-        .add(70, "zombie")
-        .add(25, "zombiearcher")
-        .add(5, "zombie_miner");
+        Biome.defaultCaveMobs.add(5, "zombie_miner");
 
         SnowBiome.caveMobs.clear();
         SnowBiome.caveMobs = (new MobSpawnTable())
@@ -27,12 +20,6 @@ public class UpdateSpawnTables
 
         SnowBiome.deepSnowCaveMobs.add(30, "ice_golem");
 
-        TempleBiome.templeMobs.clear();
-        TempleBiome.templeMobs = (new MobSpawnTable())
-        .add(50, "ancientskeleton")
-        .add(50, "ancientarmoredskeleton")
-        .add(40, "ancientskeletonthrower")
-        .add(30, "ancientskeletonmage")
-        .add(10, "ancient_warrior");
+        TempleBiome.templeMobs.add(15, "ancient_warrior");
     }
 }

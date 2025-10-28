@@ -1,16 +1,16 @@
 package NecesseExpanded.Registry;
 
-import NecesseExpanded.Mobs.Raiders.StabbyBushRaider;
-import NecesseExpanded.Mobs.Raiders.AncientSkeletonRaiders.*;
-import NecesseExpanded.Mobs.Raiders.GraveyardRaiders.*;
-import NecesseExpanded.Mobs.Raiders.NinjaRaid.NinjaRaider;
-import NecesseExpanded.Mobs.Raiders.PirateRaiders.*;
-import NecesseExpanded.Mobs.Raiders.RuneboundRaiders.*;
-import NecesseExpanded.Mobs.Raiders.SkeletonRaiders.*;
-import NecesseExpanded.Mobs.Raiders.SlimeRaiders.*;
-import NecesseExpanded.Mobs.Raiders.SpiderkinRaiders.*;
-import NecesseExpanded.Mobs.Raiders.ZombieRaiders.*;
-
+import NecesseExpanded.Mobs.Friendly.Human.FriendlyDryadMob;
+import NecesseExpanded.Mobs.Hostile.Raiders.StabbyBushRaider;
+import NecesseExpanded.Mobs.Hostile.Raiders.AncientSkeletonRaiders.*;
+import NecesseExpanded.Mobs.Hostile.Raiders.GraveyardRaiders.*;
+import NecesseExpanded.Mobs.Hostile.Raiders.NinjaRaid.NinjaRaider;
+import NecesseExpanded.Mobs.Hostile.Raiders.PirateRaiders.*;
+import NecesseExpanded.Mobs.Hostile.Raiders.RuneboundRaiders.*;
+import NecesseExpanded.Mobs.Hostile.Raiders.SkeletonRaiders.*;
+import NecesseExpanded.Mobs.Hostile.Raiders.SlimeRaiders.*;
+import NecesseExpanded.Mobs.Hostile.Raiders.SpiderkinRaiders.*;
+import NecesseExpanded.Mobs.Hostile.Raiders.ZombieRaiders.*;
 import necesse.engine.registries.MobRegistry;
 
 // Registering raiders and other mobs that don't require a journal entry.
@@ -18,9 +18,13 @@ public class RegisterMobs2
 {
     public static void Register()
     {
+        System.out.println("[Necesse Expanded] Registering new human mobs...");
+        
+        MobRegistry.registerMob("friendly_dryad", FriendlyDryadMob.class, true);
+
         System.out.println("[Necesse Expanded] Registering new raiders...");
 
-        //
+        // Misc raiders
         MobRegistry.registerMob("stabby_bush_raider", StabbyBushRaider.class, true);
 
         // Zombie raiders

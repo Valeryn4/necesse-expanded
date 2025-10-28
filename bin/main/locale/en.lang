@@ -193,6 +193,8 @@ ice_golem=Ice Golem
 // Dungeon
 
 // Plains
+friendly_dryad=Friendly Dryad
+friendly_dryadname=Friendly Dryad
 
 // Swamp
 
@@ -344,3 +346,9 @@ travel_bonus=This settlement has access to a fast travel network.
 recent_settler_death=A settler recently died at this settlement.
 
 // Food happiness effects.
+
+[mobmsg]
+// Dryad
+dryadgreeting1=Count only the happy hours.
+dryadgreeting2=Better to suffer a wrong than to do one.
+dryadgreeting3=Engrave upon thy eye the image of injustice.

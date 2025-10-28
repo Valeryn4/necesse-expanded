@@ -75,7 +75,7 @@ public class FrozenDwarfMage extends HostileItemAttackerMob
       (
         new LootItemInterface[]
         {
-            new LootItem("frostshard", GameRandom.globalRandom.getIntBetween(2, 4)),
+            new LootItem("frostshard", GameRandom.globalRandom.getIntBetween(1, 2)),
             new ChanceLootItemList(0.1f, CaveChestLootTable.snowMainItems)
         }
     );

@@ -28,9 +28,11 @@ public class MagePatch
       Mob.shop.addSellingItem("waystone", new SellingShopItem()).setItem(MagePatch::GenerateWaystone).setStaticPriceBasedOnHappiness(250, 500, 100);
       Mob.shop.addSellingItem("recallscroll", new SellingShopItem()).setStaticPriceBasedOnHappiness(25, 50, 5);
       Mob.shop.addSellingItem("bloodbolt", new SellingShopItem()).setStaticPriceBasedOnHappiness(70, 100, 5);
+      Mob.shop.addSellingItem("frostbolt", new SellingShopItem()).setStaticPriceBasedOnHappiness(90, 100, 5).addKilledMobRequirement("queenspider");
       Mob.shop.addSellingItem("brainonastick", new SellingShopItem()).setStaticPriceBasedOnHappiness(425, 500, 15);
       Mob.shop.addSellingItem("voidstaff", new SellingShopItem()).setStaticPriceBasedOnHappiness(400, 600, 10).addKilledMobRequirement("evilsprotector");
       Mob.shop.addSellingItem("shadowbeam", new SellingShopItem()).setStaticPriceBasedOnHappiness(800, 900, 25).addKilledMobRequirement("reaper");
+      Mob.shop.addSellingItem("inferno", new SellingShopItem()).setStaticPriceBasedOnHappiness(800, 900, 25).addKilledMobRequirement("reaper");
       Mob.shop.addSellingItem("reaperscall", new SellingShopItem()).setStaticPriceBasedOnHappiness(725, 800, 25).addKilledMobRequirement("reaper");
       Mob.shop.addSellingItem("venomshower", new SellingShopItem()).setStaticPriceBasedOnHappiness(1200, 1500, 50).addKilledMobRequirement("sageandgrit");
       Mob.shop.addSellingItem("manapotion", new SellingShopItem()).setStaticPriceBasedOnHappiness(10, 25, 5);

@@ -1,14 +1,14 @@
 package NecesseExpanded.Registry;
 
-import NecesseExpanded.Mobs.Critters.CrystalCaveling;
-import NecesseExpanded.Mobs.Critters.ShardCaveling;
-import NecesseExpanded.Mobs.Critters.SlimeCaveling;
+import NecesseExpanded.Mobs.Friendly.Critters.CrystalCaveling;
+import NecesseExpanded.Mobs.Friendly.Critters.ShardCaveling;
+import NecesseExpanded.Mobs.Friendly.Critters.SlimeCaveling;
 import NecesseExpanded.Mobs.Hostile.Desert.AncientWarrior;
 import NecesseExpanded.Mobs.Hostile.Forest.ZombieMiner;
 import NecesseExpanded.Mobs.Hostile.Snow.FrozenDwarf;
 import NecesseExpanded.Mobs.Hostile.Snow.FrozenDwarfMage;
 import NecesseExpanded.Mobs.Hostile.Snow.IceGolemMob;
-import NecesseExpanded.Mobs.Summons.NecromancerMinion;
+import NecesseExpanded.Mobs.Friendly.Summons.NecromancerMinion;
 
 import necesse.engine.registries.MobRegistry;
 

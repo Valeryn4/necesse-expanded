@@ -77,12 +77,11 @@ public class ZombieMiner extends HostileItemAttackerMob
         {
             new OneOfLootItems
             (
-                new LootItem("copperore", GameRandom.globalRandom.getIntBetween(12, 16)),
-                new LootItem("ironore", GameRandom.globalRandom.getIntBetween(8, 12)),
-                new LootItem("goldore", GameRandom.globalRandom.getIntBetween(4, 8))
+                new LootItem("copperore", GameRandom.globalRandom.getIntBetween(8, 12)),
+                new LootItem("ironore", GameRandom.globalRandom.getIntBetween(4, 8)),
+                new LootItem("goldore", GameRandom.globalRandom.getIntBetween(2, 4))
             ),
-            new LootItem("beet", GameRandom.globalRandom.getIntBetween(1, 3)),
-            new LootItem("beetseed", GameRandom.globalRandom.getIntBetween(3, 6))
+            new LootItem("beet", GameRandom.globalRandom.getIntBetween(1, 2))
         }
     );
     }

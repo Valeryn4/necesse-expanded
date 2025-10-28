@@ -67,9 +67,9 @@ public class RegisterItems2
 
         // Magic weapons
         ItemRegistry.registerItem("frostbolt", new FrostBoltMagicToolItem(), 70F, true);
-        ItemRegistry.registerItem("inferno", new InfernoMagicToolItem(), 150F, true);
-        ItemRegistry.registerItem("winterwrath", new WinterWrathMagicToolItem(), 300f, true);
-        ItemRegistry.registerItem("brimstone", new BrimstoneMagicToolItem(), 500f, true);
+        ItemRegistry.registerItem("inferno", new InfernoMagicToolItem(), 600F, true);
+        ItemRegistry.registerItem("winterwrath", new WinterWrathMagicToolItem(), 700f, true);
+        ItemRegistry.registerItem("brimstone", new BrimstoneMagicToolItem(), 900f, true);
 
 
         // Summon weapons
