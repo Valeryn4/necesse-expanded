@@ -51,7 +51,7 @@ public class VampireRaider extends ItemAttackerRaiderMob
         this.swimMaskOffset = -2;
         this.swimSinkOffset = -4;
 
-        this.weapon = new InventoryItem(GameRandom.globalRandom.getOneOf("bloodclaw", "bloodgrimoire", "thecrimsonsky"));
+        this.weapon = new InventoryItem(GameRandom.globalRandom.getOneOf("bloodclaw", "bloodgrimoire", "thecrimsonsky", "brimstone"));
         VampireRaider.lootTable = new LootTable
         (
           new LootItemInterface[]

@@ -1,12 +1,12 @@
 package NecesseExpanded.Utils.RaiderWeapons;
 
-import necesse.inventory.item.toolItem.swordToolItem.WoodSwordToolItem;
+import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
 
-public class RaiderFakeSword extends WoodSwordToolItem
+public class RaiderFakeSword extends SwordToolItem
 {
     public RaiderFakeSword()
     {
-        super();
+        super(0, null);
         this.attackRange.setBaseValue(25);
         this.attackAnimTime.setBaseValue(100);
     }

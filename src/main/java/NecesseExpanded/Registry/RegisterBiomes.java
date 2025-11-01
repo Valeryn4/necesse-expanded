@@ -1,12 +1,14 @@
 package NecesseExpanded.Registry;
 
-import NecesseExpanded.World.Biomes.FishianDungeonBiome;
+import NecesseExpanded.World.Biomes.FishianDeepCaveBiome;
 import necesse.engine.registries.BiomeRegistry;
 
 public class RegisterBiomes 
 {
     public static void Register()
     {
-        BiomeRegistry.registerBiome("fishian_dungeon", new FishianDungeonBiome(), true);
+        System.out.println("[Necesse Expanded] Registering new biomes...");
+
+        BiomeRegistry.registerBiome("fishian_cave", new FishianDeepCaveBiome(), true);
     }
 }

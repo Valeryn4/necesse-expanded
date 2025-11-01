@@ -29,6 +29,6 @@ public class RegisterObjects
         WallObject FishWall = (WallObject)ObjectRegistry.getObject(FishWallIDs[0]);
         ObjectRegistry.registerObject("fishian_venom_trap", new VenomTrapObject(FishWall), 50.0f, true);
         ObjectRegistry.registerObject("fishian_brazier", new FishianBrazierObject(), 10f, true);
-        ObjectRegistry.registerObject("fishian_dungeon_entrance", new FishianDungeonEntranceObject(), 0.0F, false, false, true);
+        ObjectRegistry.registerObject("fishian_dungeon_entrance", new FishianDeepCaveEntranceObject(), 0.0F, false, false, false);
     }
 }

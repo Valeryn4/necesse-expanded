@@ -97,7 +97,7 @@ life_quartz_cluster_small=Small Life Quartz Cluster
 fishian_wall=Fishian Wall
 fishian_door=Fishian Door
 fishian_venom_trap=Fishian Venom Trap
-fishian_walltrap=Fishian Venom Trap
+fishian_brazier=Fishian Brazier
 
 [buff]
 murasama_revenge_buff=Murasama's Revenge
@@ -117,6 +117,7 @@ summoner_grimoire=Summoner's Grimoire
 berserker_ring=Berserker's Ring
 forgotten_relic=Forgotten Relic
 leather_scabbard=Leather Scabbard
+void_amulet=Void Amulet
 
 // Melee Weapons
 juggernaut_axe=Juggernaut's Axe
@@ -194,6 +195,7 @@ slime=Slime
 zombie_miner=Zombie Miner
 
 // Snow
+frozendwarf=Frozen Dwarf Thrower
 frozen_dwarf=Frozen Dwarf
 frozen_dwarf_mage=Frozen Dwarf Mage
 ice_golem=Ice Golem
@@ -208,6 +210,10 @@ friendly_dryadname=Friendly Dryad
 
 // Desert
 ancient_warrior=Ancient Warrior
+
+// Friendly
+settlement_dog=Dog
+settlement_dogname=Dog
 
 // Critters
 crystal_caveling=Crystal Caveling
@@ -352,6 +358,7 @@ hugesettlement=This settler lives in a huge settlement.
 // Misc effects
 travel_bonus=This settlement has access to a fast travel network.
 recent_settler_death=A settler recently died at this settlement.
+settlement_pet_bonus=This settlement owns at least one pet.
 
 // Food happiness effects.
 

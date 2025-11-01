@@ -94,6 +94,7 @@ public class RegisterItems2
         ItemRegistry.registerItem("forgotten_relic", new ForgottenRelicTrinket(), 275F, true);
         ItemRegistry.registerItem("berserker_ring", new BerserkerRingTrinket(), 200F, true);
         ItemRegistry.registerItem("leather_scabbard", new SimpleTrinketItem(Item.Rarity.COMMON, "leather_scabbard_buff", 50, TrinketsLootTable.trinkets), 50f, true);
+        ItemRegistry.registerItem("void_amulet", new SimpleTrinketItem(Item.Rarity.UNCOMMON, "void_amulet_buff", 75, TrinketsLootTable.trinkets), 100f, true);
 
         // Crafting Materials
         ItemRegistry.registerItem("lunar_essence", new EssenceMatItem(250, Rarity.LEGENDARY, 3), 35.0F, true);

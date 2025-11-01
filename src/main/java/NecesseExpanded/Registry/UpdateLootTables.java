@@ -116,6 +116,9 @@ public class UpdateLootTables
         CaveChestLootTable.snowMainItems.items.add(new LootItem("frostbolt"));
         DeepCaveChestLootTable.snowMainItems.items.add(new LootItem("winterwrath"));
 
+        // Dungeon
+        DungeonChestLootTable.mainItems.items.add(new LootItem("void_amulet"));
+
         // Swamp
         CaveChestLootTable.swampMainItems.items.add(new LootItem("berserker_ring"));
         DeepCaveChestLootTable.swampMainItems.items.add(new LootItem("murasama"));

@@ -9,9 +9,9 @@ public class UpdateSpawnTables
 {
     public static void Update()
     {
-        Biome.defaultCaveMobs.add(5, "zombie_miner");
+        Biome.defaultCaveMobs.add(2, "zombie_miner");
 
-        SnowBiome.caveMobs.clear();
+        // TODO: Use reflection to remove generic zombies from spawn table, the base tables are private but can be breached.
         SnowBiome.caveMobs = (new MobSpawnTable())
         .add(60, "frozen_dwarf")
         .add(25, "frostsentry")
