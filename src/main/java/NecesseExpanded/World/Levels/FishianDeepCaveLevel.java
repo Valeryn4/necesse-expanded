@@ -32,10 +32,14 @@ import necesse.level.maps.generationModules.PresetGeneration;
 public class FishianDeepCaveLevel extends Level {
    public FishianDeepCaveLevel(LevelIdentifier identifier, int width, int height, WorldEntity worldEntity) {
       super(identifier, width, height, worldEntity);
+    }
+    
+    public FishianDeepCaveLevel(LevelIdentifier identifier, WorldEntity worldEntity) {
+      super(identifier, 200, 200, worldEntity);
       this.baseBiome = BiomeRegistry.getBiome("fishian_cave");
       this.isCave = true;
-      this.generateLevel();
-   }
+      generateLevel();
+    }
 
    public void onLoadingComplete() {
       super.onLoadingComplete();
@@ -126,6 +130,7 @@ public class FishianDeepCaveLevel extends Level {
          }
       }
       this.setObject(tileWidth / 2, tileHeight / 2, ObjectRegistry.getObjectID("dungeonexit"));
+      // this.entityManager.getObjectEntity(tileWidth / 2, tileHeight / 2);
 
       GenerationTools.checkValid(this);
    }

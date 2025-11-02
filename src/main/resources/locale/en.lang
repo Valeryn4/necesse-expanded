@@ -367,3 +367,15 @@ settlement_pet_bonus=This settlement owns at least one pet.
 dryadgreeting1=Count only the happy hours.
 dryadgreeting2=Better to suffer a wrong than to do one.
 dryadgreeting3=Engrave upon thy eye the image of injustice.
+
+// Elder
+elder_daytalk_1=Good day, <player>! Was there something you needed?
+elder_daytalk_2=
+elder_daytalk_3=
+
+elder_nighttalk_1=
+elder_nighttalk_2=
+elder_nighttalk_3=
+
+elder_aphorea_mod=I've heard rumours of forests afflicted by a strange curse. Perhaps you should take a look?
+elder_scorched=I've heard rumours of dangerous things living in volcanic biomes, where the lava reaches the surface. Be careful.
