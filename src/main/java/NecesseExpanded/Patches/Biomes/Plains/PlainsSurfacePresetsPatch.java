@@ -1,4 +1,4 @@
-package NecesseExpanded.Patches.Biomes;
+package NecesseExpanded.Patches.Biomes.Plains;
 
 import NecesseExpanded.World.WorldPresets.DryadHouseWorldPreset;
 import necesse.engine.modLoader.annotations.ModMethodPatch;

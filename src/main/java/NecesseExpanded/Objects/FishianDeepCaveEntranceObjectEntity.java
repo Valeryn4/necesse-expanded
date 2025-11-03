@@ -34,7 +34,7 @@ public class FishianDeepCaveEntranceObjectEntity extends PortalObjectEntity {
         Function<LevelIdentifier, Level> levelGenerator = identifier -> 
         {
             (getLevel()).childLevels.add(this.destinationIdentifier);
-            return (Level)(new FishianDeepCaveLevel(identifier, 200, 200, server.world.worldEntity));
+            return (Level)(new FishianDeepCaveLevel(identifier, server.world.worldEntity));
         };
         teleportClientToAroundDestination(client, levelGenerator, level -> 
         {

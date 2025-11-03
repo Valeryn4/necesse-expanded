@@ -368,14 +368,14 @@ dryadgreeting1=Count only the happy hours.
 dryadgreeting2=Better to suffer a wrong than to do one.
 dryadgreeting3=Engrave upon thy eye the image of injustice.
 
-// Elder
+// Elder general talk.
 elder_daytalk_1=Good day, <player>! Was there something you needed?
-elder_daytalk_2=
-elder_daytalk_3=
+elder_daytalk_2=Make sure you're prepared before you travel. Have you got everything you need? 
+elder_daytalk_3=Preparation is key to success, <player>. Make sure you're well prepared for the challenges ahead.
+elder_nighttalk_1=Travel with caution at night, <player>. Who knows what awaits you in the dark?
+elder_nighttalk_2=Best to remain indoors at night, <player>.
+elder_nighttalk_3=When was the last time you had a drink of water, <player>?
 
-elder_nighttalk_1=
-elder_nighttalk_2=
-elder_nighttalk_3=
-
-elder_aphorea_mod=I've heard rumours of forests afflicted by a strange curse. Perhaps you should take a look?
-elder_scorched=I've heard rumours of dangerous things living in volcanic biomes, where the lava reaches the surface. Be careful.
+// Elder mod references
+elder_aphorea_mod=I've heard rumours of forests afflicted by a strange curse. That eerie glow... Perhaps you should take a look?
+elder_scorched_mod=I've heard rumours of dangerous things living in the volcanic wastes, where the lava reaches the surface. Tread carefully!

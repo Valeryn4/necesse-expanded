@@ -24,6 +24,7 @@ import necesse.level.maps.Level;
 import necesse.level.maps.levelData.settlementData.SettlementWorkstationObject;
 import necesse.level.maps.light.GameLight;
 
+// TODO: / by zero error?
 public class KegObject extends GameObject implements SettlementWorkstationObject
 {
     GameTexture texture;

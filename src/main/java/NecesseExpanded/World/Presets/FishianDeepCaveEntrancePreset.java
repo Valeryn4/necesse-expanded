@@ -40,7 +40,7 @@ public class FishianDeepCaveEntrancePreset extends Preset
       setObject(mid - chaliceOffset - 1, mid + chaliceOffset, ObjectRegistry.getObjectID("fishian_brazier"));
       setObject(mid + chaliceOffset, mid - chaliceOffset - 1, ObjectRegistry.getObjectID("fishian_brazier"));
       setObject(mid + chaliceOffset, mid + chaliceOffset, ObjectRegistry.getObjectID("fishian_brazier"));
-      setObject(mid, mid, ObjectRegistry.getObjectID("fishian_dungeon_entrance"));
+      setObject(mid, mid, ObjectRegistry.getObjectID("fishian_entrance"));
       int mobOffset = 5;
       addMob("fishianhookwarrior", mid - mobOffset, mid - mobOffset, false);
       addMob("fishianhookwarrior", mid + mobOffset, mid - mobOffset, false);

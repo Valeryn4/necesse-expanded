@@ -1,4 +1,4 @@
-package NecesseExpanded.Patches.Biomes;
+package NecesseExpanded.Patches.Biomes.Desert;
 
 import NecesseExpanded.World.WorldPresets.DesertHouseWorldPreset;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
