@@ -9,12 +9,14 @@ import NecesseExpanded.Utils.RaiderWeapons.*;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.modifiers.ModifierValue;
 import necesse.engine.registries.ItemRegistry;
+import necesse.engine.util.LevelIdentifier;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.inventory.item.Item;
 import necesse.inventory.item.Item.Rarity;
 import necesse.inventory.item.matItem.EssenceMatItem;
 import necesse.inventory.item.placeableItem.consumableItem.food.FoodConsumableItem;
 import necesse.inventory.item.placeableItem.fishingRodItem.FishingRodItem;
+import necesse.inventory.item.placeableItem.mapItem.WorldPresetMapItem;
 import necesse.inventory.item.trinketItem.SimpleTrinketItem;
 import necesse.inventory.lootTable.presets.TrinketsLootTable;
 import necesse.level.maps.levelData.settlementData.settler.FoodQuality;
@@ -56,6 +58,8 @@ public class RegisterItems2
         ItemRegistry.registerItem("miner_brew", new FoodConsumableItem(250, Item.Rarity.RARE, Settler.FOOD_GOURMET, 10, 360, new ModifierValue[]{ new ModifierValue(BuffModifiers.SPEED, 0.15F), new ModifierValue(BuffModifiers.MINING_SPEED, 0.25F), new ModifierValue(BuffModifiers.MINING_RANGE, 1.0f) }).setItemCategory(new String[] {"consumable"}), 20, true);
         ItemRegistry.registerItem("pearlescent_wine", new FoodConsumableItem(250, Item.Rarity.LEGENDARY, new FoodQuality(new LocalMessage("settlement", "foodperfect"), 50, "C-C-C", new String[]{"perfect"}), 5, 960, new ModifierValue[]{ new ModifierValue(BuffModifiers.SPEED, 0.30f), new ModifierValue(BuffModifiers.MINING_SPEED, 0.5f), new ModifierValue(BuffModifiers.MINING_RANGE, 3.0f) }).setItemCategory(new String[] {"consumable"}), 50f, true);
         ItemRegistry.registerItem("pearlfish_stew", new FoodConsumableItem(250, Rarity.LEGENDARY, new FoodQuality(new LocalMessage("settlement", "foodperfect"), 50, "C-C-C", new String[]{"perfect"}), 50, 960, new ModifierValue[]{ new ModifierValue(BuffModifiers.CRIT_CHANCE, 0.25F), new ModifierValue(BuffModifiers.ATTACK_SPEED, 0.30F), new ModifierValue(BuffModifiers.ALL_DAMAGE, 0.1f), new ModifierValue(BuffModifiers.ARMOR_PEN_FLAT, 8) }).spoilDuration(180).addGlobalIngredient(new String[]{"anycookedfood"}), 50.0F, true);
+        ItemRegistry.registerItem("dryad_map", new WorldPresetMapItem(Item.Rarity.UNCOMMON, LevelIdentifier.SURFACE_IDENTIFIER, 800, "amber", new LocalMessage("biome", "dryad_house"), new String[]{"dryad_house"}), 10f, true);
+        ItemRegistry.registerItem("fishian_map", new WorldPresetMapItem(Item.Rarity.EPIC, LevelIdentifier.DEEP_CAVE_IDENTIFIER, 800, "fishianbanner", new LocalMessage("biome", "fishian_biome_entrance"), new String[]{"fishian_biome_entrance"}), 10f, true);
 
         // Melee weapons
         ItemRegistry.registerItem("juggernaut_axe", new JuggernautAxeToolItem(), 150F, true);

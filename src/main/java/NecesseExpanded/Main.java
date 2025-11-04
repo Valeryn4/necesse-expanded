@@ -34,6 +34,7 @@ public class Main
         RegisterRecipeTechs.Register();
         RegisterBiomes.Register();
         RegisterLevels.Register();
+        RegisterWorldPresets.Register();
     } 
 
     public void initResources()

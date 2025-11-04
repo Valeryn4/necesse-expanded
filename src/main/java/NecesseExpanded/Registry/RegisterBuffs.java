@@ -46,7 +46,7 @@ public class RegisterBuffs
         BuffRegistry.registerBuff("warrior_ring_buff", new SimpleTrinketBuff(new ModifierValue[]{new ModifierValue(BuffModifiers.MELEE_CRIT_CHANCE, 0.10F), new ModifierValue(BuffModifiers.MELEE_CRIT_DAMAGE, 0.25F)}));
         BuffRegistry.registerBuff("ancient_tablet_buff", new SimpleTrinketBuff(new ModifierValue[]{new ModifierValue(BuffModifiers.MAX_MANA_FLAT, 25), new ModifierValue(BuffModifiers.MAGIC_ATTACK_SPEED, 0.10F)}));
         BuffRegistry.registerBuff("leather_scabbard_buff", new SimpleTrinketBuff(new ModifierValue[]{new ModifierValue(BuffModifiers.MAX_RESILIENCE_FLAT, 10)}));
-        BuffRegistry.registerBuff("void_amulet_buff", new SimpleTrinketBuff(new ModifierValue[]{new ModifierValue(BuffModifiers.MAGIC_ATTACK_SPEED, 0.25F)}));
+        BuffRegistry.registerBuff("void_amulet_buff", new SimpleTrinketBuff(new ModifierValue[]{new ModifierValue(BuffModifiers.MAGIC_ATTACK_SPEED, 0.15F)}));
 
         // Special invisible buffs that are unavailable to players. These should only be used to confer temporary happiness effects.
         BuffRegistry.registerBuff("settler_death_penalty", new SimplePotionBuff(new ModifierValue[]{new ModifierValue(BuffModifiers.ATTACK_SPEED, 0F)}));

@@ -16,6 +16,7 @@ import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.container.object.OEInventoryContainer;
+import necesse.inventory.item.Item;
 import necesse.inventory.item.toolItem.ToolType;
 import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
@@ -24,7 +25,6 @@ import necesse.level.maps.Level;
 import necesse.level.maps.levelData.settlementData.SettlementWorkstationObject;
 import necesse.level.maps.light.GameLight;
 
-// TODO: / by zero error?
 public class KegObject extends GameObject implements SettlementWorkstationObject
 {
     GameTexture texture;
@@ -39,9 +39,11 @@ public class KegObject extends GameObject implements SettlementWorkstationObject
         setItemCategory(new String[] { "objects", "craftingstations" });
         setCraftingCategory(new String[] { "craftingstations" });
         this.mapColor = new Color(100, 80, 25);
-        this.toolType = ToolType.ALL;
         this.objectHealth = 50;
         this.isLightTransparent = true;
+        this.rarity = Item.Rarity.UNCOMMON;
+        this.toolType = ToolType.PICKAXE;
+        this.spriteCount = 4;
         this.replaceCategories.add("workstation");
         this.canReplaceCategories.add("workstation");
         this.canReplaceCategories.add("wall");
@@ -54,33 +56,33 @@ public class KegObject extends GameObject implements SettlementWorkstationObject
     }
 
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, Level level, int tileX, int tileY, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
-    GameLight light = level.getLightLevel(tileX, tileY);
-    int spriteWidth = this.texture.getWidth() / this.spriteCount;
-    int drawX = camera.getTileDrawX(tileX) - this.statueXOffset;
-    int drawY = camera.getTileDrawY(tileY);
-    int rotation = level.getObjectRotation(tileX, tileY) % this.texture.getWidth() / spriteWidth;
-    final TextureDrawOptionsEnd options = this.texture.initDraw().sprite(rotation, 0, spriteWidth, this.texture.getHeight()).addObjectDamageOverlay(this, level, tileX, tileY).light(light).pos(drawX, drawY - this.texture.getHeight() + 32);
-    list.add(new LevelSortedDrawable(this, tileX, tileY) {
-          public int getSortY() {
-            return 16;
-          }
-          
-          public void draw(TickManager tickManager) {
-            options.draw();
-          }
-        });
-  }
-  
-  public void drawPreview(Level level, int tileX, int tileY, int rotation, float alpha, PlayerMob player, GameCamera camera) {
-    int spriteWidth = this.texture.getWidth() / this.spriteCount;
-    int drawX = camera.getTileDrawX(tileX) - this.statueXOffset;
-    int drawY = camera.getTileDrawY(tileY);
-    rotation = (byte)(rotation % this.texture.getWidth() / spriteWidth);
-    this.texture.initDraw()
-      .sprite(rotation, 0, spriteWidth, this.texture.getHeight())
-      .alpha(alpha)
-      .draw(drawX, drawY - this.texture.getHeight() + 32);
-  }
+        GameLight light = level.getLightLevel(tileX, tileY);
+        int spriteWidth = this.texture.getWidth() / this.spriteCount;
+        int drawX = camera.getTileDrawX(tileX) - this.statueXOffset;
+        int drawY = camera.getTileDrawY(tileY);
+        int rotation = level.getObjectRotation(tileX, tileY) % this.texture.getWidth() / spriteWidth;
+        final TextureDrawOptionsEnd options = this.texture.initDraw().sprite(rotation, 0, spriteWidth, this.texture.getHeight()).addObjectDamageOverlay(this, level, tileX, tileY).light(light).pos(drawX, drawY - this.texture.getHeight() + 32);
+        list.add(new LevelSortedDrawable(this, tileX, tileY) {
+              public int getSortY() {
+                return 16;
+              }
+              
+              public void draw(TickManager tickManager) {
+                options.draw();
+              }
+            });
+      }
+      
+      public void drawPreview(Level level, int tileX, int tileY, int rotation, float alpha, PlayerMob player, GameCamera camera) {
+        int spriteWidth = this.texture.getWidth() / this.spriteCount;
+        int drawX = camera.getTileDrawX(tileX) - this.statueXOffset;
+        int drawY = camera.getTileDrawY(tileY);
+        rotation = (byte)(rotation % this.texture.getWidth() / spriteWidth);
+        this.texture.initDraw()
+          .sprite(rotation, 0, spriteWidth, this.texture.getHeight())
+          .alpha(alpha)
+          .draw(drawX, drawY - this.texture.getHeight() + 32);
+      }
 
     @Override
     public void loadTextures() 

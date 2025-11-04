@@ -2,7 +2,8 @@ package NecesseExpanded.World.WorldPresets;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import NecesseExpanded.World.Presets.DryadHousePreset;
+
+import NecesseExpanded.World.Presets.FishianDeepCaveEntrancePreset;
 import necesse.engine.gameLoop.tickManager.PerformanceTimerManager;
 import necesse.engine.registries.BiomeRegistry;
 import necesse.engine.util.GameRandom;
@@ -14,28 +15,28 @@ import necesse.level.maps.Level;
 import necesse.level.maps.presets.Preset;
 import necesse.level.maps.presets.PresetUtils;
 
-public class DryadHouseWorldPreset extends WorldPreset {
+public class FishianDeepCaveEntranceWorldPreset extends WorldPreset {
   protected Dimension size = new Dimension(14, 15);
   
   public boolean shouldAddToRegion(LevelPresetsRegion presetsRegion) {
-    return (presetsRegion.identifier.equals(LevelIdentifier.SURFACE_IDENTIFIER) && presetsRegion
+    return (presetsRegion.identifier.equals(LevelIdentifier.DEEP_CAVE_IDENTIFIER) && presetsRegion
       .hasAnyOfBiome(BiomeRegistry.PLAINS.getID()));
   }
   
   public void addToRegion(GameRandom random, LevelPresetsRegion presetsRegion, final BiomeGeneratorStack generatorStack, PerformanceTimerManager performanceTimer) {
-    int total = getTotalBiomePoints(random, presetsRegion, BiomeRegistry.PLAINS, 0.064F);
+    int total = getTotalBiomePoints(random, presetsRegion, BiomeRegistry.SWAMP, 0.032F);
     for (int i = 0; i < total; i++) {
       final Point tile = findRandomBiomePresetTile(random, presetsRegion, generatorStack, BiomeRegistry.SWAMP, 50, this.size, new String[] { "loot", "villages" }, new WorldPreset.ValidTilePredicate() {
             public boolean isValidPosition(int tileX, int tileY) {
               return (!generatorStack.isSurfaceExpensiveWater(tileX, tileY) && generatorStack
-              .getLazyBiomeID(tileX, tileY) == BiomeRegistry.PLAINS.getID());
+              .getLazyBiomeID(tileX, tileY) == BiomeRegistry.SWAMP.getID());
             }});
       if (tile != null)
         presetsRegion.addPreset(this, tile.x, tile.y, this.size, new String[] { "loot", "villages" }, new LevelPresetsRegion.WorldPresetPlaceFunction() {
               public void place(GameRandom random, Level level, PerformanceTimerManager timer) 
               {
                 WorldPreset.ensureRegionsAreGenerated(level, tile.x, tile.y, 11, 9);
-                DryadHousePreset preset = new DryadHousePreset();
+                FishianDeepCaveEntrancePreset preset = new FishianDeepCaveEntrancePreset(random);
                 PresetUtils.clearMobsInPreset((Preset)preset, level, tile.x, tile.y);
                 preset.applyToLevel(level, tile.x, tile.y);
               }

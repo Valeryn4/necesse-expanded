@@ -16,31 +16,30 @@ import necesse.engine.localization.message.LocalMessage;
 @ModMethodPatch(target = ElderHumanMob.class, name = "getMessages", arguments = {ServerClient.class})
 public class ElderTalkPatch 
 {
-  // TODO: Must update to display player name itself.
   @OnMethodExit
   static void onExit(@Argument(0) ServerClient Player, @Return ArrayList<GameMessage> Messages)
   {
       Messages.clear();
       if (!Player.getLevel().getWorldEntity().isNight())
       {
-        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_daytalk_1"));
+        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_daytalk_1", "player", Player.getName()));
         Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_daytalk_2"));
-        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_daytalk_3"));
+        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_daytalk_3", "player", Player.getName()));
       }
       else
       {
-        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_nighttalk_1"));
-        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_nighttalk_2"));
-        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_nighttalk_3"));
+        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_nighttalk_1", "player", Player.getName()));
+        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_nighttalk_2", "player", Player.getName()));
+        Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_nighttalk_3", "player", Player.getName()));
       }
 
       for (int x = 0; x < ModLoader.getEnabledMods().size(); x++)
       {
-        if (ModLoader.getEnabledMods().get(x).id == "aphoreateam.aphoreamod")
+        if (ModLoader.getEnabledMods().get(x).id.equals("aphoreateam.aphoreamod"))
         {
           Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_aphorea_mod"));
         }
-        else if (ModLoader.getEnabledMods().get(x).id == "devs.scorchedbiome")
+        else if (ModLoader.getEnabledMods().get(x).id.equals("devs.scorchedbiome"))
         {
           Messages.add((GameMessage)new LocalMessage("mobmsg", "elder_scorched_mod"));
         }
