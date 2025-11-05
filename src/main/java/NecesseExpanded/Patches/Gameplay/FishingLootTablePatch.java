@@ -29,11 +29,11 @@ public class FishingLootTablePatch
         {
             Loot = (new FishingLootTable()).addWater(10, "incursion_treasure_chest").addWater(40, "deep_treasure_chest");
         }
-        else if (Spot.tile.level.getIslandDimension() == -2 && Spot.tile.level.baseBiome == BiomeRegistry.SNOW)
+        else if (Spot.tile.level.getIdentifier().isDeepCave() && Spot.tile.level.baseBiome == BiomeRegistry.SNOW)
         {
             Loot = (new FishingLootTable()).addWater(40, "deep_treasure_chest").addWater(20, "heartfish").addWater(20, "glacierfish");
         }
-        else if (Spot.tile.level.getIslandDimension() == -2)
+        else if (Spot.tile.level.getIdentifier().isDeepCave())
         {
             Loot = (new FishingLootTable()).addWater(40, "deep_treasure_chest").addWater(20, "heartfish");
         }

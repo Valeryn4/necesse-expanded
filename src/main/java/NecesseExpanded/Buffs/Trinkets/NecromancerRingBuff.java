@@ -1,6 +1,6 @@
 package NecesseExpanded.Buffs.Trinkets;
 
-import NecesseExpanded.Mobs.Summons.NecromancerMinion;
+import NecesseExpanded.Mobs.Friendly.Summons.NecromancerMinion;
 import necesse.engine.localization.Localization;
 import necesse.entity.mobs.MobWasKilledEvent;
 import necesse.entity.mobs.PlayerMob;

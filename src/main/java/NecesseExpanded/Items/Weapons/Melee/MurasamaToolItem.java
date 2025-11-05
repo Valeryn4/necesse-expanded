@@ -2,19 +2,33 @@ package NecesseExpanded.Items.Weapons.Melee;
 
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.List;
+import java.awt.geom.Point2D;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
+import necesse.engine.util.GameRandom;
+import necesse.entity.levelEvent.LevelEvent;
+import necesse.entity.levelEvent.SwordCleanSliceAttackEvent;
 import necesse.entity.levelEvent.mobAbilityLevelEvent.ToolItemMobAbilityEvent;
+import necesse.entity.mobs.AttackAnimMob;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.attackHandler.KatanaDashAttackHandler;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.itemAttacker.ItemAttackSlot;
 import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
+import necesse.entity.trails.Trail;
+import necesse.entity.trails.TrailVector;
+import necesse.gfx.GameResources;
+import necesse.gfx.camera.GameCamera;
+import necesse.gfx.drawables.LevelSortedDrawable;
+import necesse.gfx.drawables.OrderableDrawables;
+import necesse.gfx.gameTexture.GameSprite;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.swordToolItem.KatanaToolItem;
@@ -68,6 +82,88 @@ public class MurasamaToolItem extends KatanaToolItem
         attacker.buffManager.addBuff(new ActiveBuff("murasama_revenge_buff", attacker, 8f, attacker), true);
     }
  }
+
+ public void showKatanaAttack(Level level, final AttackAnimMob mob, final int seed, final InventoryItem item) {
+    level.entityManager.events.addHidden((LevelEvent)new SwordCleanSliceAttackEvent(mob, seed, 12, this) {
+          Trail[] trails = null;
+          
+          public void tick(float angle, float currentAttackProgress) {
+            int attackRange = getAttackRange(item);
+            Point2D.Float base = new Point2D.Float(mob.x, mob.y);
+            int attackDir = mob.getDir();
+            if (attackDir == 0) {
+              base.x += 8.0F;
+            } else if (attackDir == 2) {
+              base.x -= 8.0F;
+            } 
+            int distancePerTrail = 15;
+            boolean strictTrailAngles = item.getGndData().getBoolean("sliceDash");
+            if (strictTrailAngles) {
+              attackRange -= 20;
+              angle = ((Float)getSwingDirection(item, mob).apply(Float.valueOf(currentAttackProgress))).floatValue();
+            } else {
+              angle = ((Float)getSwingDirection(item, mob).apply(Float.valueOf(currentAttackProgress))).floatValue();
+            } 
+            Point2D.Float dir = GameMath.getAngleDir(angle);
+            int sliceDirOffset = getAnimInverted(item) ? -90 : 90;
+            if (attackDir == 3)
+              sliceDirOffset = -sliceDirOffset; 
+            Point2D.Float sliceDir = GameMath.getAngleDir(angle + sliceDirOffset);
+            if (this.trails == null) {
+              int fadeTime = strictTrailAngles ? 500 : 250;
+              int trailCount = 3;
+              this.trails = new Trail[trailCount];
+              for (int i = 0; i < this.trails.length; i++) {
+                Trail trail = new Trail(getVector(currentAttackProgress, attackRange, i, distancePerTrail, base, dir, sliceDir), this.level, new Color(244, 177, 255), fadeTime) {
+                    public void addDrawables(OrderableDrawables list, int startTileY, int endTileY, TickManager tickManager, GameCamera camera) {
+                      super.addDrawables(list, startTileY, endTileY, tickManager, camera);
+                    }
+                    
+                    public void addDrawables(List<LevelSortedDrawable> list, int startTileY, int endTileY, TickManager tickManager, GameCamera camera) {
+                      super.addDrawables(list, startTileY, endTileY, tickManager, camera);
+                    }
+                  };
+                this.trails[i] = trail;
+                trail.removeOnFadeOut = false;
+                trail.sprite = new GameSprite(GameResources.chains, 11, 0, 32);
+                trail.lightLevel = 100;
+                trail.lightHue = 0.0F;
+                this.level.entityManager.addTrail(trail);
+              } 
+            } else {
+              for (int i = 0; i < this.trails.length; i++) {
+                if (strictTrailAngles) {
+                  this.trails[i].addPointIfSameDirection(getVector(currentAttackProgress, attackRange, i, distancePerTrail, base, dir, sliceDir), 0.2F, 20.0F, 50.0F);
+                } else {
+                  this.trails[i].addPoint(getVector(currentAttackProgress, attackRange, i, distancePerTrail, base, dir, sliceDir));
+                } 
+              } 
+            } 
+          }
+          
+          public TrailVector getVector(float currentAttackProgress, int attackRange, int index, int distancePerTrail, Point2D.Float base, Point2D.Float dir, Point2D.Float sliceDir) {
+            float thickness = GameMath.lerp(index / (this.trails.length - 1), 25.0F, 10.0F);
+            if (currentAttackProgress < 0.33F) {
+              thickness *= 3.0F * currentAttackProgress;
+            } else if (currentAttackProgress > 0.66F) {
+              thickness *= 3.0F * (1.0F - currentAttackProgress);
+            } 
+            int distanceOffset = attackRange - index * distancePerTrail;
+            GameRandom random = (new GameRandom(seed)).nextSeeded(index + 5);
+            float xOffset = random.getFloatOffset(0.0F, 10.0F);
+            float yOffset = random.getFloatOffset(0.0F, 10.0F);
+            Point2D.Float edgePos = new Point2D.Float(base.x + dir.x * distanceOffset + xOffset, base.y + dir.y * distanceOffset + yOffset);
+            return new TrailVector(edgePos.x, edgePos.y, sliceDir.x, sliceDir.y, thickness, 0.0F);
+          }
+          
+          public void onDispose() {
+            super.onDispose();
+            if (this.trails != null)
+              for (Trail trail : this.trails)
+                trail.removeOnFadeOut = true;  
+          }
+        });
+  }
 
  public InventoryItem onAttack(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int animAttack, int seed, GNDItemMap mapContent) {
       if (!attackerMob.isPlayer && this.canDash(attackerMob)) {

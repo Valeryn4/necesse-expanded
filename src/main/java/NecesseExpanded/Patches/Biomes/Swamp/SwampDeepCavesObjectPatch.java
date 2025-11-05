@@ -16,6 +16,7 @@ public class SwampDeepCavesObjectPatch
     @OnMethodExit
     public static void onExit(@This SwampBiome LocalBiome, @Advice.Argument(0) Region LocalRegion, @Advice.Argument(1) BiomeGeneratorStack BiomeStack, @Advice.Argument(2) GameRandom BiomeRandom)
     {
+        BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.004).onlyOnTile(TileRegistry.deepSwampRockID).placeObject("willowtree");
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.002).onlyOnTile(TileRegistry.deepSwampRockID).placeObject("life_quartz_cluster_small");
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.002).onlyOnTile(TileRegistry.deepSwampRockID).placeObject("emeraldclustersmall");
         BiomeStack.startPlace(LocalBiome, LocalRegion, BiomeRandom).chance(0.0005).onlyOnTile(TileRegistry.deepSwampRockID).placeObject("life_quartz_cluster");

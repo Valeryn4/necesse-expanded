@@ -77,8 +77,9 @@ murasama_tip_2=Possessed by a bloodthirsty spirit, this accursed blade grants a 
 // Ammunition
 venom_bullet_tip=Inflict a powerful poison, causing the victim to take 20% more damage for five seconds.
 vampire_bullet_tip=10% chance on hit to absorb the target's life essence, healing you for 1% of your maximum health.
-solar_bullet_tip=10% chance on hit for the target to gain a stack of Sunlight's Judgement, dealing increasing damage over time based on the number of stacks, and lasting until all stacks have depleted.
-lunar_bullet_tip=Inflicts the Moonlight Curse, halving the victim's armour, and causing them to take 25% more damage for five seconds.
+
+[tile]
+fishian_tile=Fishian Tile
 
 [object]
 keg=Keg
@@ -90,6 +91,11 @@ frostshard_cluster_small=Small Frost Shard Cluster
 life_quartz_cluster=Life Quartz Cluster
 life_quartz_cluster_pure=Pure Life Quartz Cluster
 life_quartz_cluster_small=Small Life Quartz Cluster
+
+fishian_wall=Fishian Wall
+fishian_door=Fishian Door
+fishian_venom_trap=Fishian Venom Trap
+fishian_brazier=Fishian Brazier
 
 [buff]
 murasama_revenge_buff=Murasama's Revenge
@@ -109,6 +115,7 @@ summoner_grimoire=Summoner's Grimoire
 berserker_ring=Berserker's Ring
 forgotten_relic=Forgotten Relic
 leather_scabbard=Leather Scabbard
+void_amulet=Void Amulet
 
 // Melee Weapons
 juggernaut_axe=Juggernaut's Axe
@@ -181,11 +188,16 @@ pearl=Pearl
 seaweed=Seaweed
 slime=Slime
 
+// Misc
+dryad_map=Dryad's Map
+fishian_map=Fishian Biome Entrance Map
+
 [mob]
 // Forest
 zombie_miner=Zombie Miner
 
 // Snow
+frozendwarf=Frozen Dwarf Thrower
 frozen_dwarf=Frozen Dwarf
 frozen_dwarf_mage=Frozen Dwarf Mage
 ice_golem=Ice Golem
@@ -193,11 +205,17 @@ ice_golem=Ice Golem
 // Dungeon
 
 // Plains
+friendly_dryad=Friendly Dryad
+friendly_dryadname=Friendly Dryad
 
 // Swamp
 
 // Desert
 ancient_warrior=Ancient Warrior
+
+// Friendly
+settlement_dog=Dog
+settlement_dogname=Dog
 
 // Critters
 crystal_caveling=Crystal Caveling
@@ -342,5 +360,29 @@ hugesettlement=This settler lives in a huge settlement.
 // Misc effects
 travel_bonus=This settlement has access to a fast travel network.
 recent_settler_death=A settler recently died at this settlement.
+settlement_pet_bonus=This settlement owns at least one pet.
 
 // Food happiness effects.
+
+[mobmsg]
+// Dryad
+dryadgreeting1=Count only the happy hours.
+dryadgreeting2=Better to suffer a wrong than to do one.
+dryadgreeting3=Engrave upon thy eye the image of injustice.
+
+// Elder general talk.
+elder_daytalk_1=Good day, <player>! Was there something you needed?
+elder_daytalk_2=Make sure you're prepared before you travel. Have you got everything you need? 
+elder_daytalk_3=Preparation is key to success, <player>. Make sure you're well prepared for the challenges ahead.
+
+elder_nighttalk_1=Travel with caution at night, <player>. Who knows what awaits you in the dark?
+elder_nighttalk_2=Remember to take regular breaks from adventuring, <player>. Your health is important!
+elder_nighttalk_3=When was the last time you had a drink of water, <player>?
+
+// Elder mod references
+elder_aphorea_mod=I've heard rumours of forests afflicted by a strange curse. That eerie glow... Perhaps you should take a look?
+elder_scorched_mod=I've heard rumours of dangerous things living in the volcanic wastes, where the lava reaches the surface. Tread carefully!
+
+[biome]
+dryad_house=Dryad House
+fishian_biome_entrance=Fishian Biome Entrance

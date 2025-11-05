@@ -49,7 +49,7 @@ public class FrozenDwarf extends HostileMob
       (
         new LootItemInterface[]
         {
-            new ChanceLootItem(0.1f, "frostshard")
+            new ChanceLootItem(0.05f, "frostshard")
         }
     );
     }

@@ -68,14 +68,12 @@ public class RegisterRecipes
         Recipes.registerModRecipe(new Recipe("traptrack", 10, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("ironbar", 1) }));
         Recipes.registerModRecipe(new Recipe("spiketrap", 5, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
         
-        Recipes.registerModRecipe(new Recipe("fishian_arrowtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("stonearrow", 25), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("fishian_flametrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("firemone", 5), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("fishian_sawtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("ironbar", 1), new Ingredient("wire", 5) }));
-        Recipes.registerModRecipe(new Recipe("fishian_voidtrap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("voidshard", 3), new Ingredient("wire", 5) }));
+        Recipes.registerModRecipe(new Recipe("fishian_venom_trap", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 5), new Ingredient("swampsludge", 5), new Ingredient("wire", 5) }));
 
         Recipes.registerModRecipe(new Recipe("fishian_wall", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 4) }));
         Recipes.registerModRecipe(new Recipe("fishian_door", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 4) }));
-        Recipes.registerModRecipe(new Recipe("fishian_tile", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 1) }));
+        Recipes.registerModRecipe(new Recipe("fishian_tile", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 2) }));
+        Recipes.registerModRecipe(new Recipe("fishian_brazier", 1, RecipeTechRegistry.TUNGSTEN_LANDSCAPING, new Ingredient[] { new Ingredient("deepswampstone", 10), new Ingredient("voidshard", 5) }));
 
         Recipes.registerModRecipe(new Recipe("frostshard_cluster", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("frostshard", 4)}));
         Recipes.registerModRecipe(new Recipe("frostshard_cluster_pure", 1, RecipeTechRegistry.LANDSCAPING, new Ingredient[] { new Ingredient("frostshard", 4)}));

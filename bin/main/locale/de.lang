@@ -327,7 +327,7 @@ progression_bonus=Du hast mehrere Queststufen für diese Siedlung abgeschlossen.
 
 // Überfalleffekte
 well_defended_bonus=Diese Siedlung wurde gut gegen Plünderer verteidigt.
-siedlung_survived_raid=Diese Siedlung hat kürzlich einen Überfall überlebt.
+settler_survived_raid=Diese Siedlung hat kürzlich einen Überfall überlebt.
 
 // Siedlungsgröße.
 tinysettlement=Dieser Siedler lebt in einer winzigen Siedlung.

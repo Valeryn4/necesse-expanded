@@ -32,6 +32,9 @@ public class Main
         RegisterProjectiles.Register();
         RegisterExpeditions.Register();
         RegisterRecipeTechs.Register();
+        RegisterBiomes.Register();
+        RegisterLevels.Register();
+        RegisterWorldPresets.Register();
     } 
 
     public void initResources()
