@@ -80,6 +80,9 @@ vampir_bullet_tip=10% шанс при попадании поглотить жи
 solar_bullet_tip=10% шанс при попадании получить заряд «Правосудия Солнца», наносящий урон, увеличивающийся с течением времени в зависимости от количества зарядов, и действующий до тех пор, пока все заряды не иссякнут.
 lunar_bullet_tip=Накладывает проклятие лунного света, которое вдвое уменьшает броню жертвы и увеличивает её урон на 25% в течение пяти секунд.
 
+[tile]
+fishian_tile=Рыбъя Плитка
+
 [object]
 keg=Бочка
 
@@ -90,6 +93,11 @@ frostshard_cluster_small=Малое скопление ледяных оскол
 life_quartz_cluster=Скопление кварца жизни
 life_quartz_cluster_pure=Скопление чистого кварца жизни
 life_quartz_cluster_small=Малое скопление кварца жизни
+
+fishian_wall=Рыбъя Стена
+fishian_door=Рыбъя Дверь
+fishian_venom_trap=Рыбъя Ядовитая Ловушка
+fishian_brazier=Рыбъя Жаровня
 
 [buff]
 murasama_revenge_buff=Месть Мурасамы
@@ -109,6 +117,7 @@ summoner_grimoire=Гримуар Призывателя
 berserker_ring=Кольцо Берсерка
 forgotten_relic=Забытая Реликвия
 leather_scabbard=Кожаные Ножны
+void_amulet=Амулет Пустоты
 
 //Оружие ближнего боя
 juggernaut_axe=Топор Джаггернаута
@@ -156,10 +165,10 @@ elder_coffee=Кофе Старейшины
 miner_brew=Шахтерское Пиво
 pearlescent_wine=Перламутровое Вино
 rum=Пиратский Ром
-surface_treasure_chest=Сундук с сокровищами на Поверхности
-cave_treasure_chest=Сундук с сокровищами в Пещере
-deep_treasure_chest=Сундук с сокровищами в Глубокой Пещере
-incursion_treasure_chest=Сундук с сокровищами во Вторжении
+surface_treasure_chest=Сундук с сокровищами с Поверхности
+cave_treasure_chest=Сундук с сокровищами из Пещеры
+deep_treasure_chest=Сундук с сокровищами из Глубокой Пещеры
+incursion_treasure_chest=Сундук с сокровищами с Вторжений
 stamina_potion=Зелье Выносливости
 
 //Статусные эффекты
@@ -181,16 +190,25 @@ pearl=Жемчуг
 seaweed=Водоросли
 slime=Слизь
 
+// Misc
+dryad_map=Карта Дриад
+fishian_map=Карта входа в Рыбий Биом
+
 [mob]
 //Лес
 zombie_miner=Зомби Шахтер
 
 //Снег
-frozen_dwarf=Ледяной Гном
-frozen_dwarf_mage=Ледяной Гном-Маг
+frozendwarf=Морозный Гном-Метатель
+frozen_dwarf=Морозный Гном
+frozen_dwarf_mage=Морозный Гном-Маг
 ice_golem=Ледяной Голем
 
 //Подземелье
+
+// Plains
+friendly_dryad=Дружелюбная Дриада
+friendly_dryadname=Дружелюбная Дриада
 
 //Равнина
 
@@ -198,6 +216,10 @@ ice_golem=Ледяной Голем
 
 //Пустыня
 ancient_warrior=Древний Воин
+
+// Friendly
+settlement_dog=Собака
+settlement_dogname=Собака
 
 //Существа
 crystal_caveling=Обрушающийся Кристал
@@ -278,15 +300,15 @@ moodunhappy=несчастный
 moodsomewhathappy=довольный
 moodveryhappy=очень счастливый
 moodextremelyhappy=чрезвычайно счастливый
-moodhappiness=Этот поселенец <happiness>.
+moodhappiness=Я <happiness>.
 
-nobed=У этого поселенца не назначена кровать!
-bedoutside=Кровать этого поселенца на улице!
+nobed=У меня нет кровти!
+bedoutside=Моя кровать на улице!
 
-roommissingfloor=В спальне этого поселенца нет полноценного пола.
-roommissinglights=В спальне этого поселенца нет источника света.
+roommissingfloor=У меня в комнате дырявый пол.
+roommissinglights=У меня в комнате темно.
 
-sharingroom=Этот поселенец делит спальню с кем то другим.
+sharingroom=Со мной в комнате живет кто-то другой.
 
 //Размер комнаты
 sizebaby=крошечная.
@@ -296,31 +318,31 @@ sizemediocre=обычная.
 sizedecent=большая.
 sizelarge=очень большая!
 sizehuge=огромная!
-sizemood=Спальня этого поселенца <size>
+sizemood=Моя комната <size>
 
-nofoodmood=Этот поселенец давно не ел.
-dietsame=Рацион этого поселенец был очень скудный.
-dietslightly=Рацион этого поселенца имел небольшое разнообразие.
-dietsomewhat=Рацион этого поселенца достаточно разнообразным.
-dietnicely=Рацион этого поселенца был очень разнообразным.
-diettextremely=Рацион этого поселенца был чрезвычайно разнообразным.
+nofoodmood=Я давно не ел.
+dietsame=Мой рацион был очень скудный.
+dietslightly=Мой рацион имел небольшое разнообразие.
+dietsomewhat=Мой рацион достаточно разнообразным.
+dietnicely=Мой рацион был очень разнообразным.
+diettextremely=Мой рацион был чрезвычайно разнообразным.
 
 //Качество комнаты.
-roomplain=пустая
-roomdull=унылая
-roomsimple=простая
-roomnormal=нормальная
-roomgood=хорошая
-roomimpressive=впечатляющая
-roomwonderful=замечательная
-roomunrivaled=непревзойденная
-roommood=Спальня этого поселенца <quality>.
+roomplain=пустой
+roomdull=унылый
+roomsimple=простой
+roomnormal=нормальный
+roomgood=хороший
+roomimpressive=впечатляющий
+roomwonderful=замечательный
+roomunrivaled=непревзойденный
+roommood=Интерьер моей комнаты <quality>.
 
 //Рацион
-simplemeal=Этот поселенец последний раз ел простую еду.
-finemeal=Этот поселенец последний раз ел хорошего качкства еду.
-gourmetmeal=Этот поселенец последний раз ел отличного качества еду.
-perfectmeal=Этот поселенец последний раз ел превосходного качества еду!
+simplemeal=Я в последний раз ел простую еду.
+finemeal=Я в последний раз ел хорошего качкства еду.
+gourmetmeal=Я в последний раз ел отличного качества еду.
+perfectmeal=Я в последний раз ел превосходного качества еду!
 
 foodperfect=Идеально
 
@@ -328,19 +350,43 @@ foodperfect=Идеально
 progression_bonus=Вы выполнили несколько заданий для этого поселения.
 
 //Эффекты рейда
-well_defended_bonus=Это поселение хорошо защищено от рейдов.
+well_defended_bonus=Это поселение хорошо защищено от налетов.
 poorly_defended_penalty=Это поселение плохо защищено от налётчиков.
-settlement_survived_raid=Это поселение недавно пережило набег.
+settlement_survived_raid=Это поселение недавно пережило налет.
 
 //Размер поселения.
-tinysettlement=Этот поселенец живёт в крошечном поселении.
-smallsettlement=Этот поселенец живёт в небольшом поселении.
-averagesettlement=Этот поселенец живёт в поселении среднего размера.
-largesettlement=Этот поселенец живёт в большом поселении.
-hugesettlement=Этот поселенец живёт в огромном поселении.
+tinysettlement=Я живу в крошечном поселении.
+smallsettlement=Я живу в небольшом поселении.
+averagesettlement=Я живу в поселении среднего размера.
+largesettlement=Я живу в большом поселении.
+hugesettlement=Я живу в огромном поселении.
 
 //Разные эффекты
 travel_bonus=Это поселение имеет доступ к сети быстрого перемещения.
-recent_settler_death=В этом поселении недавно умер поселенец.
+recent_settler_death=В этом поселении недавно умер житель.
+settlement_pet_bonus=У этого поселенца есть питомец.
 
-//Эффекты счастья от еды.
+
+[mobmsg]
+// Dryad
+dryadgreeting1=Считай только счастливые часы.
+dryadgreeting2=Лучше терпеть зло, чем причинять его.
+dryadgreeting3=Запечатлей в своих глазах картину несправедливости.
+
+// Elder general talk.
+elder_daytalk_1=Хорошего дня, <player>! Тебе что-то нужно?
+elder_daytalk_2=Убедись, что ты готов(а) к путешествию. У тебя есть всё необходимое?
+elder_daytalk_3=Пдготовка - ключ к успеху, <player>. Убедись что ты хорошо подготовлен(а) к предстоящим испытаниям.
+
+elder_nighttalk_1=Путешествуй ночью осторожно, <player>. Кто знает, что поджидает тебя в темоноте?
+elder_nighttalk_2=Не забывай делать перерывы между своими приключениями, <player>. Твое здоровье важно!
+elder_nighttalk_3=Когда ты последний раз пил воду, <player>?
+
+// Elder mod references
+elder_aphorea_mod=Я слышал слухи о лесах, поражённых странным проклятием. Это жуткое свечение... Может быть, тебе стоит взглянуть?
+elder_scorched_mod=Я слышал слухи об опасных существах, обитающих в вулканических пустошах, где лава выходит на поверхность. Будь осторожен!
+
+
+[biome]
+dryad_house=Дом Дриады
+fishian_biome_entrance=Вход в Рыбий Биом
